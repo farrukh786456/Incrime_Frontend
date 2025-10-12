@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Generate Application – InCrime</title>
   <style>
     body {
@@ -13,7 +13,6 @@
       overflow-x: hidden;
     }
 
-    /* ✅ NAVBAR FIXED PROPERLY */
     nav {
       display: flex;
       justify-content: space-between;
@@ -31,22 +30,23 @@
     nav .logo {
       font-size: 24px;
       font-weight: bold;
+      letter-spacing: 0.5px;
       cursor: pointer;
     }
 
     nav ul {
-      display: flex;
       list-style: none;
+      display: flex;
+      gap: 25px;
       margin: 0;
       padding: 0;
-      gap: 25px;
     }
 
     nav ul li a {
-      color: white;
       text-decoration: none;
+      color: #fff;
       font-weight: 500;
-      transition: 0.3s;
+      transition: color 0.3s;
     }
 
     nav ul li a:hover {
@@ -56,38 +56,33 @@
     nav button {
       background: #FFD700;
       border: none;
-      color: #0d2a3a;
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 8px;
       cursor: pointer;
+      font-weight: 600;
       transition: 0.3s;
     }
 
     nav button:hover {
       background: #f4d03f;
+      transform: scale(1.05);
     }
 
-    /* ✅ FIXED CENTER CONTENT */
     .content {
+      position: relative;
       max-width: 900px;
-      margin: 80px auto 40px;
-      background: rgba(255, 255, 255, 0.9);
+      margin: 80px auto;
+      background: rgba(255, 255, 255, 0.95);
       border-radius: 20px;
       padding: 40px 50px;
       box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-      text-align: center;
+      text-align: left;
       backdrop-filter: blur(10px);
-      animation: fadeSlide 1s ease;
-    }
-
-    @keyframes fadeSlide {
-      from {opacity: 0; transform: translateY(30px);}
-      to {opacity: 1; transform: translateY(0);}
     }
 
     h1 {
-      font-size: 32px;
+      text-align: center;
+      font-size: 26px;
       margin-bottom: 30px;
       color: #0d2a3a;
     }
@@ -95,58 +90,36 @@
     .steps {
       display: flex;
       flex-direction: column;
-      gap: 25px;
-      text-align: left;
+      gap: 20px;
     }
 
     .step {
-      background: #fff;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #f8f9fa;
+      border-left: 5px solid #FFD700;
+      border-radius: 12px;
+      padding: 20px;
       opacity: 0;
-      transform: translateY(40px);
+      transform: translateY(30px);
       animation: fadeUp 0.8s ease forwards;
     }
 
-    .step:nth-child(1) { animation-delay: 0.2s; }
-    .step:nth-child(2) { animation-delay: 0.4s; }
-    .step:nth-child(3) { animation-delay: 0.6s; }
-    .step:nth-child(4) { animation-delay: 0.8s; }
-    .step:nth-child(5) { animation-delay: 1s; }
-    .step:nth-child(6) { animation-delay: 1.2s; }
+    .step:nth-child(1) { animation-delay: 0.4s; }
+    .step:nth-child(2) { animation-delay: 1s; }
+    .step:nth-child(3) { animation-delay: 1.6s; }
+    .step:nth-child(4) { animation-delay: 2.2s; }
+    .step:nth-child(5) { animation-delay: 2.8s; }
+    .step:nth-child(6) { animation-delay: 3.4s; }
 
     @keyframes fadeUp {
-      from {opacity: 0; transform: translateY(40px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    .step:hover {
-      transform: scale(1.02);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    }
-
-    .icon {
-      font-size: 28px;
-      margin-right: 10px;
-      color: #FFD700;
-    }
-
-    .step-title {
-      font-weight: 600;
-      color: #0d2a3a;
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .step p {
-      color: #333;
-      line-height: 1.5;
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .back-btn {
-      margin-top: 35px;
+      display: block;
+      margin: 35px auto 0;
       background: #FFD700;
       color: #0d2a3a;
       padding: 12px 28px;
@@ -164,17 +137,20 @@
     }
 
     footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
       background: #0d2a3a;
       color: #fff;
       text-align: center;
-      padding: 15px;
-      margin-top: 60px;
+      padding: 12px;
+      font-size: 14px;
+      letter-spacing: 0.3px;
     }
   </style>
 </head>
 <body>
 
-  <!-- ✅ Navbar -->
   <nav>
     <div class="logo" onclick="window.location.href='index.html'">⚖️ InCrime</div>
     <ul>
@@ -187,39 +163,48 @@
     <button onclick="window.location.href='login.html'">Login</button>
   </nav>
 
-  <!-- ✅ Animated Steps Section -->
   <div class="content">
     <h1>📝 Generate Your Application – How It Works</h1>
-
     <div class="steps">
-      <div class="step"><div class="icon">1️⃣</div>
-        <div class="step-title">Enter the Generate Section</div>
-        <p>When user clicks “Generate Your Application”, the form opens with fields like Name, Case Type, and Description. If chatbot data exists, fields auto-fill instantly.</p>
+      <div class="step">
+        <b>1️⃣ Enter the Generate Section</b><br>
+        When user clicks “Generate Your Application”:<br>
+        • Page opens with input fields (Name, Case Type, Description, etc.)<br>
+        • If chatbot already collected data, fields auto-fill instantly.
       </div>
 
-      <div class="step"><div class="icon">2️⃣</div>
-        <div class="step-title">Input & Validation</div>
-        <p>Each input is validated — no empty fields, correct CNIC format, and auto-save after every step to prevent data loss.</p>
+      <div class="step">
+        <b>2️⃣ Input & Validation</b><br>
+        User fills in or edits information.<br>
+        Each field is validated (no empty inputs, correct CNIC format, etc.)<br>
+        System auto-saves after each change — no data loss on refresh.
       </div>
 
-      <div class="step"><div class="icon">3️⃣</div>
-        <div class="step-title">Live Preview</div>
-        <p>While typing, you see a live preview beside the form. Your details automatically update in the legal template.</p>
+      <div class="step">
+        <b>3️⃣ Live Preview</b><br>
+        As you type, a live application preview appears beside the form.<br>
+        Your inputs (like name and case details) dynamically fill the official template.
       </div>
 
-      <div class="step"><div class="icon">4️⃣</div>
-        <div class="step-title">Backend Processing</div>
-        <p>Once complete, data is sent to backend API where AI refines and formats the document into legal language.</p>
+      <div class="step">
+        <b>4️⃣ Backend Processing</b><br>
+        After all inputs complete:<br>
+        • Frontend sends data to backend API.<br>
+        • Backend injects info into legal templates.<br>
+        • AI refines text to professional legal tone.
       </div>
 
-      <div class="step"><div class="icon">5️⃣</div>
-        <div class="step-title">Formatting & Document Generation</div>
-        <p>System adjusts margins, legal headings, and spacing. Then the document is generated as a PDF or Word file instantly.</p>
+      <div class="step">
+        <b>5️⃣ Formatting & Document Generation</b><br>
+        System adds margins, spacing, legal structure, and user name/date.<br>
+        Document converts to printable PDF or Word format instantly.
       </div>
 
-      <div class="step"><div class="icon">6️⃣</div>
-        <div class="step-title">Save & Edit Later</div>
-        <p>Generated files link to your user account. You can reopen, edit, or download anytime.</p>
+      <div class="step">
+        <b>6️⃣ Save & Edit Later</b><br>
+        All generated files link to your user account.<br>
+        You can reopen, edit, or download anytime.<br><br>
+        ✅ This is how InCrime transforms your simple answers into official, court-ready documents in seconds.
       </div>
     </div>
 
@@ -227,6 +212,5 @@
   </div>
 
   <footer>© 2025 InCrime | Empowering Legal Access for Everyone</footer>
-
 </body>
 </html>
