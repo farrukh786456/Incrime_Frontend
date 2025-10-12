@@ -8,9 +8,9 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #eef3f8, #ffffff);
+      background: linear-gradient(135deg, #e6ebf3, #ffffff);
       color: #0d2a3a;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     nav {
@@ -30,26 +30,40 @@
     nav .logo {
       font-size: 24px;
       font-weight: bold;
+      letter-spacing: 0.5px;
     }
 
     .content {
-      max-width: 900px;
-      margin: 60px auto;
-      background: #fff;
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-      animation: fadeIn 0.7s ease-in-out;
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 850px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 40px 50px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      text-align: left;
+      animation: fadeSlide 1.2s ease forwards;
+      backdrop-filter: blur(10px);
     }
 
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
+    @keyframes fadeSlide {
+      from {opacity: 0; transform: translate(-50%, -45%) scale(0.97);}
+      to {opacity: 1; transform: translate(-50%, -50%) scale(1);}
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 25px;
+      font-size: 26px;
+      margin-bottom: 20px;
+      color: #0d2a3a;
+      animation: fadeInText 1s ease-in;
+    }
+
+    @keyframes fadeInText {
+      from {opacity: 0; transform: translateY(-10px);}
+      to {opacity: 1; transform: translateY(0);}
     }
 
     pre {
@@ -57,11 +71,27 @@
       font-size: 16px;
       line-height: 1.6;
       color: #1a1a1a;
-      background: #f9f9f9;
+      background: #f8f9fa;
       padding: 25px;
       border-radius: 12px;
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.05);
+      height: 340px;
       overflow-y: auto;
-      max-height: 70vh;
+      transition: 0.3s;
+      animation: fadeInBlock 1.4s ease;
+    }
+
+    @keyframes fadeInBlock {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    pre::-webkit-scrollbar {
+      width: 6px;
+    }
+    pre::-webkit-scrollbar-thumb {
+      background: #bbb;
+      border-radius: 3px;
     }
 
     .back-btn {
@@ -69,24 +99,42 @@
       margin: 25px auto 0;
       background: #FFD700;
       color: #0d2a3a;
-      padding: 10px 25px;
+      padding: 12px 28px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       font-weight: 600;
       cursor: pointer;
       transition: 0.3s;
+      font-size: 16px;
     }
 
     .back-btn:hover {
       background: #f4d03f;
+      transform: scale(1.05);
     }
 
     footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
       background: #0d2a3a;
       color: #fff;
       text-align: center;
-      padding: 15px;
-      margin-top: 60px;
+      padding: 12px;
+      font-size: 14px;
+      letter-spacing: 0.3px;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      background: #0d2a3a;
+      animation: blink 0.8s steps(2) infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% {opacity: 1;}
+      50.01%, 100% {opacity: 0;}
     }
   </style>
 </head>
@@ -97,7 +145,7 @@
   </nav>
 
   <div class="content">
-    <h1>💬 Chatbot Help – How It Works</h1>
+    <h1>🤖 Chatbot Help – How It Works</h1>
     <pre id="chatbotText"></pre>
     <button class="back-btn" onclick="window.location.href='how-it-works.html'">← Back</button>
   </div>
@@ -105,55 +153,66 @@
   <footer>© 2025 InCrime | Empowering Legal Access for Everyone</footer>
 
   <script>
-    const chatbotText = `💬 Chatbot Help – How It Works
-The InCrime Chatbot helps you create legal applications step by step without needing expert help.
-It connects the frontend chatbot interface with backend AI logic and the legal database.
+    const chatbotText = `🤖 Chatbot Help – How It Works
+The InCrime Chatbot helps users create legal applications step by step — without needing expert help.
 
-⚙️ Step-by-Step Working:
+💬 Step-by-Step Working:
 
 1️⃣ Start a Chat
-When the user clicks “Chatbot Help”:
-• A chatbot window opens on the screen.
-• The system starts a new chat session with a unique ID.
-• The bot greets: “Hello! I’m your legal assistant. How can I help you today?”
+When a user clicks “Chatbot Help”:
+• Chat window opens automatically.
+• A new session ID is generated to track conversation.
+• User is greeted with: “Hello! I’m your legal assistant. How can I help you today?”
 
-2️⃣ Choose or Type a Query
-The user can:
-• Type a question (e.g., “How to write an FIR?”), or
-• Select from quick buttons (Create Application / Legal Guidance).
-The chatbot detects intent using AI/NLU and picks the correct topic.
+2️⃣ Ask or Select a Topic
+User can type questions (e.g., “How to write an FIR?”)
+or select quick options like:
+• Create an Application
+• Know Required Documents
+• Legal Guidance
+Chatbot detects keywords like “FIR”, “Complaint”, “Property” to understand intent.
 
-3️⃣ Guided Question Flow
-The chatbot asks:
-• “Please enter your full name.”
-• “Select your case type.”
-• “Describe your issue.”
-All answers are stored safely in session memory and validated step by step.
+3️⃣ Chatbot Guides You
+Once intent is detected:
+• Bot asks for simple step-by-step details.
+• Example: “Please enter your full name.”, “Select your case type.”
+• Each response is validated and stored safely.
+This process works like an intelligent form — but conversationally.
 
 4️⃣ Get Instant Answers
-Based on collected info:
-• If guidance requested → Shows relevant legal steps.
-• If document requested → Sends collected info to the “Generate Application” system.
+After enough info:
+• If guidance requested — bot replies with legal info.
+• If required docs — bot lists them instantly.
+• If creating application — data is sent to generator tool.
+Backend connects chatbot + generator seamlessly.
 
-5️⃣ Data Transfer to Generator
-When ready, chatbot sends all user data (name, case type, description) to the document generator via secure API.
-The application form auto-fills — user can preview or download it.
+5️⃣ Automatic Form Filling
+Collected details (Name, Case, Description) are auto-sent to the “Generate Application” page.
+That page auto-fills instantly so the user can just review and click “Generate”.
 
-6️⃣ Smart Memory & Human Help
-Chat sessions stay active for 24 hours.
-If chatbot is confused, it forwards to a human legal advisor automatically.
+6️⃣ Continuous Support
+Chat session stays active for 24 hours.
+Users can return later to continue.
+If chatbot can’t understand, it redirects to a human legal advisor.
 
-✅ That’s how InCrime Chatbot makes legal guidance simple, instant, and human-free where possible.`;
+✅ InCrime Chatbot ensures every user gets instant guidance and document creation — quickly, clearly, and professionally.`;
 
-    // Typewriter animation
-    function typeWriter(elementId, text, i = 0) {
-      if (i < text.length) {
-        document.getElementById(elementId).textContent += text.charAt(i);
-        setTimeout(() => typeWriter(elementId, text, i + 1), 15);
+    const textElement = document.getElementById("chatbotText");
+    let i = 0;
+
+    function typeWriter() {
+      if (i < chatbotText.length) {
+        textElement.textContent += chatbotText.charAt(i);
+        i++;
+        setTimeout(typeWriter, 15);
+      } else {
+        const cursor = document.createElement("span");
+        cursor.classList.add("cursor");
+        textElement.appendChild(cursor);
       }
     }
 
-    typeWriter("chatbotText", chatbotText);
+    typeWriter();
   </script>
 </body>
 </html>
