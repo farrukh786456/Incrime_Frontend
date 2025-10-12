@@ -13,18 +13,25 @@
     }
 
     nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 60px;
-      background: rgba(13, 42, 58, 0.95);
-      color: #fff;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(8px);
-    }
+  display: flex;
+  justify-content: space-between; /* logo left, menu + button right */
+  align-items: center;
+  padding: 15px 60px;
+  background: rgba(13, 42, 58, 0.95);
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+}
+
+nav .right-nav {
+  display: flex;
+  align-items: center;
+  gap: 25px; /* space between items */
+}
+
 
     nav .logo {
       font-size: 24px;
@@ -103,18 +110,21 @@
 </head>
 <body>
 
-  <nav>
-    <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">⚖️ InCrime</div>
+ <nav>
+  <div class="logo" onclick="window.location.href='index.html'">⚖️ InCrime</div>
+
+  <div class="right-nav">
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#categories">Case Categories</a></li>
       <li><a href="#">How It Works</a></li>
-      <li><a href="chatbot.html">Chatbot Help</a></li>
+      <li><a href="application.html">Create Application</a></li>
       <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
     <button onclick="window.location.href='login.html'">Login</button>
-  </nav>
+  </div>
+</nav>
+
 
   <div class="container">
     <h1>How It Works</h1>
