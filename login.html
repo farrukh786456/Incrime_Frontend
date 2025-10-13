@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login – InCrime</title>
+
+  <!-- Google Identity Services SDK -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
   <style>
     body {
       margin: 0;
@@ -130,13 +134,20 @@
   </style>
 </head>
 <body>
+
   <div class="login-card">
     <h2>Login</h2>
 
-    <button class="google">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo">
-      Login with Google
-    </button>
+    <!-- ✅ Google Login SDK Button -->
+    <div id="g_id_onload"
+         data-client_id="YOUR_CLIENT_ID_HERE"
+         data-context="signin"
+         data-ux_mode="popup"
+         data-callback="handleCredentialResponse"
+         data-auto_prompt="false">
+    </div>
+
+    <div class="g_id_signin" data-type="standard"></div>
 
     <div class="divider">OR</div>
 
@@ -151,5 +162,15 @@
       <a href="signup.html">Create Account</a>
     </div>
   </div>
+
+  <!-- ✅ Google Login Response -->
+  <script>
+    function handleCredentialResponse(response) {
+      console.log("Encoded JWT ID token: " + response.credential);
+      alert("✅ Login successful with Google!");
+      // Yahan se tum JWT token ko backend bhej sakte ho agar chaho
+    }
+  </script>
+
 </body>
 </html>
