@@ -52,17 +52,18 @@
       margin-bottom: 20px;
     }
 
-    .input-box {
-      margin-bottom: 20px;
-    }
-
-    input {
+    input[type="text"] {
       width: 100%;
       padding: 12px;
       font-size: 16px;
       border-radius: 8px;
       border: 1px solid #bbb;
       outline: none;
+      margin-top: 10px;
+    }
+
+    input[type="file"] {
+      margin: 10px 0;
     }
 
     button {
@@ -117,9 +118,10 @@
     <div class="card">
       <h3>Add New Template</h3>
 
-      <div class="input-box">
-        <input type="text" id="templateName" placeholder="Enter template name...">
-      </div>
+      <label><b>Upload File (PDF / DOC / Image / TXT):</b></label>
+      <input type="file" id="fileUpload">
+
+      <input type="text" id="templateName" placeholder="Template name...">
 
       <button onclick="addTemplate()">Add Template</button>
     </div>
@@ -131,6 +133,17 @@
   </div>
 
 <script>
+  // Convert file to Base64
+  function toBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // Load saved list
   function loadTemplates() {
     let templates = JSON.parse(localStorage.getItem("templates") || "[]");
     const list = document.getElementById("templateList");
@@ -139,26 +152,48 @@
     templates.forEach((t, index) => {
       list.innerHTML += `
         <div class="template-item">
-          ${t}
+          ${t.name}
           <button class="remove-btn" onclick="removeTemplate(${index})">Remove</button>
         </div>
       `;
     });
   }
 
-  function addTemplate() {
-    const name = document.getElementById("templateName").value;
+  // Add template
+  async function addTemplate() {
+    const fileInput = document.getElementById("fileUpload");
+    const nameInput = document.getElementById("templateName");
 
-    if (name.trim() === "") return alert("Enter a template name");
+    if (!fileInput.files.length) {
+      alert("Please upload a file!");
+      return;
+    }
+
+    let file = fileInput.files[0];
+    let base64 = await toBase64(file);
+
+    // Auto fill name if empty
+    if (nameInput.value.trim() === "") {
+      nameInput.value = file.name;
+    }
 
     let templates = JSON.parse(localStorage.getItem("templates") || "[]");
-    templates.push(name);
+
+    templates.push({
+      name: nameInput.value,
+      fileData: base64,  
+      fileType: file.type
+    });
 
     localStorage.setItem("templates", JSON.stringify(templates));
-    document.getElementById("templateName").value = "";
+
+    fileInput.value = "";
+    nameInput.value = "";
+
     loadTemplates();
   }
 
+  // Remove template
   function removeTemplate(index) {
     let templates = JSON.parse(localStorage.getItem("templates") || "[]");
     templates.splice(index, 1);
