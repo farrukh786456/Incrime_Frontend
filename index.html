@@ -187,10 +187,13 @@
       box-shadow: 0 5px 10px rgba(0,0,0,0.1);
       padding: 20px;
       transition: transform 0.3s;
+      cursor: pointer;
+      border: 2px solid transparent;
     }
 
     .card:hover {
       transform: translateY(-5px);
+      border-color: #FFD700;
     }
 
     .card h3 {
@@ -201,6 +204,183 @@
     .card p {
       color: #333;
       font-size: 15px;
+    }
+
+    /* --- Hidden Pages for Categories --- */
+    .category-page {
+      display: none;
+      padding: 40px 60px;
+      min-height: 80vh;
+    }
+
+    .category-page.active {
+      display: block;
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #0d2a3a 0%, #1a4763 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+    }
+
+    .page-header h1 {
+      margin: 0;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .page-header p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    .subcategories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    /* CHANGE 1: .subcategory-card mein flexbox properties add ki hain */
+    .subcategory-card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-left: 5px solid #FFD700;
+      transition: transform 0.3s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      min-height: 180px;
+    }
+
+    .subcategory-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .subcategory-card h4 {
+      color: #0d2a3a;
+      margin-bottom: 10px;
+    }
+
+    .subcategory-card p {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    /* CHANGE 2: .start-btn mein margin-top: auto aur width: fit-content add kiye hain */
+    .start-btn {
+      background: #FFD700;
+      color: #0d2a3a;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: auto;
+      width: fit-content;
+    }
+
+    .back-btn {
+      background: #0d2a3a;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 30px;
+    }
+
+    /* --- Bail Types Page --- */
+    .bail-types-page {
+      display: none;
+      padding: 40px 60px;
+      min-height: 80vh;
+    }
+
+    .bail-types-page.active {
+      display: block;
+    }
+
+    .bail-types-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .bail-type-card {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      border-top: 5px solid;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .bail-type-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .bail-type-card.pre-arrest {
+      border-color: #38a169;
+    }
+
+    .bail-type-card.post-arrest {
+      border-color: #e53e3e;
+    }
+
+    .bail-type-card h4 {
+      color: #0d2a3a;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    .bail-type-card p {
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .bail-features {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+
+    .bail-features ul {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+
+    .bail-features li {
+      margin-bottom: 8px;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .bail-btn {
+      background: #FFD700;
+      color: #0d2a3a;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      margin-top: 15px;
     }
 
     /* --- Contact Section --- */
@@ -292,7 +472,7 @@
 <nav>
   <div class="logo">⚖️ InCrime</div>
   <ul>
-    <li><a href="#">Home</a></li>
+    <li><a href="#" onclick="showHome()">Home</a></li>
     <li><a href="#categories">Case Categories</a></li>
     <li><a href="how-it-works.html">How It Works</a></li>
     <li><a href="chatbot.html">Chatbot Help</a></li>
@@ -303,42 +483,233 @@
   <button onclick="window.location.href='login.html'">Login</button>
 </nav>
 
+  <!-- Home Page (Main Content) -->
+  <div id="homePage">
+    <!-- Hero Section -->
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Automated Legal Document Generation & Case Assistance</h1>
+          <p>"Generate court applications, FIRs, and legal documents instantly. Get guided assistance through an integrated chatbot for your legal queries."</p>
+        </div>
 
-  <!-- Hero Section -->
-  <div class="hero">
-    <div class="hero-content">
-      <div class="hero-text">
-        <h1>Automated Legal Document Generation & Case Assistance</h1>
-        <p>"Generate court applications, FIRs, and legal documents instantly. Get guided assistance through an integrated chatbot for your legal queries."</p>
-      </div>
-
-      <!-- Modern Stylish Card -->
-      <div class="app-card" onclick="window.location.href='application.html'">
-        <div class="icon">⚖️</div>
-        <h3>Generate Your Application</h3>
-        <p>Quickly draft and download legal applications using AI</p>
+        <!-- Modern Stylish Card -->
+        <div class="app-card" onclick="window.location.href='application.html'">
+          <div class="icon">⚖️</div>
+          <h3>Generate Your Application</h3>
+          <p>Quickly draft and download legal applications using AI</p>
+        </div>
       </div>
     </div>
+
+    <!-- Categories -->
+    <section class="categories" id="categories">
+      <h2>Case Categories</h2>
+      <div class="cards">
+        <div class="card" onclick="showCategory('criminal')">
+          <h3>Criminal Cases</h3>
+          <p>Cases related to theft, assault, and other criminal offences. Legal guidance and FIR drafting support available.</p>
+        </div>
+        <div class="card" onclick="showCategory('civil')">
+          <h3>Civil Cases</h3>
+          <p>Property, marriage, and contractual disputes. Generate petitions or applications instantly.</p>
+        </div>
+        <div class="card" onclick="showCategory('family')">
+          <h3>Family Cases</h3>
+          <p>Divorce, custody, and domestic issues are handled with privacy and accuracy through our AI forms.</p>
+        </div>
+      </div>
+    </section>
   </div>
 
-  <!-- Categories -->
-  <section class="categories" id="categories">
-    <h2>Case Categories</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Criminal Cases</h3>
-        <p>Cases related to theft, assault, and other criminal offences. Legal guidance and FIR drafting support available.</p>
+  <!-- Criminal Cases Page -->
+  <div id="criminalPage" class="category-page">
+    <div class="page-header">
+      <h1>Criminal Cases</h1>
+      <p>Select a criminal case type to generate legal application</p>
+    </div>
+    
+    <div class="subcategories-grid">
+      <div class="subcategory-card" onclick="startApplication('FIR Application')">
+        <h4>FIR Application</h4>
+        <p>First Information Report for criminal incidents</p>
+        <button class="start-btn">Next</button>
       </div>
-      <div class="card">
-        <h3>Civil Cases</h3>
-        <p>Property, marriage, and contractual disputes. Generate petitions or applications instantly.</p>
+      <div class="subcategory-card" onclick="showBailTypes()">
+        <h4>Bail Application</h4>
+        <p>Pre-arrest and post-arrest bail applications</p>
+        <button class="start-btn">Next</button>
       </div>
-      <div class="card">
-        <h3>Family Cases</h3>
-        <p>Divorce, custody, and domestic issues are handled with privacy and accuracy through our AI forms.</p>
+      <div class="subcategory-card" onclick="startApplication('Theft Complaint')">
+        <h4>Theft Complaint</h4>
+        <p>Reporting theft or robbery incidents</p>
+        <button class="start-btn">Next</button>
+      </div>
+      <div class="subcategory-card" onclick="startApplication('Assault Complaint')">
+        <h4>Assault Complaint</h4>
+        <p>Physical assault and battery cases</p>
+        <button class="start-btn">Next</button>
+      </div>
+      <div class="subcategory-card" onclick="startApplication('Cyber Crime')">
+        <h4>Cyber Crime</h4>
+        <p>Online fraud, hacking, and cyber bullying</p>
+        <button class="start-btn">Next</button>
+      </div>
+      <div class="subcategory-card" onclick="startApplication('Defamation Case')">
+        <h4>Defamation Case</h4>
+        <p>Character assassination and false allegations</p>
+        <button class="start-btn">Next</button>
       </div>
     </div>
-  </section>
+    
+    <button class="back-btn" onclick="showHome()">← Back to Categories</button>
+  </div>
+
+  <!-- Bail Types Page -->
+  <div id="bailTypesPage" class="bail-types-page">
+    <div class="page-header">
+      <h1>Bail Applications</h1>
+      <p>Select the type of bail application you need</p>
+    </div>
+    
+    <div class="bail-types-grid">
+      <div class="bail-type-card pre-arrest" onclick="startBailApplication('pre-arrest')">
+        <h4>Pre-Arrest Bail (Anticipatory Bail)</h4>
+        <p><strong>Section 498 CrPC</strong> - Applied before arrest is made, when you anticipate arrest but haven't been arrested yet.</p>
+        
+        <div class="bail-features">
+          <strong>When to use:</strong>
+          <ul>
+            <li>For protection against false accusations</li>
+            <li>When arrest is imminent but not yet happened</li>
+            <li>Prevents police custody entirely</li>
+            <li>Filed in court having jurisdiction where arrest is anticipated</li>
+          </ul>
+        </div>
+        
+        <button class="bail-btn">Select</button>
+      </div>
+      
+      <div class="bail-type-card post-arrest" onclick="startBailApplication('post-arrest')">
+        <h4>Post-Arrest Bail (Regular Bail)</h4>
+        <p><strong>Section 497 CrPC</strong> - Applied after arrest has been made, when you or someone is already in police custody.</p>
+        
+        <div class="bail-features">
+          <strong>When to use:</strong>
+          <ul>
+            <li>When person is already arrested</li>
+            <li>To secure release from police/judicial custody</li>
+            <li>Different from pre-arrest bail procedures</li>
+            <li>Filed in court where case is registered or accused is detained</li>
+          </ul>
+        </div>
+        
+        <button class="bail-btn">Select</button>
+      </div>
+    </div>
+    
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #FFD700;">
+      <h4 style="color: #0d2a3a; margin-bottom: 10px;">📋 Required Documents for Bail Application:</h4>
+      <ul style="color: #555; font-size: 14px; columns: 2;">
+        <li>CNIC copy of applicant</li>
+        <li>FIR copy (if available)</li>
+        <li>Medical reports (if any injury)</li>
+        <li>Witness statements</li>
+        <li>Property documents (for surety)</li>
+        <li>Previous court orders (if any)</li>
+        <li>Character certificate</li>
+        <li>Employment proof</li>
+      </ul>
+    </div>
+    
+    <button class="back-btn" onclick="showCriminalPage()">← Back to Criminal Cases</button>
+  </div>
+
+  <!-- Civil Cases Page -->
+  <div id="civilPage" class="category-page">
+    <div class="page-header">
+      <h1>Civil Cases</h1>
+      <p>Select a civil case type to generate legal application</p>
+    </div>
+    
+    <div class="subcategories-grid">
+      <div class="subcategory-card" onclick="('Property Dispute')">
+        <h4>Property Dispute</h4>
+        <p>Land, house, or commercial property conflicts</p>
+        <button class="start-btn">Next</button>
+      </div>
+      <div class="subcategory-card" onclick="startApplication('Rent Agreement')">
+        <h4>Rent Agreement</h4>
+        <p>Landlord-tenant rental agreements and disputes</p>
+        <button class="start-btn">Next</button>
+      </div>
+      <div class="subcategory-card" onclick="startApplication('Loan Recovery')">
+        <h4>Loan Recovery</h4>
+        <p>Recovery of personal or business loans</p>
+        <button class="start-btn">Next</button>
+      </div>
+      <div class="subcategory-card" onclick="startApplication('Consumer Complaint')">
+        <h4>Consumer Complaint</h4>
+        <p>Against faulty products or poor services</p>
+        <button class="start-btn">Next</button>
+      </div>
+      <div class="subcategory-card" onclick="startApplication('Breach of Contract')">
+        <h4>Breach of Contract</h4>
+        <p>When contractual agreements are violated</p>
+        <button class="start-btn">Next</button>
+      </div>
+      <div class="subcategory-card" onclick="startApplication('Will & Testament')">
+        <h4>Will & Testament</h4>
+        <p>Legal will drafting and execution</p>
+        <button class="start-btn">Next</button>
+      </div>
+    </div>
+    
+    <button class="back-btn" onclick="showHome()">← Back to Categories</button>
+  </div>
+
+  <!-- Family Cases Page -->
+  <div id="familyPage" class="category-page">
+    <div class="page-header">
+      <h1>Family Cases</h1>
+      <p>Select a family case type to generate legal application</p>
+    </div>
+    
+    <div class="subcategories-grid">
+      <div class="subcategory-card" onclick="startApplication('Divorce Application')">
+        <h4>Divorce Application</h4>
+        <p>Mutual consent or contested divorce applications</p>
+        <button class="start-btn">Next</button>
+      </div>
+      <div class="subcategory-card" onclick="startApplication('Child Custody')">
+        <h4>Child Custody</h4>
+        <p>Guardianship and custody applications</p>
+        <button class="start-btn">Next</button>
+      </div>
+      <div class="subcategory-card" onclick="startApplication('Maintenance Case')">
+        <h4>Maintenance Case</h4>
+        <p>Request for financial support (alimony/maintenance)</p>
+        <button class="start-btn">Next</button>
+      </div>
+      <div class="subcategory-card" onclick="startApplication('Inheritance Claim')">
+        <h4>Inheritance Claim</h4>
+        <p>Claim your rightful share in inherited property</p>
+        <button class="start-btn">Next</button>
+      </div>
+      <div class="subcategory-card" onclick="startApplication('Khula Application')">
+        <h4>Khula Application</h4>
+        <p>Islamic divorce initiated by the wife</p>
+        <button class="start-btn">Next</button>
+      </div>
+      <div class="subcategory-card" onclick="startApplication('Domestic Violence')">
+        <h4>Domestic Violence</h4>
+        <p>Protection orders and restraining orders</p>
+        <button class="start-btn">Next</button>
+      </div>
+    </div>
+    
+    <button class="back-btn" onclick="showHome()">← Back to Categories</button>
+  </div>
 
   <!-- Contact Section -->
   <section class="contact" id="contact">
@@ -362,6 +733,138 @@
   </footer>
 
   <script>
+    // Show/Hide Pages with Browser History Support
+    function showHome() {
+      document.getElementById('homePage').style.display = 'block';
+      document.getElementById('criminalPage').classList.remove('active');
+      document.getElementById('civilPage').classList.remove('active');
+      document.getElementById('familyPage').classList.remove('active');
+      document.getElementById('bailTypesPage').classList.remove('active');
+      
+      // Browser history update
+      history.pushState({ page: 'home' }, '', window.location.pathname);
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showCategory(category) {
+      document.getElementById('homePage').style.display = 'none';
+      document.getElementById('criminalPage').classList.remove('active');
+      document.getElementById('civilPage').classList.remove('active');
+      document.getElementById('familyPage').classList.remove('active');
+      document.getElementById('bailTypesPage').classList.remove('active');
+      
+      if (category === 'criminal') {
+        document.getElementById('criminalPage').classList.add('active');
+      } else if (category === 'civil') {
+        document.getElementById('civilPage').classList.add('active');
+      } else if (category === 'family') {
+        document.getElementById('familyPage').classList.add('active');
+      }
+      
+      // Browser history update with hash
+      history.pushState({ page: category }, '', '#' + category);
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showBailTypes() {
+      document.getElementById('homePage').style.display = 'none';
+      document.getElementById('criminalPage').classList.remove('active');
+      document.getElementById('civilPage').classList.remove('active');
+      document.getElementById('familyPage').classList.remove('active');
+      document.getElementById('bailTypesPage').classList.add('active');
+      
+      // Browser history update
+      history.pushState({ page: 'bail-types' }, '', '#bail-types');
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showCriminalPage() {
+      document.getElementById('homePage').style.display = 'none';
+      document.getElementById('criminalPage').classList.add('active');
+      document.getElementById('civilPage').classList.remove('active');
+      document.getElementById('familyPage').classList.remove('active');
+      document.getElementById('bailTypesPage').classList.remove('active');
+      
+      // Browser history update
+      history.pushState({ page: 'criminal' }, '', '#criminal');
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', function(event) {
+      const hash = window.location.hash;
+      
+      if (hash === '#criminal') {
+        showCategory('criminal');
+      } else if (hash === '#civil') {
+        showCategory('civil');
+      } else if (hash === '#family') {
+        showCategory('family');
+      } else if (hash === '#bail-types') {
+        showBailTypes();
+      } else {
+        showHome();
+      }
+    });
+
+    // On page load, check URL and show correct page
+    window.addEventListener('load', function() {
+      const hash = window.location.hash;
+      
+      if (hash === '#criminal') {
+        showCategory('criminal');
+      } else if (hash === '#civil') {
+        showCategory('civil');
+      } else if (hash === '#family') {
+        showCategory('family');
+      } else if (hash === '#bail-types') {
+        showBailTypes();
+      } else {
+        showHome();
+      }
+      
+      // Also handle initial state
+      history.replaceState({ page: 'home' }, '', window.location.pathname);
+    });
+
+    // Also handle when user directly enters URL with hash
+    window.addEventListener('hashchange', function() {
+      const hash = window.location.hash;
+      
+      if (hash === '#criminal') {
+        showCategory('criminal');
+      } else if (hash === '#civil') {
+        showCategory('civil');
+      } else if (hash === '#family') {
+        showCategory('family');
+      } else if (hash === '#bail-types') {
+        showBailTypes();
+      } else {
+        showHome();
+      }
+    });
+
+    function startApplication(caseType) {
+      alert('Starting ' + caseType + '...\nThis would open a form generator in actual implementation.');
+      // In actual implementation, this would redirect to form generator
+      // window.location.href = 'form-generator.html?type=' + caseType;
+    }
+
+    function startBailApplication(bailType) {
+      if (bailType === 'pre-arrest') {
+        alert('Starting Pre-Arrest Bail Application...\nThis form is for anticipatory bail under Section 498 CrPC.\nRequired information:\n• Personal details\n• Case details\n• Reasons for anticipatory bail\n• Supporting documents');
+        // window.location.href = 'pre-arrest-bail-form.html';
+      } else if (bailType === 'post-arrest') {
+        alert('Starting Post-Arrest Bail Application...\nThis form is for regular bail under Section 497 CrPC.\nRequired information:\n• Arrest details\n• Police station information\n• Grounds for bail\n• Surety details');
+        // window.location.href = 'post-arrest-bail-form.html';
+      }
+    }
+
+    // Back to Top Button
     const backToTop = document.getElementById("backToTop");
 
     window.onscroll = function() {
@@ -375,6 +878,24 @@
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    // Initialize - this will run on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initial check for hash
+      const hash = window.location.hash;
+      
+      if (hash === '#criminal') {
+        showCategory('criminal');
+      } else if (hash === '#civil') {
+        showCategory('civil');
+      } else if (hash === '#family') {
+        showCategory('family');
+      } else if (hash === '#bail-types') {
+        showBailTypes();
+      } else {
+        showHome();
+      }
+    });
   </script>
 
 </body>
