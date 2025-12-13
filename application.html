@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create FIR Application – InCrime</title>
+  <title>Create Your Application – InCrime</title>
 
   <style>
     body {
@@ -11,7 +11,8 @@
       font-family: 'Segoe UI', sans-serif;
       background:
         linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-        url('https://images.unsplash.com/photo-1678228941467-cc170dd97e01?q=80&w=1170&auto=format&fit=crop');
+        url('https://images.unsplash.com/photo-1678228941467-cc170dd97e01?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
+        center/cover no-repeat;
       background-attachment: fixed;
       color: #0d2a3a;
     }
@@ -23,65 +24,88 @@
       padding: 15px 60px;
       background: rgba(13, 42, 58, 0.95);
       color: #fff;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
       position: sticky;
       top: 0;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+    }
+
+    nav .logo {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+      margin-left: auto;
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    nav button {
+      background: #FFD700;
+      border: none;
+      color: #0d2a3a;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 900px;
       margin: 80px auto;
-      background: rgba(255,255,255,0.95);
+      background: rgba(255,255,255,0.9);
       padding: 40px;
       border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 10px;
-    }
-
-    .case-bar {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-
-    select {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-weight: 600;
-    }
-
-    .content {
-      display: flex;
-      gap: 30px;
-    }
-
-    .form-area,
-    .preview-area {
-      width: 50%;
     }
 
     label {
       font-weight: 600;
     }
 
-    input, textarea {
-      width: 100%;
+    select, input, textarea {
       padding: 10px;
-      margin-bottom: 12px;
-      border-radius: 8px;
       border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      width: 100%;
+      margin-bottom: 15px;
     }
 
-    .preview-area {
+    .work-area {
+      display: none;
+      margin-top: 30px;
+      gap: 30px;
+    }
+
+    .left, .right {
+      width: 50%;
+    }
+
+    .right {
       border: 1px solid #ccc;
       padding: 15px;
       border-radius: 8px;
-      white-space: pre-line;
       background: #fafafa;
+      white-space: pre-line;
     }
 
     footer {
@@ -97,28 +121,36 @@
 <body>
 
 <nav>
-  <div style="font-size:22px;font-weight:bold;">⚖️ InCrime</div>
+  <div class="logo" onclick="window.location.href='index.html'">⚖️ InCrime</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="how-it-works.html">How It Works</a></li>
+    <li><a href="chatbot.html">Chatbot Help</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button onclick="window.location.href='login.html'">Login</button>
 </nav>
 
 <div class="container">
+  <h1>Create Your Legal Application</h1>
 
-  <h1>Create FIR Application</h1>
+  <!-- STEP 1: SELECTION -->
+  <label>Case Type</label>
+  <select id="caseType" onchange="checkSelection()">
+    <option value="">Select Case Type</option>
+    <option value="criminal">Criminal</option>
+  </select>
 
-  <!-- CASE TYPE / SUB TYPE (FIR ONLY) -->
-  <div class="case-bar">
-    <select disabled>
-      <option selected>Criminal Case</option>
-    </select>
+  <label>Sub Type</label>
+  <select id="subType" onchange="checkSelection()">
+    <option value="">Select Sub Type</option>
+    <option value="fir">FIR</option>
+  </select>
 
-    <select disabled>
-      <option selected>FIR Application</option>
-    </select>
-  </div>
-
-  <div class="content">
-
-    <!-- LEFT : FIR DATA -->
-    <div class="form-area">
+  <!-- STEP 2: FIR WORK AREA -->
+  <div class="work-area" id="workArea">
+    <div class="left">
       <label>Applicant Name</label>
       <input id="name" oninput="updatePreview()">
 
@@ -132,8 +164,7 @@
       <textarea id="address" rows="4" oninput="updatePreview()"></textarea>
     </div>
 
-    <!-- RIGHT : FIR TEMPLATE -->
-    <div class="preview-area" id="preview">
+    <div class="right" id="preview">
 جنابِ عالی!
 
 درخواست گزار {{name}} ولد {{father}} ساکن {{address}}،
@@ -141,11 +172,10 @@
 
 لہٰذا گزارش ہے کہ قانونی کاروائی عمل میں لائی جائے۔
     </div>
-
   </div>
 </div>
 
-<footer>© 2025 InCrime</footer>
+<footer>© 2025 InCrime | Every Case, Every Detail</footer>
 
 <script>
   const template = `
@@ -156,6 +186,18 @@
 
 لہٰذا گزارش ہے کہ قانونی کاروائی عمل میں لائی جائے۔
 `;
+
+  function checkSelection() {
+    const ct = caseType.value;
+    const st = subType.value;
+
+    if (ct === "criminal" && st === "fir") {
+      workArea.style.display = "flex";
+      updatePreview();
+    } else {
+      workArea.style.display = "none";
+    }
+  }
 
   function updatePreview() {
     let t = template;
