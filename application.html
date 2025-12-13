@@ -3,120 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Your Application – InCrime</title>
+  <title>Create FIR Application – InCrime</title>
+
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: 
-  linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-  url('https://images.unsplash.com/photo-1678228941467-cc170dd97e01?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
-
+      background:
+        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        url('https://images.unsplash.com/photo-1678228941467-cc170dd97e01?q=80&w=1170&auto=format&fit=crop');
       background-attachment: fixed;
       color: #0d2a3a;
     }
 
-     nav {
+    nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 15px 60px;
       background: rgba(13, 42, 58, 0.95);
       color: #fff;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
       position: sticky;
       top: 0;
-      z-index: 10;
-      backdrop-filter: blur(8px);
-    }
-
-    nav .logo {
-      font-size: 24px;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-  nav ul {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-  margin: 0;
-  padding: 0;
-  margin-left: auto;
-  margin-right: 20px;
-  }
-
-    nav ul li a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: #FFD700;
-    }
-
-    nav button {
-      background: #FFD700;
-      border: none;
-      color: #0d2a3a;
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    nav button:hover {
-      background: #f4d03f;
     }
 
     .container {
-      max-width: 800px;
+      max-width: 1100px;
       margin: 80px auto;
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.95);
       padding: 40px;
       border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
     h1 {
       text-align: center;
-      color: #0d2a3a;
+      margin-bottom: 10px;
     }
 
-    form {
+    .case-bar {
       display: flex;
-      flex-direction: column;
-      gap: 15px;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-weight: 600;
+    }
+
+    .content {
+      display: flex;
+      gap: 30px;
+    }
+
+    .form-area,
+    .preview-area {
+      width: 50%;
     }
 
     label {
       font-weight: 600;
     }
 
-    input, textarea, select {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 15px;
+    input, textarea {
       width: 100%;
-    }
-
-    button {
-      background: #FFD700;
-      border: none;
-      padding: 10px 20px;
-      font-weight: 600;
-      color: #0d2a3a;
+      padding: 10px;
+      margin-bottom: 12px;
       border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
+      border: 1px solid #ccc;
     }
 
-    button:hover {
-      background: #f4d03f;
+    .preview-area {
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 8px;
+      white-space: pre-line;
+      background: #fafafa;
     }
 
     footer {
@@ -126,44 +91,81 @@
       padding: 15px;
       margin-top: 40px;
     }
-
   </style>
 </head>
+
 <body>
 
-  <nav>
-    <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">⚖️ InCrime</div>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="how-it-works.html">How It Works</a></li>
-      <li><a href="chatbot.html">Chatbot Help</a></li>
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
-    </ul>
-    <button onclick="window.location.href='login.html'">Login</button>
-  </nav>
+<nav>
+  <div style="font-size:22px;font-weight:bold;">⚖️ InCrime</div>
+</nav>
 
-  <div class="container">
-    <h1>Create Your Legal Application</h1>
-    <form>
-      <label>Full Name</label>
-      <input type="text" placeholder="Enter your full name">
+<div class="container">
 
-      <label>Case Type</label>
-      <select>
-        <option>Select a Case Type</option>
-        <option>Criminal</option>
-        <option>Civil</option>
-        <option>Family</option>
-      </select>
+  <h1>Create FIR Application</h1>
 
-      <label>Case Details</label>
-      <textarea rows="5" placeholder="Describe your case..."></textarea>
+  <!-- CASE TYPE / SUB TYPE (FIR ONLY) -->
+  <div class="case-bar">
+    <select disabled>
+      <option selected>Criminal Case</option>
+    </select>
 
-      <button type="submit">Generate Application</button>
-    </form>
+    <select disabled>
+      <option selected>FIR Application</option>
+    </select>
   </div>
 
-  <footer>© 2025 InCrime | Every Case, Every Detail</footer>
+  <div class="content">
+
+    <!-- LEFT : FIR DATA -->
+    <div class="form-area">
+      <label>Applicant Name</label>
+      <input id="name" oninput="updatePreview()">
+
+      <label>Father / Husband Name</label>
+      <input id="father" oninput="updatePreview()">
+
+      <label>CNIC</label>
+      <input id="cnic" oninput="updatePreview()">
+
+      <label>Address</label>
+      <textarea id="address" rows="4" oninput="updatePreview()"></textarea>
+    </div>
+
+    <!-- RIGHT : FIR TEMPLATE -->
+    <div class="preview-area" id="preview">
+جنابِ عالی!
+
+درخواست گزار {{name}} ولد {{father}} ساکن {{address}}،
+شناختی کارڈ نمبر {{cnic}} مؤدبانہ عرض کرتا ہے کہ:
+
+لہٰذا گزارش ہے کہ قانونی کاروائی عمل میں لائی جائے۔
+    </div>
+
+  </div>
+</div>
+
+<footer>© 2025 InCrime</footer>
+
+<script>
+  const template = `
+جنابِ عالی!
+
+درخواست گزار {{name}} ولد {{father}} ساکن {{address}}،
+شناختی کارڈ نمبر {{cnic}} مؤدبانہ عرض کرتا ہے کہ:
+
+لہٰذا گزارش ہے کہ قانونی کاروائی عمل میں لائی جائے۔
+`;
+
+  function updatePreview() {
+    let t = template;
+    t = t.replace('{{name}}', name.value || '________');
+    t = t.replace('{{father}}', father.value || '________');
+    t = t.replace('{{cnic}}', cnic.value || '________');
+    t = t.replace('{{address}}', address.value || '________');
+    preview.innerText = t;
+  }
+</script>
+
 </body>
 </html>
