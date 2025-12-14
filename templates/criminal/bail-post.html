@@ -64,13 +64,16 @@ body{
 .section-title p{font-size:18px;margin:0}
 
 .greetings-line{
-    display:flex;
-    justify-content:space-between;
-    font-weight:900;
+    display:block;
     font-size:18px;
     margin-top:20px;
 }
 
+.normal-text{
+    font-weight:normal;
+    margin:0;
+}    
+    
 .points-list{
     list-style:none;
     padding-right:0;
@@ -212,7 +215,7 @@ body{
 
 <div class="greetings-line">
 <p>جناب عالی!</p>
-<p>سائل / ملزم حسب ذیل مرض پرداز ہے۔</p>
+<p class="normal-text">سائل / ملزم حسب ذیل مرض پرداز ہے۔</p>
 </div>
 
 <div id="dynamic_points_area" class="points-list"></div>
