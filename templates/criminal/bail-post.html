@@ -1,154 +1,246 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="ur" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>درخواست ضمانت بعد از گرفتاری</title>
-
-<style>
-@font-face {
-  font-family: jameel;
-  src: local("Jameel Noori Nastaleeq");
-}
-
-body {
-  margin: 0;
-  font-family: jameel, serif;
-  background: #f2f2f2;
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 60px;
-  background: rgba(13, 42, 58, 0.95);
-  color: #fff;
-}
-
-nav .logo {
-  font-size: 24px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #fff;
-}
-
-.container {
-  max-width: 900px;
-  margin: 40px auto;
-  background: #fff;
-  padding: 40px;
-  border: 2px solid #000;
-  direction: rtl;
-  font-size: 18px;
-  line-height: 2.4;
-}
-
-.center { text-align: center; font-weight: bold; }
-.underline { border-bottom: 2px solid #000; display: inline-block; padding-bottom: 4px; }
-.space { margin-top: 25px; }
-
-.signature {
-  margin-top: 50px;
-  display: flex;
-  justify-content: space-between;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درخواست ضمانت فارم</title>
+    <style>
+        body {
+            font-family: 'Jameel Noori Nastaleeq', 'Arial', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        @font-face {
+            font-family: 'Jameel Noori Nastaleeq';
+            src: url('fonts.gstatic.com') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        .container {
+            width: 800px;
+            background-color: #fff;
+            padding: 40px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header p {
+            margin: 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .field-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            align-items: baseline;
+        }
+        .field-row input {
+            border: none;
+            border-bottom: 1px solid #000;
+            flex-grow: 1;
+            margin: 0 10px;
+            text-align: right;
+            font-family: inherit;
+        }
+        .section-title {
+            font-weight: bold;
+            text-decoration: underline;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .points-list {
+            list-style-type: none;
+            padding-right: 0;
+        }
+        .points-list li {
+            margin-bottom: 10px;
+        }
+        .signature-area {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        .signature-right {
+            text-align: right;
+        }
+        .signature-left {
+            text-align: left;
+        }
+        .form-section {
+            width: 800px;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .form-section input, .form-section textarea {
+            width: 95%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- NAVBAR (same as application.html, no login) -->
-<nav>
-  <div class="logo" onclick="window.location.href='../../index.html'">⚖️ InCrime</div>
-  <ul>
-    <li><a href="../../index.html">Home</a></li>
-    <li><a href="../../how-it-works.html">How It Works</a></li>
-    <li><a href="../../chatbot.html">Chatbot Help</a></li>
-    <li><a href="../../index.html#about">About</a></li>
-    <li><a href="../../index.html#contact">Contact</a></li>
-  </ul>
-</nav>
+    <div class="form-section">
+        <h2>ڈیٹا انٹری فارم (براۓ لائیو فلنگ)</h2>
+        <label for="accused_name">ملزم کا نام:</label>
+        <input type="text" id="accused_name" value="عبد الرحمن حرف مانا">
 
-<div class="container">
+        <label for="father_name">والد کا نام:</label>
+        <input type="text" id="father_name" value="محمد اشفاق">
+        
+        <label for="caste">قوم:</label>
+        <input type="text" id="caste" value="راجپوت">
 
-<div class="center">
-درخواست ضمانت بعد از گرفتاری
-</div>
+        <label for="address">پتہ:</label>
+        <input type="text" id="address" value="حسن آباد ملتان">
 
-<div class="center space underline">
-مقدمہ نمبر ____/____ مورخہ __-__-____
-</div>
+        <label for="case_no">مقدمہ نمبر:</label>
+        <input type="text" id="case_no" value="843/24">
 
-<div class="center underline">
-392/411 تعزیرات پاکستان
-</div>
+        <label for="case_date">مورخہ:</label>
+        <input type="date" id="case_date" value="2024-03-26">
 
-<div class="center underline">
-درخواست ضمانت بعد از گرفتاری زیر دفعہ 497 ض ف
-</div>
+        <label for="sections">زیر دفعہ:</label>
+        <input type="text" id="sections" value="392/411">
 
-<div class="space">
-جنابِ عالی!
-</div>
+        <label for="police_station">تھانہ:</label>
+        <input type="text" id="police_station" value="نیو ملتان">
 
-<div class="space">
-سائل ملزم درخواست ضمانت بعد از گرفتاری عدالت ہذا میں دائر کرتا ہے۔
-</div>
+        <label for="complainant_name">مستغیث کا نام:</label>
+        <input type="text" id="complainant_name" value="محمد عارف ولد عطاء الرحمن">
+        
+        <label for="note_points">دلائل (خالی چھوڑ دیں یا ٹائپ کریں):</label>
+        <textarea id="note_points" rows="15" placeholder="یہاں دلائل ٹائپ کریں جیسے: &#10;i- یہ کہ سائل / ملزم کی پہلی درخواست ضمانت بعد از گرفتاری عدالت جناب میں دائر کی جا رہی ہے۔&#10;ii- یہ کہ موجودہ مقدمہ جھوٹا اور بے بنیاد ہے۔&#10;iii- یہ کہ سائل / ملزم بے گناہ ہے۔&#10;iv- یہ کہ سائل / ملزم عدم سزا یافتہ و عدم ریکارڈ ہے۔"></textarea>
 
-<div class="space">
-i- کہ سائل ملزم بے گناہ ہے۔
-</div>
+        <label for="lawyer_name">وکیل کا نام:</label>
+        <input type="text" id="lawyer_name" value="میاں گوهر محمود پراچه">
 
-<div>
-ii- کہ سائل ملزم کے خلاف کوئی Incriminating Material موجود نہیں۔
-</div>
+        <label for="lawyer_address">وکیل کا پتہ:</label>
+        <input type="text" id="lawyer_address" value="بیت نمبر 69 اختر از احسن بلاک ضلع کچہری ملتان">
+    </div>
 
-<div>
-iii- کہ سائل ملزم کو FIR میں بدنیتی سے ملوث کیا گیا ہے۔
-</div>
+    <div class="container">
+        <div class="header">
+            <p>بعدالت جناب علاقہ جوڈیشل مجسٹریٹ صاحبہ تھانہ <span id="output_police_station_header">نیو ملتان</span></p>
+        </div>
 
-<div>
-iv- کہ سائل ملزم کے خلاف دفعہ جات قابل ضمانت ہیں۔
-</div>
+        <div class="field-row">
+            <span id="output_accused_name">عبد الرحمن حرف مانا</span>
+            <span>ولد</span>
+            <span id="output_father_name">محمد اشفاق</span>
+            <span>قوم</span>
+            <span id="output_caste">راجپوت</span>
+            <span>سکنه</span>
+            <span id="output_address">حسن آباد ملتان</span>
+            <span>(سائل / ملزم)</span>
+        </div>
 
-<div>
-v- کہ سائل ملزم کا مقدمہ قابل ضمانت ہونے کی بنا پر ضمانت کا حقدار ہے۔
-</div>
+        <div class="field-row" style="justify-content: center;">
+            <p>بنام سرکار</p>
+        </div>
 
-<div class="space">
-مندرجہ بالا حقائق و حالات کی روشنی میں استدعا ہے کہ سائل ملزم کو ضمانت بعد از گرفتاری عطا فرمائی جائے۔
-</div>
+        <div class="field-row" style="justify-content: center;">
+            <p>
+                مقدمہ نمبر <span id="output_case_no">843/24</span> مورخہ <span id="output_case_date_display">2024-03-26</span> بجرم زیر دفعہ <span id="output_sections">392/411</span> ت پ تھانہ <span id="output_police_station">نیو ملتان</span>
+            </p>
+        </div>
 
-<div class="center space">
-عدالت کا احسان ہو گا
-</div>
+        <div class="section-title">
+            <p>درخواست ضمانت بعد از گرفتاری زیر دفعہ 497 ضابطہ فوجداری</p>
+        </div>
 
-<div class="signature">
-<div>
-درخواست گزار<br>
-__________<br>
-(نام ملزم)
-</div>
+        <p>جناب عالی! سائل / ملزم حسب ذیل مرض پرداز ہے۔</p>
+        
+        <!-- User dynamic points will be inserted here -->
+        <div id="dynamic_points_area" class="points-list">
+            <!-- Points are generated by JS -->
+        </div>
 
-<div>
-وکیل برائے ملزم<br>
-__________
-</div>
-</div>
+        <p>
+            اندریں حالات نہایت ادب سے استدعا ہے کہ سائل / ملزم کی درخواست ضمانت بعد از گرفتاری تا فیصلہ مقدمہ منظور فرمائی جاوے اور رہائی کا حکم صادر فرمایا جاوے عین نوازش ہوگی۔
+        </p>
 
-</div>
+        <div class="signature-area">
+            <div class="signature-right">
+                <p>مورخہ ____________</p>
+            </div>
+            <div class="signature-left">
+                <p>عبد الرحمن حرف مانا ---- (سائل / ملزم)</p>
+                <p>بذریعہ کونسل</p>
+                <p><span id="output_lawyer_name">میاں گوهر محمود پراچه</span></p>
+                <p>ایڈووکیٹ ہائیکورٹ</p>
+                <p><span id="output_lawyer_address">بیت نمبر 69 اختر از احسن بلاک ضلع کچہری ملتان</span></p>
+            </div>
+        </div>
 
+    </div>
+
+    <script>
+        // Function to update the document fields dynamically
+        function updateDocument() {
+            // Header Info
+            document.getElementById('output_police_station_header').textContent = document.getElementById('police_station').value;
+            document.getElementById('output_accused_name').textContent = document.getElementById('accused_name').value;
+            document.getElementById('output_father_name').textContent = document.getElementById('father_name').value;
+            document.getElementById('output_caste').textContent = document.getElementById('caste').value;
+            document.getElementById('output_address').textContent = document.getElementById('address').value;
+            document.getElementById('output_case_no').textContent = document.getElementById('case_no').value;
+            document.getElementById('output_case_date_display').textContent = document.getElementById('case_date').value;
+            document.getElementById('output_sections').textContent = document.getElementById('sections').value;
+            document.getElementById('output_police_station').textContent = document.getElementById('police_station').value;
+            
+            // Lawyer Info
+            document.getElementById('output_lawyer_name').textContent = document.getElementById('lawyer_name').value;
+            document.getElementById('output_lawyer_address').textContent = document.getElementById('lawyer_address').value;
+
+
+            // Dynamic points area (handle newlines as paragraphs/list items)
+            const pointsArea = document.getElementById('dynamic_points_area');
+            pointsArea.innerHTML = ''; // Clear existing points
+            const pointsText = document.getElementById('note_points').value;
+            const pointsArray = pointsText.split('\n');
+
+            pointsArray.forEach(pointText => {
+                if (pointText.trim() !== '') {
+                    const li = document.createElement('li');
+                    li.textContent = pointText.trim();
+                    pointsArea.appendChild(li);
+                }
+            });
+        }
+
+        // Add event listeners to input fields for live updates
+        document.getElementById('accused_name').addEventListener('input', updateDocument);
+        document.getElementById('father_name').addEventListener('input', updateDocument);
+        document.getElementById('caste').addEventListener('input', updateDocument);
+        document.getElementById('address').addEventListener('input', updateDocument);
+        document.getElementById('case_no').addEventListener('input', updateDocument);
+        document.getElementById('case_date').addEventListener('input', updateDocument);
+        document.getElementById('sections').addEventListener('input', updateDocument);
+        document.getElementById('police_station').addEventListener('input', updateDocument);
+        document.getElementById('complainant_name').addEventListener('input', updateDocument);
+        document.getElementById('note_points').addEventListener('input', updateDocument);
+        document.getElementById('lawyer_name').addEventListener('input', updateDocument);
+        document.getElementById('lawyer_address').addEventListener('input', updateDocument);
+
+        // Initial update with default values
+        updateDocument();
+    </script>
 </body>
 </html>
