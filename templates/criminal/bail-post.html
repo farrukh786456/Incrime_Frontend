@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>درخواست ضمانت فارم</title>
     <style>
+        @font-face {
+            font-family: 'Jameel Noori Nastaleeq';
+            src: url('fonts.gstatic.com') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
         body {
             font-family: 'Jameel Noori Nastaleeq', 'Arial', sans-serif;
             line-height: 1.6;
@@ -15,12 +21,6 @@
             flex-direction: column;
             align-items: center;
         }
-        @font-face {
-            font-family: 'Jameel Noori Nastaleeq';
-            src: url('fonts.gstatic.com') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
         .container {
             width: 800px;
             background-color: #fff;
@@ -30,32 +30,50 @@
         }
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 50px; /* Increased space after header */
         }
         .header p {
             margin: 0;
             font-size: 20px;
-            font-weight: bold;
+            font-weight: normal;
         }
-        .field-row {
-            display: flex;
-            justify-content: space-between;
+        .party-info {
+            font-size: 14px; /* Reduced font size */
+            line-height: 1.2; /* Reduced line height */
             margin-bottom: 10px;
-            align-items: baseline;
         }
-        .field-row input {
-            border: none;
-            border-bottom: 1px solid #000;
-            flex-grow: 1;
-            margin: 0 10px;
-            text-align: right;
-            font-family: inherit;
+        .party-info span {
+            margin: 0 3px; /* Reduced space between elements */
+        }
+        .accused-label {
+            font-size: 12px; /* Smaller size for (سائل / ملزم) */
+        }
+        .vs-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px; /* Large and bold */
+            margin: 10px 0;
+        }
+        .case-details {
+            text-align: center;
+            font-weight: bold; /* Bolded as requested */
+            margin: 15px 0;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #000; /* Line below */
         }
         .section-title {
             font-weight: bold;
-            text-decoration: underline;
+            text-align: center; /* Centered as requested */
             margin-top: 20px;
             margin-bottom: 10px;
+        }
+        .section-title p {
+            font-size: 18px;
+        }
+        .greetings {
+            font-weight: 900; /* Bold and thick */
+            font-size: 18px;
+            margin-top: 20px;
         }
         .points-list {
             list-style-type: none;
@@ -139,8 +157,9 @@
         <div class="header">
             <p>بعدالت جناب علاقہ جوڈیشل مجسٹریٹ صاحبہ تھانہ <span id="output_police_station_header">نیو ملتان</span></p>
         </div>
+        <!-- 3 lines of space are achieved by margin-bottom on .header -->
 
-        <div class="field-row">
+        <div class="party-info">
             <span id="output_accused_name">عبد الرحمن حرف مانا</span>
             <span>ولد</span>
             <span id="output_father_name">محمد اشفاق</span>
@@ -148,24 +167,24 @@
             <span id="output_caste">راجپوت</span>
             <span>سکنه</span>
             <span id="output_address">حسن آباد ملتان</span>
-            <span>(سائل / ملزم)</span>
+            <span class="accused-label">(سائل / ملزم)</span>
         </div>
 
-        <div class="field-row" style="justify-content: center;">
-            <p>بنام سرکار</p>
+        <div class="vs-title">
+            <p>بنام</p>
+            <p>سرکار</p>
         </div>
 
-        <div class="field-row" style="justify-content: center;">
-            <p>
-                مقدمہ نمبر <span id="output_case_no">843/24</span> مورخہ <span id="output_case_date_display">2024-03-26</span> بجرم زیر دفعہ <span id="output_sections">392/411</span> ت پ تھانہ <span id="output_police_station">نیو ملتان</span>
-            </p>
+        <div class="case-details">
+            مقدمہ نمبر <span id="output_case_no">843/24</span> مورخہ <span id="output_case_date_display">2024-03-26</span> بجرم زیر دفعہ <span id="output_sections">392/411</span> ت پ تھانہ <span id="output_police_station">نیو ملتان</span>
         </div>
 
         <div class="section-title">
-            <p>درخواست ضمانت بعد از گرفتاری زیر دفعہ 497 ضابطہ فوجداری</p>
+            <p>درخواست ضمانت بعد از گرفتاری</p>
         </div>
 
-        <p>جناب عالی! سائل / ملزم حسب ذیل مرض پرداز ہے۔</p>
+        <p class="greetings">جناب عالی!</p>
+        <p>سائل / ملزم حسب ذیل مرض پرداز ہے۔</p>
         
         <!-- User dynamic points will be inserted here -->
         <div id="dynamic_points_area" class="points-list">
