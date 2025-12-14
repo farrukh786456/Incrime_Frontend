@@ -159,46 +159,44 @@
 <body>
 
     <div class="form-section">
-        <h2>ڈیٹا انٹری فارم (براۓ لائیو فلنگ)</h2>
+        <h2>ڈیٹا انٹری فارم </h2>
         <label for="accused_name">ملزم کا نام:</label>
-        <input type="text" id="accused_name" value="عبد الرحمن حرف مانا">
+        <input type="text" id="accused_name" value="____________">
 
         <label for="father_name">والد کا نام:</label>
-        <input type="text" id="father_name" value="محمد اشفاق">
+        <input type="text" id="father_name" value="____________">
         
         <label for="caste">قوم:</label>
-        <input type="text" id="caste" value="راجپوت">
+        <input type="text" id="caste" value="____________">
 
         <label for="address">پتہ:</label>
-        <input type="text" id="address" value="حسن آباد ملتان">
+        <input type="text" id="address" value="____________">
 
         <label for="case_no">مقدمہ نمبر:</label>
-        <input type="text" id="case_no" value="843/24">
+        <input type="text" id="case_no" value="____________">
 
         <label for="case_date">مورخہ:</label>
-        <input type="date" id="case_date" value="2024-03-26">
+        <input type="date" id="case_date" value="____________">
 
         <label for="sections">زیر دفعہ:</label>
-        <input type="text" id="sections" value="392/411">
+        <input type="text" id="sections" value="____________">
 
         <label for="police_station">تھانہ:</label>
-        <input type="text" id="police_station" value="نیو ملتان">
+        <input type="text" id="police_station" value="____________">
 
         <label for="complainant_name">مستغیث کا نام:</label>
-        <input type="text" id="complainant_name" value="محمد عارف ولد عطاء الرحمن">
+        <input type="text" id="complainant_name" value="____________">
         
         <label for="note_points">دلائل (خالی چھوڑ دیں یا ٹائپ کریں):</label>
-        <textarea id="note_points" rows="15" placeholder="یہاں دلائل ٹائپ کریں جیسے: 
-i- یہ کہ سائل / ملزم کی پہلی درخواست ضمانت بعد از گرفتاری عدالت جناب میں دائر کی جا رہی ہے۔
-ii- یہ کہ موجودہ مقدمہ جھوٹا اور بے بنیاد ہے۔
-iii- یہ کہ سائل / ملزم بے گناہ ہے۔
-iv- یہ کہ سائل / ملزم عدم سزا یافتہ و عدم ریکارڈ ہے۔"></textarea>
+        <textarea id="note_points" rows="15" placeholder="____________
+            ________________________________________________
+            ________________________"></textarea>
 
         <label for="lawyer_name">وکیل کا نام:</label>
-        <input type="text" id="lawyer_name" value="میاں گوهر محمود پراچه">
+        <input type="text" id="lawyer_name" value="____________">
 
         <label for="lawyer_address">وکیل کا پتہ:</label>
-        <input type="text" id="lawyer_address" value="بیت نمبر 69 اختر از احسن بلاک ضلع کچہری ملتان">
+        <input type="text" id="lawyer_address" value="____________">
     </div>
 
     <div class="container">
@@ -207,13 +205,13 @@ iv- یہ کہ سائل / ملزم عدم سزا یافتہ و عدم ریکار�
         </div>
 
         <div class="party-info">
-            <span id="output_accused_name">عبد الرحمن حرف مانا</span>
+            <span id="output_accused_name">____________</span>
             <span>ولد</span>
-            <span id="output_father_name">محمد اشفاق</span>
+            <span id="output_father_name">____________</span>
             <span>قوم</span>
-            <span id="output_caste">راجپوت</span>
+            <span id="output_caste">____________</span>
             <span>سکنه</span>
-            <span id="output_address">حسن آباد ملتان</span>
+            <span id="output_address">____________</span>
             <span class="accused-label">(سائل / ملزم)</span>
         </div>
 
@@ -225,7 +223,7 @@ iv- یہ کہ سائل / ملزم عدم سزا یافتہ و عدم ریکار�
         <!-- Container added to center the inline underlined text -->
         <div class="case-details-container">
             <span class="case-details">
-                مقدمہ نمبر <span id="output_case_no">843/24</span> مورخہ <span id="output_case_date_display">2024-03-26</span> بجرم زیر دفعہ <span id="output_sections">392/411</span> ت پ تھانہ <span id="output_police_station">نیو ملتان</span>
+                مقدمہ نمبر <span id="output_case_no">____________</span> مورخہ <span id="output_case_date_display">____________</span> بجرم زیر دفعہ <span id="output_sections">____________</span> ت پ تھانہ <span id="output_police_station">____________</span>
             </span>
         </div>
         
@@ -258,12 +256,12 @@ iv- یہ کہ سائل / ملزم عدم سزا یافتہ و عدم ریکار�
             <!-- Left side is used to align 'Arzay' and accused name in the general center area -->
             <div class="signature-left">
                 <p>عرضی</p>
-                <p id="signature_accused_name">عبد الرحمن حرف مانا ---- (سائل / ملزم)</p>
+                <p id="signature_accused_name"> ____________ ---- (سائل / ملزم)</p>
                 <p>بذریعہ کونسل</p>
                 <!-- Lawyer Info Styling Applied Below -->
-                <span id="output_lawyer_name" class="lawyer-name">میاں گوهر محمود پراچه</span>
+                <span id="output_lawyer_name" class="lawyer-name">____________</span>
                 <span class="lawyer-title">ایڈووکیٹ ہائیکورٹ</span>
-                <span id="output_lawyer_address" class="lawyer-address">بیت نمبر 69 اختر از احسن بلاک ضلع کچہری ملتان</span>
+                <span id="output_lawyer_address" class="lawyer-address">____________</span>
             </div>
         </div>
 
