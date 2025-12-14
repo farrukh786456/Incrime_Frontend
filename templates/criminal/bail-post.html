@@ -1,308 +1,201 @@
 <!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>درخواست ضمانت فارم</title>
-    <style>
-        @font-face {
-            font-family: 'Jameel Noori Nastaleeq';
-            src: local('Jameel Noori Nastaleeq'), 
-                 url('fonts.gstatic.com') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-        body {
-            font-family: 'Jameel Noori Nastaleeq', 'Arial', sans-serif;
-            line-height: 1.6;
-            padding: 20px;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
-        }
-        .container {
-            width: 800px;
-            background-color: #fff;
-            padding: 40px;
-            border: 1px solid #ccc;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .header p {
-            margin: 0;
-            font-size: 20px;
-            font-weight: normal;
-        }
-        .party-info {
-            font-size: 14px;
-            line-height: 1.2;
-            margin-bottom: 10px;
-            text-align: center;
-            display: block;
-        }
-        .party-info span {
-            margin: 0 3px;
-        }
-        .accused-label {
-            font-size: 12px;
-        }
-        .vs-title {
-            text-align: center;
-            font-weight: bold;
-            font-size: 24px;
-            margin: 10px 0;
-        }
-        /* UPDATED: Removed border, added text-decoration: underline */
-        .case-details, .section-title p {
-            font-weight: bold;
-            text-decoration: underline; 
-            display: inline; /* Keep text inline for underlining */
-        }
-        .case-details-container, .section-title {
-             text-align: center; /* Center the container/div */
-             margin: 15px 0;
-             padding-bottom: 5px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>درخواست ضمانت فارم</title>
 
-        .section-title p {
-            font-size: 18px;
-            margin: 0;
-        }
-        .greetings-line {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 900;
-            font-size: 18px;
-            margin-top: 20px;
-        }
-        .points-list {
-            list-style-type: none;
-            padding-right: 0;
-            min-height: 100px;
-        }
-        .points-list li {
-            margin-bottom: 10px;
-        }
-        /* UPDATED: Styling for the final plea paragraph */
-        .plea-paragraph {
-            /* Aligned to the center of the page (using text-align: center) */
-            text-align: center; 
-            margin-top: 20px;
-        }
-        .signature-area {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 50px;
-        }
-        .signature-right {
-            text-align: right;
-            flex-grow: 1; 
-            /* Positioned in the middle of the page */
-            text-align: center; 
-        }
-        .signature-left {
-            text-align: left;
-            flex-grow: 1;
-             /* Positioned in the middle of the page */
-            text-align: center; 
-            direction: rtl; 
-        }
-        .lawyer-name {
-            font-weight: bold;
-            font-size: 24px;
-            display: block;
-            margin-top: 10px;
-        }
-        .lawyer-title {
-            font-weight: bold;
-            font-size: 18px;
-            display: block;
-        }
-        .lawyer-address {
-            font-size: 12px;
-            display: block;
-        }
+<style>
+@font-face {
+    font-family: 'Jameel Noori Nastaleeq';
+    src: local('Jameel Noori Nastaleeq'),
+         url('fonts.gstatic.com') format('truetype');
+}
 
-        .form-section {
-            width: 800px;
-            background-color: #fff;
-            padding: 20px;
-            border: 1px solid #ccc;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            direction: ltr; 
-            text-align: left;
-        }
-        .form-section label {
-            display: block;
-            margin-top: 10px;
-            direction: rtl; 
-            text-align: right;
-        }
-        .form-section input, .form-section textarea {
-            width: 95%;
-            padding: 8px;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-family: inherit;
-            direction: ltr; 
-        }
-    </style>
+body {
+    font-family: 'Jameel Noori Nastaleeq', Arial, sans-serif;
+    background:#f4f4f4;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:20px;
+}
+
+.container,.form-section{
+    width:800px;
+    background:#fff;
+    border:1px solid #ccc;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+
+.container{padding:40px}
+.form-section{padding:20px;margin-bottom:20px;direction:ltr}
+
+.header{text-align:center;margin-bottom:50px}
+.party-info{text-align:center;font-size:14px}
+
+.vs-title{text-align:center;font-size:24px;font-weight:bold}
+
+.case-details,.section-title p{
+    font-weight:bold;
+    text-decoration:underline;
+}
+
+.case-details-container,.section-title{text-align:center;margin:15px 0}
+
+.greetings-line{
+    display:flex;
+    justify-content:space-between;
+    font-size:18px;
+    font-weight:900;
+    margin-top:20px;
+}
+
+.points-list{min-height:120px}
+
+.plea-paragraph{text-align:center;margin-top:20px}
+
+.signature-area{
+    display:flex;
+    justify-content:space-between;
+    margin-top:50px;
+}
+
+.signature-left,.signature-right{text-align:center;flex:1}
+
+.lawyer-name{font-size:26px;font-weight:900}
+.lawyer-title{font-size:14px}
+.lawyer-address{font-size:12px}
+
+.placeholder{
+    display:inline-block;
+    min-width:120px;
+    border-bottom:2px solid #000;
+}
+.filled{border-bottom:none}
+</style>
 </head>
+
 <body>
 
-    <div class="form-section">
-        <h2>ڈیٹا انٹری فارم </h2>
-        <label for="accused_name">ملزم کا نام:</label>
-        <input type="text" id="accused_name" value="">
+<div class="form-section">
+<label>ملزم کا نام</label><input id="accused_name">
+<label>والد کا نام</label><input id="father_name">
+<label>قوم</label><input id="caste">
+<label>پتہ</label><input id="address">
+<label>مقدمہ نمبر</label><input id="case_no">
+<label>مورخہ</label><input type="date" id="case_date">
+<label>زیر دفعہ</label><input id="sections">
+<label>تھانہ</label><input id="police_station">
+<label>دلائل</label><textarea id="note_points" rows="8"></textarea>
+<label>وکیل کا نام</label><input id="lawyer_name">
+<label>وکیل کا پتہ</label><input id="lawyer_address">
+</div>
 
-        <label for="father_name">والد کا نام:</label>
-        <input type="text" id="father_name" value="">
-        
-        <label for="caste">قوم:</label>
-        <input type="text" id="caste" value="">
+<div class="container">
 
-        <label for="address">پتہ:</label>
-        <input type="text" id="address" value="">
+<div class="header">
+<p>بعدالت جناب علاقہ جوڈیشل مجسٹریٹ صاحبہ تھانہ 
+<span id="output_police_station_header" class="placeholder"></span></p>
+</div>
 
-        <label for="case_no">مقدمہ نمبر:</label>
-        <input type="text" id="case_no" value="">
+<div class="party-info">
+<span id="output_accused_name" class="placeholder"></span>
+ولد
+<span id="output_father_name" class="placeholder"></span>
+قوم
+<span id="output_caste" class="placeholder"></span>
+سکنه
+<span id="output_address" class="placeholder"></span>
+(سائل / ملزم)
+</div>
 
-        <label for="case_date">مورخہ:</label>
-        <input type="date" id="case_date" value="">
+<div class="vs-title">
+<p>بنــــــــام</p>
+<p>ســــــــرکار</p>
+</div>
 
-        <label for="sections">زیر دفعہ:</label>
-        <input type="text" id="sections" value="">
+<div class="case-details-container">
+<span class="case-details">
+مقدمہ نمبر <span id="output_case_no" class="placeholder"></span>
+مورخہ <span id="output_case_date_display" class="placeholder"></span>
+بجرم زیر دفعہ <span id="output_sections" class="placeholder"></span>
+ت پ تھانہ <span id="output_police_station" class="placeholder"></span>
+</span>
+</div>
 
-        <label for="police_station">تھانہ:</label>
-        <input type="text" id="police_station" value="">
+<div class="section-title">
+<p>درخواست ضمانت بعد از گرفتاری</p>
+</div>
 
-        <label for="complainant_name">مستغیث کا نام:</label>
-        <input type="text" id="complainant_name" value="">
-        
-        <label for="note_points">دلائل (خالی چھوڑ دیں یا ٹائپ کریں):</label>
-        <textarea id="note_points" rows="15" placeholder=""></textarea>
+<div class="greetings-line">
+<p>جناب عالی!</p>
+<p>سائل / ملزم حسب ذیل مرض پرداز ہے۔</p>
+</div>
 
-        <label for="lawyer_name">وکیل کا نام:</label>
-        <input type="text" id="lawyer_name" value="">
+<div id="dynamic_points_area" class="points-list"></div>
 
-        <label for="lawyer_address">وکیل کا پتہ:</label>
-        <input type="text" id="lawyer_address" value="">
-    </div>
+<p class="plea-paragraph">
+اندریں حالات نہایت ادب سے استدعا ہے کہ سائل / ملزم کی درخواست ضمانت بعد از گرفتاری تا فیصلہ مقدمہ منظور فرمائی جاوے اور رہائی کا حکم صادر فرمایا جاوے عین نوازش ہوگی۔
+</p>
 
-    <div class="container">
-        <div class="header">
-            <p>بعدالت جناب علاقہ جوڈیشل مجسٹریٹ صاحبہ تھانہ <span id="output_police_station_header">نیو ملتان</span></p>
-        </div>
+<div class="signature-area">
+<div class="signature-right">
+<p>مورخہ ____________</p>
+</div>
+<div class="signature-left">
+<p>عـــــــرضـــــے</p>
+<p id="signature_accused_name" class="placeholder"></p>
+<p>بذریعہ کونسل</p>
+<span id="output_lawyer_name" class="lawyer-name placeholder"></span>
+<span class="lawyer-title">ایڈووکیٹ ہائیکورٹ</span>
+<span id="output_lawyer_address" class="lawyer-address placeholder"></span>
+</div>
+</div>
 
-        <div class="party-info">
-            <span id="output_accused_name">____________</span>
-            <span>ولد</span>
-            <span id="output_father_name">____________</span>
-            <span>قوم</span>
-            <span id="output_caste">____________</span>
-            <span>سکنه</span>
-            <span id="output_address">____________</span>
-            <span class="accused-label">(سائل / ملزم)</span>
-        </div>
+</div>
 
-        <div class="vs-title">
-            <p>بنــــــــام</p>
-            <p>ســـــــــرکار</p>
-        </div>
-        
-        <!-- Container added to center the inline underlined text -->
-        <div class="case-details-container">
-            <span class="case-details">
-                مقدمہ نمبر <span id="output_case_no">____________</span> مورخہ <span id="output_case_date_display">____________</span> بجرم زیر دفعہ <span id="output_sections">____________</span> ت پ تھانہ <span id="output_police_station">____________</span>
-            </span>
-        </div>
-        
+<script>
+function setVal(id,val){
+ const el=document.getElementById(id);
+ if(val.trim()===''){
+   el.textContent='';
+   el.classList.remove('filled');
+ }else{
+   el.textContent=val;
+   el.classList.add('filled');
+ }
+}
 
-        <div class="section-title">
-            <p>درخواست ضمانت بعد از گرفتاری</p>
-        </div>
+function updateDocument(){
+ setVal('output_police_station_header',police_station.value);
+ setVal('output_accused_name',accused_name.value);
+ setVal('output_father_name',father_name.value);
+ setVal('output_caste',caste.value);
+ setVal('output_address',address.value);
+ setVal('output_case_no',case_no.value);
+ setVal('output_case_date_display',case_date.value);
+ setVal('output_sections',sections.value);
+ setVal('output_police_station',police_station.value);
+ setVal('output_lawyer_name',lawyer_name.value);
+ setVal('output_lawyer_address',lawyer_address.value);
+ setVal('signature_accused_name',accused_name.value+' ---- (سائل / ملزم)');
 
-        <!-- Combined Greetings Line -->
-        <div class="greetings-line">
-            <p class="greetings">جناب عالی!</p>
-            <p>سائل / ملزم حسب ذیل مرض پرداز ہے۔</p>
-        </div>
-        
-        <!-- User dynamic points will be inserted here (min-height ensures blank space) -->
-        <div id="dynamic_points_area" class="points-list">
-            <!-- Points are generated by JS -->
-        </div>
+ dynamic_points_area.innerHTML='';
+ note_points.value.split('\n').forEach(t=>{
+   if(t.trim()){
+     const li=document.createElement('li');
+     li.textContent=t;
+     dynamic_points_area.appendChild(li);
+   }
+ });
+}
 
-        <!-- Plea Paragraph Centered -->
-        <p class="plea-paragraph">
-            اندریں حالات نہایت ادب سے استدعا ہے کہ سائل / ملزم کی درخواست ضمانت بعد از گرفتاری تا فیصلہ مقدمہ منظور فرمائی جاوے اور رہائی کا حکم صادر فرمایا جاوے عین نوازش ہوگی۔
-        </p>
+document.querySelectorAll('input,textarea').forEach(i=>{
+ i.addEventListener('input',updateDocument);
+});
+updateDocument();
+</script>
 
-        <div class="signature-area">
-            <!-- Right side is used to align 'Muarikha' in the general center area -->
-            <div class="signature-right">
-                <p>مورخہ ____________</p>
-            </div>
-            <!-- Left side is used to align 'Arzay' and accused name in the general center area -->
-            <div class="signature-left">
-                <p>عـــــــرضـــــے</p>
-                <p id="signature_accused_name"> ____________ ---- (سائل / ملزم)</p>
-                <p>بذریعہ کونسل</p>
-                <!-- Lawyer Info Styling Applied Below -->
-                <span id="output_lawyer_name" class="lawyer-name">____________</span>
-                <span class="lawyer-title">ایڈووکیٹ ہائیکورٹ</span>
-                <span id="output_lawyer_address" class="lawyer-address">____________</span>
-            </div>
-        </div>
-
-    </div>
-
-    <script>
-        function updateDocument() {
-            document.getElementById('output_police_station_header').textContent = document.getElementById('police_station').value;
-            document.getElementById('output_accused_name').textContent = document.getElementById('accused_name').value;
-            document.getElementById('output_father_name').textContent = document.getElementById('father_name').value;
-            document.getElementById('output_caste').textContent = document.getElementById('caste').value;
-            document.getElementById('output_address').textContent = document.getElementById('address').value;
-            document.getElementById('output_case_no').textContent = document.getElementById('case_no').value;
-            document.getElementById('output_case_date_display').textContent = document.getElementById('case_date').value;
-            document.getElementById('output_sections').textContent = document.getElementById('sections').value;
-            document.getElementById('output_police_station').textContent = document.getElementById('police_station').value;
-            
-            document.getElementById('output_lawyer_name').textContent = document.getElementById('lawyer_name').value;
-            document.getElementById('output_lawyer_address').textContent = document.getElementById('lawyer_address').value;
-
-            document.getElementById('signature_accused_name').textContent = document.getElementById('accused_name').value + ' ---- (سائل / ملزم)';
-            
-            const pointsArea = document.getElementById('dynamic_points_area');
-            pointsArea.innerHTML = '';
-            const pointsText = document.getElementById('note_points').value;
-            const pointsArray = pointsText.split('\n');
-
-            pointsArray.forEach(pointText => {
-                if (pointText.trim() !== '') {
-                    const li = document.createElement('li');
-                    li.textContent = pointText.trim();
-                    pointsArea.appendChild(li);
-                }
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const inputs = document.querySelectorAll('.form-section input, .form-section textarea');
-            inputs.forEach(input => {
-                input.addEventListener('input', updateDocument);
-            });
-            updateDocument();
-        });
-    </script>
 </body>
 </html>
