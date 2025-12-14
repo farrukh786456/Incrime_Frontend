@@ -12,48 +12,75 @@
          url('fonts.gstatic.com') format('truetype');
 }
 
-body {
-    font-family: 'Jameel Noori Nastaleeq', Arial, sans-serif;
+body{
+    font-family:'Jameel Noori Nastaleeq','Arial',sans-serif;
+    line-height:1.6;
+    padding:20px;
     background:#f4f4f4;
     display:flex;
     flex-direction:column;
     align-items:center;
-    padding:20px;
 }
 
-.container,.form-section{
+.container{
     width:800px;
     background:#fff;
+    padding:40px;
     border:1px solid #ccc;
     box-shadow:0 0 10px rgba(0,0,0,.1);
 }
 
-.container{padding:40px}
-.form-section{padding:20px;margin-bottom:20px;direction:ltr}
-
 .header{text-align:center;margin-bottom:50px}
-.party-info{text-align:center;font-size:14px}
+.header p{margin:0;font-size:20px}
 
-.vs-title{text-align:center;font-size:24px;font-weight:bold}
+.party-info{
+    font-size:14px;
+    line-height:1.2;
+    margin-bottom:10px;
+    text-align:center;
+}
+
+.party-info span{margin:0 3px}
+.accused-label{font-size:12px}
+
+.vs-title{
+    text-align:center;
+    font-weight:bold;
+    font-size:24px;
+    margin:10px 0;
+}
 
 .case-details,.section-title p{
     font-weight:bold;
     text-decoration:underline;
+    display:inline;
 }
 
-.case-details-container,.section-title{text-align:center;margin:15px 0}
+.case-details-container,.section-title{
+    text-align:center;
+    margin:15px 0;
+}
+
+.section-title p{font-size:18px;margin:0}
 
 .greetings-line{
     display:flex;
     justify-content:space-between;
-    font-size:18px;
     font-weight:900;
+    font-size:18px;
     margin-top:20px;
 }
 
-.points-list{min-height:120px}
+.points-list{
+    list-style:none;
+    padding-right:0;
+    min-height:100px;
+}
 
-.plea-paragraph{text-align:center;margin-top:20px}
+.plea-paragraph{
+    text-align:center;
+    margin-top:20px;
+}
 
 .signature-area{
     display:flex;
@@ -61,24 +88,74 @@ body {
     margin-top:50px;
 }
 
-.signature-left,.signature-right{text-align:center;flex:1}
+.signature-right,
+.signature-left{
+    flex-grow:1;
+    text-align:center;
+}
 
-.lawyer-name{font-size:26px;font-weight:900}
-.lawyer-title{font-size:14px}
-.lawyer-address{font-size:12px}
+.signature-left{direction:rtl}
 
-.placeholder{
+.lawyer-name{
+    font-weight:bold;
+    font-size:24px;
+    display:block;
+}
+
+.lawyer-title{
+    font-weight:bold;
+    font-size:18px;
+    display:block;
+}
+
+.lawyer-address{
+    font-size:12px;
+    display:block;
+}
+
+/* ONLY REQUIRED CHANGE */
+.placeholder-line{
     display:inline-block;
     min-width:120px;
     border-bottom:2px solid #000;
 }
 .filled{border-bottom:none}
+
+.form-section{
+    width:800px;
+    background:#fff;
+    padding:20px;
+    border:1px solid #ccc;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
+    margin-bottom:20px;
+    direction:ltr;
+}
+
+.form-section label{
+    display:block;
+    margin-top:10px;
+    direction:rtl;
+    text-align:right;
+}
+
+.form-section input,
+.form-section textarea{
+    width:95%;
+    padding:8px;
+    margin:5px 0 10px;
+    border:1px solid #ccc;
+    border-radius:4px;
+    font-family:inherit;
+    direction:ltr;
+}
 </style>
 </head>
 
 <body>
 
 <div class="form-section">
+<h2>ڈیٹا انٹری فارم</h2>
+
 <label>ملزم کا نام</label><input id="accused_name">
 <label>والد کا نام</label><input id="father_name">
 <label>قوم</label><input id="caste">
@@ -87,7 +164,7 @@ body {
 <label>مورخہ</label><input type="date" id="case_date">
 <label>زیر دفعہ</label><input id="sections">
 <label>تھانہ</label><input id="police_station">
-<label>دلائل</label><textarea id="note_points" rows="8"></textarea>
+<label>دلائل</label><textarea id="note_points" rows="10"></textarea>
 <label>وکیل کا نام</label><input id="lawyer_name">
 <label>وکیل کا پتہ</label><input id="lawyer_address">
 </div>
@@ -95,32 +172,32 @@ body {
 <div class="container">
 
 <div class="header">
-<p>بعدالت جناب علاقہ جوڈیشل مجسٹریٹ صاحبہ تھانہ 
-<span id="output_police_station_header" class="placeholder"></span></p>
+<p>بعدالت جناب علاقہ جوڈیشل مجسٹریٹ صاحبہ تھانہ
+<span id="output_police_station_header" class="placeholder-line"></span></p>
 </div>
 
 <div class="party-info">
-<span id="output_accused_name" class="placeholder"></span>
+<span id="output_accused_name" class="placeholder-line"></span>
 ولد
-<span id="output_father_name" class="placeholder"></span>
+<span id="output_father_name" class="placeholder-line"></span>
 قوم
-<span id="output_caste" class="placeholder"></span>
+<span id="output_caste" class="placeholder-line"></span>
 سکنه
-<span id="output_address" class="placeholder"></span>
-(سائل / ملزم)
+<span id="output_address" class="placeholder-line"></span>
+<span class="accused-label">(سائل / ملزم)</span>
 </div>
 
 <div class="vs-title">
 <p>بنــــــــام</p>
-<p>ســــــــرکار</p>
+<p>ســـــــــرکار</p>
 </div>
 
 <div class="case-details-container">
 <span class="case-details">
-مقدمہ نمبر <span id="output_case_no" class="placeholder"></span>
-مورخہ <span id="output_case_date_display" class="placeholder"></span>
-بجرم زیر دفعہ <span id="output_sections" class="placeholder"></span>
-ت پ تھانہ <span id="output_police_station" class="placeholder"></span>
+مقدمہ نمبر <span id="output_case_no" class="placeholder-line"></span>
+مورخہ <span id="output_case_date_display" class="placeholder-line"></span>
+بجرم زیر دفعہ <span id="output_sections" class="placeholder-line"></span>
+ت پ تھانہ <span id="output_police_station" class="placeholder-line"></span>
 </span>
 </div>
 
@@ -145,11 +222,11 @@ body {
 </div>
 <div class="signature-left">
 <p>عـــــــرضـــــے</p>
-<p id="signature_accused_name" class="placeholder"></p>
+<p id="signature_accused_name" class="placeholder-line"></p>
 <p>بذریعہ کونسل</p>
-<span id="output_lawyer_name" class="lawyer-name placeholder"></span>
+<span id="output_lawyer_name" class="lawyer-name placeholder-line"></span>
 <span class="lawyer-title">ایڈووکیٹ ہائیکورٹ</span>
-<span id="output_lawyer_address" class="lawyer-address placeholder"></span>
+<span id="output_lawyer_address" class="lawyer-address placeholder-line"></span>
 </div>
 </div>
 
@@ -191,9 +268,9 @@ function updateDocument(){
  });
 }
 
-document.querySelectorAll('input,textarea').forEach(i=>{
- i.addEventListener('input',updateDocument);
-});
+document.querySelectorAll('.form-section input,.form-section textarea')
+.forEach(i=>i.addEventListener('input',updateDocument));
+
 updateDocument();
 </script>
 
