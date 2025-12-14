@@ -140,15 +140,26 @@
   <select id="caseType" onchange="checkSelection()">
     <option value="">Select Case Type</option>
     <option value="criminal">Criminal</option>
+    <option value="family">Family</option>
+    <option value="civil">Civil</option>
   </select>
 
   <label>Sub Type</label>
   <select id="subType" onchange="checkSelection()">
     <option value="">Select Sub Type</option>
     <option value="fir">FIR</option>
+    <option value="bail">Bail</option>
+    <option value="petition">Petition</option>
   </select>
 
-  <!-- STEP 2: FIR WORK AREA -->
+  <label id="bailTypeLabel" style="display:none;">Bail Type</label>
+  <select id="bailType" style="display:none;" onchange="updatePreview()">
+    <option value="">Select Bail Type</option>
+    <option value="pre">Pre Bail</option>
+    <option value="post">Post Bail</option>
+  </select>
+
+  <!-- STEP 2: WORK AREA -->
   <div class="work-area" id="workArea">
     <div class="left">
       <label>Applicant Name</label>
@@ -184,14 +195,23 @@
 درخواست گزار {{name}} ولد {{father}} ساکن {{address}}،
 شناختی کارڈ نمبر {{cnic}} مؤدبانہ عرض کرتا ہے کہ:
 
+یہ درخواست {{bailType}} ضمانت کے متعلق ہے۔
+
 لہٰذا گزارش ہے کہ قانونی کاروائی عمل میں لائی جائے۔
 `;
 
   function checkSelection() {
-    const ct = caseType.value;
     const st = subType.value;
 
-    if (ct === "criminal" && st === "fir") {
+    if (st === "bail") {
+      bailType.style.display = "block";
+      bailTypeLabel.style.display = "block";
+    } else {
+      bailType.style.display = "none";
+      bailTypeLabel.style.display = "none";
+    }
+
+    if (caseType.value && subType.value) {
       workArea.style.display = "flex";
       updatePreview();
     } else {
@@ -205,6 +225,17 @@
     t = t.replace('{{father}}', father.value || '________');
     t = t.replace('{{cnic}}', cnic.value || '________');
     t = t.replace('{{address}}', address.value || '________');
+
+    let bt = '';
+    if (subType.value === 'bail') {
+      bt = bailType.value === 'pre'
+        ? 'پیشگی'
+        : bailType.value === 'post'
+        ? 'بعد از گرفتاری'
+        : '________';
+    }
+
+    t = t.replace('{{bailType}}', bt);
     preview.innerText = t;
   }
 </script>
