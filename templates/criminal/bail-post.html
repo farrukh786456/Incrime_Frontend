@@ -2,148 +2,153 @@
 <html lang="ur">
 <head>
 <meta charset="UTF-8">
-<title>Post Arrest Bail Application</title>
+<title>درخواست ضمانت بعد از گرفتاری</title>
 
 <style>
+@font-face {
+  font-family: jameel;
+  src: local("Jameel Noori Nastaleeq");
+}
+
 body {
   margin: 0;
-  font-family: "Jameel Noori Nastaleeq", "Segoe UI", sans-serif;
-  background: #f0f0f0;
+  font-family: jameel, serif;
+  background: #f2f2f2;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px;
+  background: rgba(13, 42, 58, 0.95);
+  color: #fff;
+}
+
+nav .logo {
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 900px;
   margin: 40px auto;
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
+  background: #fff;
+  padding: 40px;
+  border: 2px solid #000;
+  direction: rtl;
+  font-size: 18px;
+  line-height: 2.4;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
+.center { text-align: center; font-weight: bold; }
+.underline { border-bottom: 2px solid #000; display: inline-block; padding-bottom: 4px; }
+.space { margin-top: 25px; }
 
-label {
-  font-weight: bold;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 12px;
-  font-size: 16px;
-}
-
-.preview {
-  border: 1px solid #ccc;
-  padding: 20px;
-  white-space: pre-line;
-  margin-top: 20px;
-  background: #fafafa;
-}
-
-.images {
-  margin-top: 20px;
-}
-
-.images img {
-  max-width: 120px;
-  margin: 5px;
-  border: 1px solid #ccc;
-}
-
-button {
-  padding: 10px 20px;
-  background: #0d2a3a;
-  color: white;
-  border: none;
-  cursor: pointer;
+.signature {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR (same as application.html, no login) -->
+<nav>
+  <div class="logo" onclick="window.location.href='../../index.html'">⚖️ InCrime</div>
+  <ul>
+    <li><a href="../../index.html">Home</a></li>
+    <li><a href="../../how-it-works.html">How It Works</a></li>
+    <li><a href="../../chatbot.html">Chatbot Help</a></li>
+    <li><a href="../../index.html#about">About</a></li>
+    <li><a href="../../index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
 <div class="container">
 
-<h2>درخواست ضمانت بعد از گرفتاری</h2>
-
-<label>ملزم کا نام</label>
-<input id="name" oninput="updatePreview()">
-
-<label>والد / شوہر کا نام</label>
-<input id="father" oninput="updatePreview()">
-
-<label>مقدمہ نمبر</label>
-<input id="caseNo" oninput="updatePreview()">
-
-<label>تھانہ</label>
-<input id="ps" oninput="updatePreview()">
-
-<label>دفعات</label>
-<input id="sections" oninput="updatePreview()">
-
-<label>مختصر حقائق</label>
-<textarea rows="4" id="facts" oninput="updatePreview()"></textarea>
-
-<label>ثبوت / دستاویزات (تصاویر)</label>
-<input type="file" multiple accept="image/*" onchange="previewImages(event)">
-
-<div class="images" id="images"></div>
-
-<div class="preview" id="preview">
-جنابِ عالی!
-
-درخواست گزار {{name}} ولد {{father}}،
-مقدمہ نمبر {{caseNo}} تھانہ {{ps}}،
-بجرم {{sections}} تعزیرات پاکستان میں گرفتار ہے۔
-
-مختصر حقائق:
-{{facts}}
-
-لہٰذا گزارش ہے کہ سائل کو ضمانت بعد از گرفتاری عطا فرمائی جائے۔
+<div class="center">
+درخواست ضمانت بعد از گرفتاری
 </div>
 
-<br>
-<button onclick="window.history.back()">⬅ Back</button>
-
+<div class="center space underline">
+مقدمہ نمبر ____/____ مورخہ __-__-____
 </div>
 
-<script>
-const template = `
+<div class="center underline">
+392/411 تعزیرات پاکستان
+</div>
+
+<div class="center underline">
+درخواست ضمانت بعد از گرفتاری زیر دفعہ 497 ض ف
+</div>
+
+<div class="space">
 جنابِ عالی!
+</div>
 
-درخواست گزار {{name}} ولد {{father}}،
-مقدمہ نمبر {{caseNo}} تھانہ {{ps}}،
-بجرم {{sections}} تعزیرات پاکستان میں گرفتار ہے۔
+<div class="space">
+سائل ملزم درخواست ضمانت بعد از گرفتاری عدالت ہذا میں دائر کرتا ہے۔
+</div>
 
-مختصر حقائق:
-{{facts}}
+<div class="space">
+i- کہ سائل ملزم بے گناہ ہے۔
+</div>
 
-لہٰذا گزارش ہے کہ سائل کو ضمانت بعد از گرفتاری عطا فرمائی جائے۔
-`;
+<div>
+ii- کہ سائل ملزم کے خلاف کوئی Incriminating Material موجود نہیں۔
+</div>
 
-function updatePreview() {
-  let t = template;
-  t = t.replace('{{name}}', name.value || '________');
-  t = t.replace('{{father}}', father.value || '________');
-  t = t.replace('{{caseNo}}', caseNo.value || '________');
-  t = t.replace('{{ps}}', ps.value || '________');
-  t = t.replace('{{sections}}', sections.value || '________');
-  t = t.replace('{{facts}}', facts.value || '________');
-  preview.innerText = t;
-}
+<div>
+iii- کہ سائل ملزم کو FIR میں بدنیتی سے ملوث کیا گیا ہے۔
+</div>
 
-function previewImages(event) {
-  images.innerHTML = '';
-  [...event.target.files].forEach(file => {
-    const img = document.createElement('img');
-    img.src = URL.createObjectURL(file);
-    images.appendChild(img);
-  });
-}
-</script>
+<div>
+iv- کہ سائل ملزم کے خلاف دفعہ جات قابل ضمانت ہیں۔
+</div>
+
+<div>
+v- کہ سائل ملزم کا مقدمہ قابل ضمانت ہونے کی بنا پر ضمانت کا حقدار ہے۔
+</div>
+
+<div class="space">
+مندرجہ بالا حقائق و حالات کی روشنی میں استدعا ہے کہ سائل ملزم کو ضمانت بعد از گرفتاری عطا فرمائی جائے۔
+</div>
+
+<div class="center space">
+عدالت کا احسان ہو گا
+</div>
+
+<div class="signature">
+<div>
+درخواست گزار<br>
+__________<br>
+(نام ملزم)
+</div>
+
+<div>
+وکیل برائے ملزم<br>
+__________
+</div>
+</div>
+
+</div>
 
 </body>
 </html>
