@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<title>Post Arrest Bail Application</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Jameel Noori Nastaleeq", "Segoe UI", sans-serif;
+  background: #f0f0f0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.preview {
+  border: 1px solid #ccc;
+  padding: 20px;
+  white-space: pre-line;
+  margin-top: 20px;
+  background: #fafafa;
+}
+
+.images {
+  margin-top: 20px;
+}
+
+.images img {
+  max-width: 120px;
+  margin: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 20px;
+  background: #0d2a3a;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>درخواست ضمانت بعد از گرفتاری</h2>
+
+<label>ملزم کا نام</label>
+<input id="name" oninput="updatePreview()">
+
+<label>والد / شوہر کا نام</label>
+<input id="father" oninput="updatePreview()">
+
+<label>مقدمہ نمبر</label>
+<input id="caseNo" oninput="updatePreview()">
+
+<label>تھانہ</label>
+<input id="ps" oninput="updatePreview()">
+
+<label>دفعات</label>
+<input id="sections" oninput="updatePreview()">
+
+<label>مختصر حقائق</label>
+<textarea rows="4" id="facts" oninput="updatePreview()"></textarea>
+
+<label>ثبوت / دستاویزات (تصاویر)</label>
+<input type="file" multiple accept="image/*" onchange="previewImages(event)">
+
+<div class="images" id="images"></div>
+
+<div class="preview" id="preview">
+جنابِ عالی!
+
+درخواست گزار {{name}} ولد {{father}}،
+مقدمہ نمبر {{caseNo}} تھانہ {{ps}}،
+بجرم {{sections}} تعزیرات پاکستان میں گرفتار ہے۔
+
+مختصر حقائق:
+{{facts}}
+
+لہٰذا گزارش ہے کہ سائل کو ضمانت بعد از گرفتاری عطا فرمائی جائے۔
+</div>
+
+<br>
+<button onclick="window.history.back()">⬅ Back</button>
+
+</div>
+
+<script>
+const template = `
+جنابِ عالی!
+
+درخواست گزار {{name}} ولد {{father}}،
+مقدمہ نمبر {{caseNo}} تھانہ {{ps}}،
+بجرم {{sections}} تعزیرات پاکستان میں گرفتار ہے۔
+
+مختصر حقائق:
+{{facts}}
+
+لہٰذا گزارش ہے کہ سائل کو ضمانت بعد از گرفتاری عطا فرمائی جائے۔
+`;
+
+function updatePreview() {
+  let t = template;
+  t = t.replace('{{name}}', name.value || '________');
+  t = t.replace('{{father}}', father.value || '________');
+  t = t.replace('{{caseNo}}', caseNo.value || '________');
+  t = t.replace('{{ps}}', ps.value || '________');
+  t = t.replace('{{sections}}', sections.value || '________');
+  t = t.replace('{{facts}}', facts.value || '________');
+  preview.innerText = t;
+}
+
+function previewImages(event) {
+  images.innerHTML = '';
+  [...event.target.files].forEach(file => {
+    const img = document.createElement('img');
+    img.src = URL.createObjectURL(file);
+    images.appendChild(img);
+  });
+}
+</script>
+
+</body>
+</html>
