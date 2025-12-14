@@ -7,7 +7,6 @@
     <style>
         @font-face {
             font-family: 'Jameel Noori Nastaleeq';
-            /* Note: Ensure you have this font installed on your system for proper display */
             src: local('Jameel Noori Nastaleeq'), 
                  url('fonts.gstatic.com') format('truetype');
             font-weight: normal;
@@ -43,8 +42,8 @@
             font-size: 14px;
             line-height: 1.2;
             margin-bottom: 10px;
-            text-align: center; /* <<< UPDATED: Centered */
-            display: block; /* Ensures centering works */
+            text-align: center;
+            display: block;
         }
         .party-info span {
             margin: 0 3px;
@@ -58,18 +57,18 @@
             font-size: 24px;
             margin: 10px 0;
         }
-        .case-details, .section-title {
-            text-align: center;
+        /* UPDATED: Removed border, added text-decoration: underline */
+        .case-details, .section-title p {
             font-weight: bold;
-            margin: 15px 0;
-            padding-bottom: 5px;
-            /* UPDATED: We use inline-block with a specific width for the border below text only */
-            display: inline-block; 
-            border-bottom: 1px solid #000;
-            width: auto; 
-            margin-right: 50%; /* Center the inline-block */
-            transform: translateX(50%); /* Center the inline-block */
+            text-decoration: underline; 
+            display: inline; /* Keep text inline for underlining */
         }
+        .case-details-container, .section-title {
+             text-align: center; /* Center the container/div */
+             margin: 15px 0;
+             padding-bottom: 5px;
+        }
+
         .section-title p {
             font-size: 18px;
             margin: 0;
@@ -84,14 +83,15 @@
         .points-list {
             list-style-type: none;
             padding-right: 0;
-            min-height: 100px; /* Provides blank space if no points are entered */
+            min-height: 100px;
         }
         .points-list li {
             margin-bottom: 10px;
         }
         /* UPDATED: Styling for the final plea paragraph */
         .plea-paragraph {
-            text-align: center; /* <<< UPDATED: Centered align */
+            /* Aligned to the center of the page (using text-align: center) */
+            text-align: center; 
             margin-top: 20px;
         }
         .signature-area {
@@ -101,31 +101,30 @@
         }
         .signature-right {
             text-align: right;
-            /* Positioned for center alignment as requested */
             flex-grow: 1; 
+            /* Positioned in the middle of the page */
             text-align: center; 
         }
         .signature-left {
             text-align: left;
-            /* Positioned for center alignment as requested */
             flex-grow: 1;
+             /* Positioned in the middle of the page */
             text-align: center; 
-            direction: rtl; /* Keep RTL for content while centering the block */
+            direction: rtl; 
         }
-        /* UPDATED: Specific styling for lawyer information */
         .lawyer-name {
-            font-weight: bold; /* Bold */
-            font-size: 24px;   /* Large */
+            font-weight: bold;
+            font-size: 24px;
             display: block;
             margin-top: 10px;
         }
         .lawyer-title {
-            font-weight: bold; /* Bold */
-            font-size: 18px;   /* Normal size */
+            font-weight: bold;
+            font-size: 18px;
             display: block;
         }
         .lawyer-address {
-            font-size: 12px;   /* <<< UPDATED: Small size */
+            font-size: 12px;
             display: block;
         }
 
@@ -222,10 +221,14 @@ iv- یہ کہ سائل / ملزم عدم سزا یافتہ و عدم ریکار�
             <p>بنام</p>
             <p>سرکار</p>
         </div>
-
-        <div class="case-details">
-            مقدمہ نمبر <span id="output_case_no">843/24</span> مورخہ <span id="output_case_date_display">2024-03-26</span> بجرم زیر دفعہ <span id="output_sections">392/411</span> ت پ تھانہ <span id="output_police_station">نیو ملتان</span>
+        
+        <!-- Container added to center the inline underlined text -->
+        <div class="case-details-container">
+            <span class="case-details">
+                مقدمہ نمبر <span id="output_case_no">843/24</span> مورخہ <span id="output_case_date_display">2024-03-26</span> بجرم زیر دفعہ <span id="output_sections">392/411</span> ت پ تھانہ <span id="output_police_station">نیو ملتان</span>
+            </span>
         </div>
+        
 
         <div class="section-title">
             <p>درخواست ضمانت بعد از گرفتاری</p>
@@ -281,7 +284,6 @@ iv- یہ کہ سائل / ملزم عدم سزا یافتہ و عدم ریکار�
             document.getElementById('output_lawyer_name').textContent = document.getElementById('lawyer_name').value;
             document.getElementById('output_lawyer_address').textContent = document.getElementById('lawyer_address').value;
 
-            // Update the Proposer Name in the signature area
             document.getElementById('signature_accused_name').textContent = document.getElementById('accused_name').value + ' ---- (سائل / ملزم)';
             
             const pointsArea = document.getElementById('dynamic_points_area');
@@ -298,7 +300,6 @@ iv- یہ کہ سائل / ملزم عدم سزا یافتہ و عدم ریکار�
             });
         }
 
-        // Add event listeners to all input fields for live updates
         document.addEventListener('DOMContentLoaded', (event) => {
             const inputs = document.querySelectorAll('.form-section input, .form-section textarea');
             inputs.forEach(input => {
