@@ -11,7 +11,7 @@
       font-family: 'Segoe UI', sans-serif;
       background:
         linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-        url('https://images.unsplash.com/photo-1678228941467-cc170dd97e01?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')
+        url('https://images.unsplash.com/photo-1678228941467-cc170dd97e01?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0')
         center/cover no-repeat;
       background-attachment: fixed;
       color: #0d2a3a;
@@ -34,7 +34,6 @@
     nav .logo {
       font-size: 24px;
       font-weight: bold;
-      letter-spacing: 1px;
       cursor: pointer;
     }
 
@@ -51,7 +50,6 @@
     nav ul li a {
       text-decoration: none;
       color: #fff;
-      font-weight: 500;
     }
 
     nav button {
@@ -70,42 +68,29 @@
       background: rgba(255,255,255,0.9);
       padding: 40px;
       border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
-    h1 {
-      text-align: center;
-    }
+    h1 { text-align: center; }
 
-    label {
-      font-weight: 600;
-    }
+    label { font-weight: 600; }
 
-    select, input, textarea {
+    select {
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 8px;
-      font-size: 15px;
       width: 100%;
       margin-bottom: 15px;
     }
 
-    .work-area {
-      display: none;
-      margin-top: 30px;
-      gap: 30px;
-    }
-
-    .left, .right {
-      width: 50%;
-    }
-
-    .right {
-      border: 1px solid #ccc;
-      padding: 15px;
+    button.continue {
+      width: 100%;
+      padding: 12px;
+      background: #0d2a3a;
+      color: white;
+      border: none;
       border-radius: 8px;
-      background: #fafafa;
-      white-space: pre-line;
+      font-size: 16px;
+      cursor: pointer;
     }
 
     footer {
@@ -135,9 +120,8 @@
 <div class="container">
   <h1>Create Your Legal Application</h1>
 
-  <!-- STEP 1: SELECTION -->
   <label>Case Type</label>
-  <select id="caseType" onchange="checkSelection()">
+  <select id="caseType">
     <option value="">Select Case Type</option>
     <option value="criminal">Criminal</option>
     <option value="family">Family</option>
@@ -145,7 +129,7 @@
   </select>
 
   <label>Sub Type</label>
-  <select id="subType" onchange="checkSelection()">
+  <select id="subType" onchange="handleSubType()">
     <option value="">Select Sub Type</option>
     <option value="fir">FIR</option>
     <option value="bail">Bail</option>
@@ -153,91 +137,56 @@
   </select>
 
   <label id="bailTypeLabel" style="display:none;">Bail Type</label>
-  <select id="bailType" style="display:none;" onchange="updatePreview()">
+  <select id="bailType" style="display:none;">
     <option value="">Select Bail Type</option>
     <option value="pre">Pre Bail</option>
     <option value="post">Post Bail</option>
   </select>
 
-  <!-- STEP 2: WORK AREA -->
-  <div class="work-area" id="workArea">
-    <div class="left">
-      <label>Applicant Name</label>
-      <input id="name" oninput="updatePreview()">
-
-      <label>Father / Husband Name</label>
-      <input id="father" oninput="updatePreview()">
-
-      <label>CNIC</label>
-      <input id="cnic" oninput="updatePreview()">
-
-      <label>Address</label>
-      <textarea id="address" rows="4" oninput="updatePreview()"></textarea>
-    </div>
-
-    <div class="right" id="preview">
-جنابِ عالی!
-
-درخواست گزار {{name}} ولد {{father}} ساکن {{address}}،
-شناختی کارڈ نمبر {{cnic}} مؤدبانہ عرض کرتا ہے کہ:
-
-لہٰذا گزارش ہے کہ قانونی کاروائی عمل میں لائی جائے۔
-    </div>
-  </div>
+  <button class="continue" onclick="openTemplate()">Continue</button>
 </div>
 
 <footer>© 2025 InCrime | Every Case, Every Detail</footer>
 
 <script>
-  const template = `
-جنابِ عالی!
+function handleSubType() {
+  if (subType.value === 'bail') {
+    bailType.style.display = 'block';
+    bailTypeLabel.style.display = 'block';
+  } else {
+    bailType.style.display = 'none';
+    bailTypeLabel.style.display = 'none';
+  }
+}
 
-درخواست گزار {{name}} ولد {{father}} ساکن {{address}}،
-شناختی کارڈ نمبر {{cnic}} مؤدبانہ عرض کرتا ہے کہ:
+function openTemplate() {
+  const ct = caseType.value;
+  const st = subType.value;
+  const bt = bailType.value;
 
-یہ درخواست {{bailType}} ضمانت کے متعلق ہے۔
+  let path = '';
 
-لہٰذا گزارش ہے کہ قانونی کاروائی عمل میں لائی جائے۔
-`;
-
-  function checkSelection() {
-    const st = subType.value;
-
-    if (st === "bail") {
-      bailType.style.display = "block";
-      bailTypeLabel.style.display = "block";
-    } else {
-      bailType.style.display = "none";
-      bailTypeLabel.style.display = "none";
-    }
-
-    if (caseType.value && subType.value) {
-      workArea.style.display = "flex";
-      updatePreview();
-    } else {
-      workArea.style.display = "none";
-    }
+  if (ct === 'criminal' && st === 'fir') {
+    path = 'templates/criminal/fir.html';
+  }
+  else if (ct === 'criminal' && st === 'bail') {
+    if (bt === 'pre') path = 'templates/criminal/bail-pre.html';
+    if (bt === 'post') path = 'templates/criminal/bail-post.html';
+  }
+  else if (ct === 'family' && st === 'petition') {
+    path = 'templates/family/petition.html';
+  }
+  else if (ct === 'civil' && st === 'petition') {
+    path = 'templates/civil/suit.html';
   }
 
-  function updatePreview() {
-    let t = template;
-    t = t.replace('{{name}}', name.value || '________');
-    t = t.replace('{{father}}', father.value || '________');
-    t = t.replace('{{cnic}}', cnic.value || '________');
-    t = t.replace('{{address}}', address.value || '________');
-
-    let bt = '';
-    if (subType.value === 'bail') {
-      bt = bailType.value === 'pre'
-        ? 'پیشگی'
-        : bailType.value === 'post'
-        ? 'بعد از گرفتاری'
-        : '________';
-    }
-
-    t = t.replace('{{bailType}}', bt);
-    preview.innerText = t;
+  if (!path) {
+    alert('Please complete selection');
+    return;
   }
+
+  window.location.href = path;
+}
 </script>
 
 </body>
