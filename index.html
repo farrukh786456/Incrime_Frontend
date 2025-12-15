@@ -590,7 +590,8 @@
         <button class="bail-btn">Select</button>
       </div>
       
-      <div class="bail-type-card post-arrest" onclick="startBailApplication('post-arrest')">
+      <div class="bail-type-card post-arrest"
+     onclick="window.location.href='post-bail.html'">
         <h4>Post-Arrest Bail (Regular Bail)</h4>
         <p><strong>Section 497 CrPC</strong> - Applied after arrest has been made, when you or someone is already in police custody.</p>
         
@@ -896,6 +897,16 @@
         showHome();
       }
     });
+
+    function startBailApplication(bailType) {
+  if (bailType === 'pre-arrest') {
+    window.location.href = 'pre-bail.html';
+  } 
+  else if (bailType === 'post-arrest') {
+    window.location.href = 'post-bail.html';
+  }
+}
+
   </script>
 
 </body>
