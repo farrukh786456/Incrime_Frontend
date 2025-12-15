@@ -193,22 +193,29 @@ body{
 
 .form-section label{
     display:block;
-    margin-top:10px;
+    margin-top:2px;        /* 🔽 gap کم */
+    margin-bottom:2px;
     direction:rtl;
     text-align:right;
+
+    font-weight:800;       /* 🔴 bold */
+    font-size:16px;        /* 🔴 thora bara */
+    color:#0d2a3a;         /* 🔵 navbar color */
 }
+
 
 .form-section input,
 .form-section textarea{
-    width:100%;
-    padding:10px 12px;
-    margin:6px 0 14px;
-    border:1px solid #bbb;
+    width:97%;
+    padding:9px 12px;
+    margin:4px 0 10px;     /* 🔽 vertical gap کم */
+    border:2px solid #bbb;
     border-radius:8px;
     font-family:inherit;
     direction:ltr;
     font-size:14px;
 }
+
 
 .form-section input:focus,
 .form-section textarea:focus{
