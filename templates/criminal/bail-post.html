@@ -11,12 +11,10 @@
     src: local('Jameel Noori Nastaleeq'),
          url('fonts.gstatic.com') format('truetype');
 }
-
 body{
     font-family:'Jameel Noori Nastaleeq','Arial',sans-serif;
     line-height:1.6;
     background:#f4f4f4;
-
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -25,14 +23,10 @@ body{
     padding-left:20px;
     padding-right:20px;
 }
-
-
 @page{
     size: A4;
     margin: 12mm;   /* A4 standard margin */
 }
-
-
 .header{text-align:center;margin-bottom:50px}
 .header p{margin:0;font-size:20px}
 
@@ -42,7 +36,6 @@ body{
     margin-bottom:10px;
     text-align:center;
 }
-
 .party-info span{margin:0 1px}
 .accused-label{
     display:block;          /* 🔴 new line */
@@ -50,8 +43,6 @@ body{
     margin-top:4px;
     text-align:left;      
 }
-
-
 .vs-title{
     text-align:center;
     font-weight:bold;
@@ -59,59 +50,48 @@ body{
     margin:0;
     line-height:1.1;
 }
-
 .case-details,.section-title p{
     font-weight:bold;
     text-decoration:underline;
     display:inline;
 }
-
 .case-details-container,.section-title{
     text-align:center;
     margin:15px 0;
 }
-
 .section-title p{font-size:18px;margin:0}
-
 .greetings-line{
     display:block;
     font-size:18px;
     font-weight:bold;
     margin-top:20px;
 }
-
 .normal-text{
     font-weight:normal;
     margin:0;
-}    
-    
+}        
 .points-list{
     list-style:none;
     padding-right:0;
     min-height:100px;
 }
-
 .plea-paragraph{
     text-align:center;
     margin:20px auto 0;
     width:45%;
     margin-right:50%;   /* ← tab-jaisa left shift */
 }
-
-
 .signature-area{
     display:flex;
     flex-direction:column;
     align-items:center;
     margin-top:10px;
 }
-
 /* مورخہ — center ہی رہے */
 .signature-right{
     text-align:center;
     margin-right:50%;   /* ← left ki taraf shift */
 }
-
 /* عـــــــرضـــــے + نیچے والا سب — left */
 .signature-left{
     direction:ltr;
@@ -119,52 +99,41 @@ body{
     align-self:flex-start;
     width:100%;
 }
-
-
 .signature-left p:not(.placeholder-line),
 .signature-left span:not(.placeholder-line){
     display:block;
     text-align:left;
 }
-
 .arz-center{
     font-weight:bold;
     font-size:28px;
     text-align:center;
     margin-top:15px;
 }
-
-
 .signature-left .lawyer-name.placeholder-line,
 .signature-left .lawyer-address.placeholder-line{
     width:auto;
     min-width:100px;   /* جتنی line چاہیے */
     display:inline-block;
 }
-
 .sig-center{
     text-align:center;
     margin-top:8px;
 }
-
-
 .lawyer-name{
     font-weight:bold;
     font-size:22px;
     display:block;
 }
-
 .lawyer-title{
     font-weight:bold;
     font-size:18px;
     display:block;
 }
-
 .lawyer-address{
     font-size:11px;
     display:block;
 }
-
 /* ONLY REQUIRED CHANGE */
 .placeholder-line{
     display:inline-block;
@@ -174,8 +143,6 @@ body{
 .placeholder-line.filled{
     border-bottom:none;
 }
-
-
 .form-section{
     width:800px;
     background:#fff;                 
@@ -186,7 +153,6 @@ body{
     margin-bottom:30px;
     direction:ltr;
 }
-
 .form-section h2{
     background:#0d2a3a;      /* 🔴 navbar color */
     color:#fff;
@@ -195,8 +161,6 @@ body{
     border-radius:10px 10px 0 0;
     font-size:20px;
 }
-
-
 .form-section label{
     display:block;
     margin-top:2px;        /* 🔽 gap کم */
@@ -208,8 +172,6 @@ body{
     font-size:16px;        /* 🔴 thora bara */
     color:#0d2a3a;         /* 🔵 navbar color */
 }
-
-
 .form-section input,
 .form-section textarea{
     width:97%;
@@ -221,8 +183,6 @@ body{
     direction:ltr;
     font-size:14px;
 }
-
-
 .form-section input:focus,
 .form-section textarea:focus{
     outline:none;
@@ -235,7 +195,6 @@ body{
     font-size:16px;
     cursor:pointer;
 }
-
 @media print {
 
   /* ❌ UI / Backend hide */
@@ -245,14 +204,12 @@ body{
     display: none !important;
     visibility: hidden !important;
   }
-
   /* ✅ Page clean */
   body {
     background: #fff !important;
     padding: 0 !important;
     margin: 0 !important;
   }
-
   /* ✅ A4 document only */
   .container {
     width: 170mm !important;
@@ -263,8 +220,6 @@ body{
     box-sizing: border-box !important;
   }
 }
-
-
 nav{
   direction:ltr;               /* 🔴 RTL effect khatam */
   box-sizing:border-box;
@@ -284,9 +239,6 @@ nav{
   width:100vw;                 /* 🔴 full viewport width */
   z-index:9999;
 }
-
-
-
     nav .logo {
       font-size: 24px;
       font-weight: bold;
@@ -294,8 +246,6 @@ nav{
       margin-right:auto;
     white-space:nowrap;          /* 🔴 text wrap na ho */
 }
-
-
     nav ul {
       list-style: none;
       display: flex;
@@ -307,12 +257,10 @@ nav{
       flex-wrap:nowrap;
   white-space:nowrap;
     }
-
     nav ul li a {
       text-decoration: none;
       color: #fff;
     }
-
     nav button {
       background: #FFD700;
       border: none;
@@ -322,23 +270,20 @@ nav{
       font-weight: 600;
       cursor: pointer;
     }
-
-
 </style>
 </head>
 
 <body>
 <nav>
-  <div class="logo" onclick="window.location.href='index.html'">⚖️ InCrime</div>
+  <div class="logo" onclick="window.location.href='../../index.html'">⚖️ InCrime</div>
   <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="how-it-works.html">How It Works</a></li>
-    <li><a href="chatbot.html">Chatbot Help</a></li>
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="../../index.html">Home</a></li>
+    <li><a href="../../how-it-works.html">How It Works</a></li>
+    <li><a href="../../chatbot.html">Chatbot Help</a></li>
+    <li><a href="../../index.html#about">About</a></li>
+    <li><a href="../../index.html#contact">Contact</a></li>
   </ul>
 </nav>
-
 <div class="form-section">
 <h2>Create Post-Bail Application</h2>
 
@@ -354,9 +299,7 @@ nav{
 <label>وکیل کا نام</label><input id="lawyer_name">
 <label>وکیل کا پتہ</label><input id="lawyer_address">
 </div>
-
 <div class="container">
-
 <div class="header">
 <p>بعدالت جناب علاقہ جوڈیشل مجسٹریٹ صاحبہ تھانہ
 <span id="output_police_station_header" class="placeholder-line"></span></p>
@@ -364,7 +307,6 @@ nav{
 <br>
 <br>
 <br>
-
 <div class="party-info">
 <span id="output_accused_name" class="placeholder-line"></span>
 ولد
@@ -375,40 +317,31 @@ nav{
 <span id="output_address" class="placeholder-line"></span>
 <span class="accused-label">----(سائل / ملزم)</span>
 </div>
-
 <div class="vs-title">
 <p>بنــــــــــام</p>
 <p>ســـــــــــرکار</p>
 </div>
-
 <div class="case-details-container">
 <span class="case-details">
 مقدمہ نمبر <span id="output_case_no" class="placeholder-line"></span>
 مورخہ <span id="output_case_date_display" class="placeholder-line"></span>
 بجرم زیر دفعہ <span id="output_sections" class="placeholder-line"></span>
     <br>
-
  تھانہ <span id="output_police_station" class="placeholder-line"></span>
 </span>
 </div>
-
 <div class="section-title">
 <p>درخواست ضمانت بعد از گرفتاری</p>
 </div>
-
 <div class="greetings-line">
 <p>جناب عالی!</p>
 <p class="normal-text">سائل / ملزم حسب ذیل مرض پرداز ہے۔</p>
 </div>
-
 <div id="dynamic_points_area" class="points-list"></div>
-
 <p class="plea-paragraph">
 اندریں حالات نہایت ادب سے استدعا ہے کہ سائل / ملزم کی درخواست ضمانت بعد از گرفتاری تا فیصلہ مقدمہ منظور فرمائی جاوے اور رہائی کا حکم صادر فرمایا جاوے عین نوازش ہوگی۔
 </p>
-
 <div class="signature-area">
-
   <div class="signature-right">
     <p>مورخہ <span id="output_date" class="placeholder-line"></span></p>
 
@@ -417,22 +350,17 @@ nav{
     <!-- 👇 یہی line بھی center -->
     <p id="signature_accused_name" class="sig-center placeholder-line"></p>
   </div> 
-
   <div class="signature-left">
     <p>بذریعہ کونسل</p>
     <span id="output_lawyer_name" class="lawyer-name placeholder-line"></span>
     <span class="lawyer-title">ایڈووکیٹ ہائیکورٹ</span>
     <span id="output_lawyer_address" class="lawyer-address placeholder-line"></span>
   </div>
-
 </div>
-
 <button onclick="downloadPDF()" class="download-btn">
     Download / Print
 </button> 
-
 </div>
-
 <script>
 function setVal(id,val){
  const el=document.getElementById(id);
