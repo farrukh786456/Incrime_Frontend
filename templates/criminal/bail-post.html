@@ -44,7 +44,13 @@ body{
 }
 
 .party-info span{margin:0 1px}
-.accused-label{font-size:12px}
+.accused-label{
+    display:block;          /* 🔴 new line */
+    font-size:14px;         /* 🔴 normal size */
+    margin-top:4px;
+    text-align:left;      
+}
+
 
 .vs-title{
     text-align:center;
@@ -230,19 +236,34 @@ body{
     cursor:pointer;
 }
 
-@media print{
-    .form-section,
-    .download-btn{
-        display:none;
-    }
-    body{
-        background:#fff;
-        padding:0;
-    }
-    .container{
-        border:2px solid #000;
-    }
+@media print {
+
+  /* ❌ UI / Backend hide */
+  nav,
+  .form-section,
+  .download-btn {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* ✅ Page clean */
+  body {
+    background: #fff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* ✅ A4 document only */
+  .container {
+    width: 170mm !important;
+    min-height: 257mm !important;
+    margin: auto !important;
+    border: 2px solid #000 !important;
+    padding: 15mm !important;
+    box-sizing: border-box !important;
+  }
 }
+
 
 nav{
   direction:ltr;               /* 🔴 RTL effect khatam */
@@ -352,12 +373,12 @@ nav{
 <span id="output_caste" class="placeholder-line"></span>
 سکنه
 <span id="output_address" class="placeholder-line"></span>
-<span class="accused-label">(سائل / ملزم)</span>
+<span class="accused-label">----(سائل / ملزم)</span>
 </div>
 
 <div class="vs-title">
-<p>بنــــــــام</p>
-<p>ســـــــــرکار</p>
+<p>بنــــــــــام</p>
+<p>ســـــــــــرکار</p>
 </div>
 
 <div class="case-details-container">
