@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-Bail.Incrime</title>
+
+<style>
+@font-face {
+    font-family: 'Jameel Noori Nastaleeq';
+    src: local('Jameel Noori Nastaleeq'),
+         url('fonts.gstatic.com') format('truetype');
+}
+body{
+    font-family:'Jameel Noori Nastaleeq','Arial',sans-serif;
+    line-height:1.6;
+    background:#ffffff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    padding-top:90px;   /* 🔴 navbar height ka space */
+    padding-left:20px;
+    padding-right:20px;
+}
+@page{
+    size: A4;
+    margin: 12mm;   /* A4 standard margin */
+}
+.header{text-align:center;margin-bottom:25px;margin-top:-30px;}
+.header p{margin:0;font-size:27px}
+
+.party-info{
+    font-size:20px;
+    line-height:1.2;
+    margin-bottom:10px;
+    text-align:center;
+}
+.party-info span{margin:0 1px}
+.accused-label{
+    display:block;          /* 🔴 new line */
+    font-size:18px;         /* 🔴 normal size */
+    margin-top:4px;
+    text-align:left;      
+}
+.vs-title{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 1.1;
+    font-family: 'Noto Nastaliq Urdu', serif;
+    position: relative;
+    display: table;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+.case-details,.section-title p{
+    font-size:20px;
+    font-weight:bold;
+    text-decoration:underline;
+    display:inline;
+}
+.case-details-container,.section-title{
+    text-align:center;
+    margin:15px 0;
+}
+.section-title p{font-size:22px;margin:0}
+.greetings-line{
+    display:block;
+    font-size:16px;
+    font-weight:bold;
+    margin-top:20px;
+}        
+.points-list{
+    font-size:16px;
+    list-style:none;
+    padding-right:0;
+    min-height:100px;
+}
+.plea-paragraph{
+    font-size:16px;
+    text-align:center;
+    margin:20px auto 0;
+    width:45%;
+    margin-right:65%;   /* ← tab-jaisa left shift */
+}
+.signature-area{
+    font-size:16px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-top:10px;
+}
+/* مورخہ — center ہی رہے */
+.signature-right{
+    text-align:center;
+    margin-right:75%;   /* ← left ki taraf shift */
+}
+/* عـــــــرضـــــے + نیچے والا سب — left */
+.signature-left{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-top:10px;
+    text-align:center;
+    margin-right:75%; 
+}
+.signature-left p:not(.placeholder-line),
+.signature-left span:not(.placeholder-line){
+    display:block;
+    text-align:left;
+}
+.arz-center{
+    font-weight: bold;
+    font-size: 19px;
+    text-align: center;
+
+    line-height: 1;          /* 🔴 sab se important */
+    margin: 0;               /* 🔴 extra gap khatam */
+    padding: 0;              /* 🔴 extra space khatam */
+
+    display: block;
+}
+
+
+.signature-left .lawyer-name.placeholder-line,
+.signature-left .lawyer-address.placeholder-line{
+    width:auto;
+    min-width:100px;   /* جتنی line چاہیے */
+    display:inline-block;
+}
+.sig-center{
+    text-align:center;
+    margin-top:8px;
+}
+.lawyer-name{
+    font-weight:bold;
+    font-size:18px;
+    display:block;
+}
+.lawyer-title{
+    font-weight:bold;
+    font-size:18px;
+    display:block;
+}
+.lawyer-address{
+    font-size:16px;
+    display:block;
+}
+/* ONLY REQUIRED CHANGE */
+.placeholder-line{
+    display:inline-block;
+    min-width:40px;
+    border-bottom:2px solid #000;
+}
+.placeholder-line.filled{
+    border-bottom:none;
+}
+.form-section{
+    width:800px;
+    background:#ffffff;                 
+    padding:25px;
+    border:2px solid #0d2a3a;         
+    border-radius:12px;              
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+    margin-bottom:30px;
+    direction:ltr;
+}
+.form-section h2{
+    background:#0d2a3a;      /* 🔴 navbar color */
+    color:#ffffff;
+    padding:12px 15px;
+    margin:-25px -25px 20px; /* 🔴 full width heading */
+    border-radius:10px 10px 0 0;
+    font-size:20px;
+}
+.form-section label{
+    display:block;
+    margin-top:2px;        /* 🔽 gap کم */
+    margin-bottom:2px;
+    direction:rtl;
+    text-align:right;
+
+    font-weight:800;       /* 🔴 bold */
+    font-size:16px;        /* 🔴 thora bara */
+    color:#0d2a3a;         /* 🔵 navbar color */
+}
+.form-section input,
+.form-section textarea{
+    width:97%;
+    padding:9px 12px;
+    margin:4px 0 10px;     /* 🔽 vertical gap کم */
+    border:2px solid #bbb;
+    border-radius:8px;
+    font-family:inherit;
+    direction:ltr;
+    font-size:14px;
+}
+.form-section input:focus,
+.form-section textarea:focus{
+    outline:none;
+    border-color:#0d2a3a;
+    box-shadow:0 0 0 2px rgba(13,42,58,0.15);
+}
+.download-btn{
+    margin:20px;
+    padding:10px 25px;
+    font-size:16px;
+    cursor:pointer;
+}
+@media print {
+
+  /* ❌ UI / Navigation hide */
+  nav,
+  .form-section,
+  .download-btn,
+  .floating-back-btn,
+  #scrollTopBtn {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* ✅ Clean document */
+  body {
+    background: #fff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .container {
+    width: 170mm !important;
+    min-height: 257mm !important;
+    margin: auto !important;
+    padding: 15mm !important;
+    box-sizing: border-box !important;
+  }
+}
+
+nav{
+  direction:ltr;
+  box-sizing:border-box;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:16px 80px;              /* 🔥 desktop spacing */
+  background: rgba(13, 42, 58, 0.95);
+  color:#fff;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:9999;
+}
+ nav .logo{
+  font-size: 24px;
+  font-weight: bold;
+  cursor:pointer;
+  white-space:nowrap;
+}
+   nav ul{
+  list-style:none;
+  display:flex;
+  gap:30px;              /* 🔥 first code jaisa gap */
+  margin:0;
+  padding:0;
+  align-items:center;
+}
+   nav ul li a{
+  text-decoration:none;
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+}
+nav ul li a:hover{
+  color:#FFD700;        /* 🔥 same yellow as index.html */
+}
+
+   nav button{
+  background:#FFD700;
+  border:none;
+  color:#0d2a3a;
+  padding:8px 18px;
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.floating-back-btn{
+  position: fixed;
+  top: 95px;              /* navbar ke neeche */
+  left: 25px;             /* 🔥 LEFT side */
+
+  background:#0d2a3a;     /* navbar jaisa color */
+  color:#FFD700;
+
+  border:none;
+  padding:8px 14px;
+  border-radius:8px;
+
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+
+  box-shadow:0 3px 10px rgba(0,0,0,0.25);
+  z-index:9998;
+}
+
+.floating-back-btn:hover{
+  background:#FFD700;
+  color:#0d2a3a;
+}
+
+#backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #FFD700;
+      color: #0d2a3a;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      display: none;
+      animation: floatUpDown 2s infinite ease-in-out;
+    }
+
+    #backToTop:hover {
+      background: #f4d03f;
+      transform: scale(1.05);
+    }
+
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="logo" onclick="window.location.href='../../index.html'">⚖️ InCrime</div>
+  <ul>
+    <li><a href="../../index.html">Home</a></li>
+    <li><a href="../../how-it-works.html">How It Works</a></li>
+    <li><a href="../../chatbot.html">Chatbot Help</a></li>
+    <li><a href="../../index.html#about">About</a></li>
+    <li><a href="../../index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="back-bar">
+<button class="floating-back-btn"
+        onclick="window.location.href='../../application.html'">
+  ← Back
+</button>
+
+</div>
+
+<div class="form-section">
+<h2>Create Pre-Arrest Bail Application</h2>
+
+<label>عدالت کا نام</label><input id="court_name">
+<label>ملزم کا نام</label><input id="accused_name">
+<label>والد کا نام</label><input id="father_name">
+<label>قوم</label><input id="caste">
+<label>پتہ</label><input id="address">
+<label>مقدمہ نمبر</label><input id="case_no">
+<label>مورخہ</label><input type="date" id="case_date">
+<label>زیر دفعہ</label><input id="sections">
+<label>تھانہ</label><input id="police_station">
+<label>دلائل</label><textarea id="note_points" rows="10"></textarea>
+<label>وکیل کا نام</label><input id="lawyer_name">
+<label>وکیل کا پتہ</label><input id="lawyer_address">
+</div>
+<div class="container">
+<div class="header">
+<p>بعدالت جناب
+<span id="output_court_name" class="placeholder-line"></span>
+تھانہ
+<span id="output_police_station_header" class="placeholder-line"></span></p>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="party-info">
+<span id="output_accused_name" class="placeholder-line"></span>
+ولد
+<span id="output_father_name" class="placeholder-line"></span>
+قوم
+<span id="output_caste" class="placeholder-line"></span>
+سکنه
+<span id="output_address" class="placeholder-line"></span>
+<span class="accused-label">----(سائل / ملزم)</span>
+</div>
+<div class="vs-title">
+<p>بنــــــــــام</p>
+<p>ســـــــــــرکار</p>
+</div>
+<div class="case-details-container">
+<span class="case-details">
+مقدمہ نمبر <span id="output_case_no" class="placeholder-line"></span>
+مورخہ <span id="output_case_date_display" class="placeholder-line"></span>
+بجرم زیر دفعہ <span id="output_sections" class="placeholder-line"></span>
+    <br>
+ تھانہ <span id="output_police_station" class="placeholder-line"></span>
+</span>
+</div>
+<div class="section-title">
+<p>درخواست ضمانت قبل از گرفتاری</p>
+</div>
+<div class="greetings-line">
+<p>جناب عالی!سائل حسبِ ذیل عرض پرداز ہے۔</p>
+</div>
+<div id="dynamic_points_area" class="points-list"></div>
+<p class="plea-paragraph">
+حالات بالا کے پیش نظر استدعا ہے کہ سائل کی درخواست ضمانت قبل از گرفتاری منظور فرمائی جائے۔</p>
+<div class="signature-area">
+  <div class="signature-right">
+    <p>مورخہ <span id="output_date" class="placeholder-line"></span></p>
+
+    <p class="arz-center">عــــــــــرضـــــــــے</p>
+
+    <!-- 👇 یہی line بھی center -->
+    <p id="signature_accused_name" class="sig-center placeholder-line"></p>
+  </div> 
+  <div class="signature-left">
+    <p>بذریعہ کونسل</p>
+    <span id="output_lawyer_name" class="lawyer-name placeholder-line"></span>
+    <span class="lawyer-title">ایڈووکیٹ ہائیکورٹ</span>
+    <span id="output_lawyer_address" class="lawyer-address placeholder-line"></span>
+  </div>
+</div>
+<button onclick="downloadPDF()" class="download-btn">
+    Download / Print
+</button>
+
+<button id="backToTop" onclick="scrollToTop()">↑ Top</button>
+
+
+</div>
+<script>
+function setVal(id,val){
+ const el=document.getElementById(id);
+ if(val.trim()===''){
+   el.textContent='';
+   el.classList.remove('filled');
+ }else{
+   el.textContent=val;
+   el.classList.add('filled');
+ }
+}
+
+function updateDocument(){
+ setVal('output_court_name', court_name.value);
+ setVal('output_police_station_header',police_station.value);
+ setVal('output_accused_name',accused_name.value);
+ setVal('output_father_name',father_name.value);
+ setVal('output_caste',caste.value);
+ setVal('output_address',address.value);
+ setVal('output_case_no',case_no.value);
+ setVal('output_case_date_display',case_date.value);
+ setVal('output_date',case_date.value);
+ setVal('output_sections',sections.value);
+ setVal('output_police_station',police_station.value);
+ setVal('output_lawyer_name',lawyer_name.value);
+ setVal('output_lawyer_address',lawyer_address.value);
+ setVal('signature_accused_name', accused_name.value ? '(سائل / ملزم) ---- ' + accused_name.value : ''
+);
+
+
+ dynamic_points_area.innerHTML='';
+ note_points.value.split('\n').forEach(t=>{
+   if(t.trim()){
+     const li=document.createElement('li');
+     li.textContent=t;
+     dynamic_points_area.appendChild(li);
+   }
+ });
+}
+
+document.querySelectorAll('.form-section input,.form-section textarea')
+.forEach(i=>i.addEventListener('input',updateDocument));
+
+
+updateDocument();
+function downloadPDF(){
+    window.print();
+}
+ const backToTop = document.getElementById("backToTop");
+
+    window.onscroll = function() {
+      if (document.documentElement.scrollTop > 200) {
+        backToTop.style.display = "block";
+      } else {
+        backToTop.style.display = "none";
+      }
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+function scrollToTop(){
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+</script>
+
+</body>
+</html>
