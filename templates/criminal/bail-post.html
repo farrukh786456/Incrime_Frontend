@@ -364,6 +364,7 @@ nav ul li a:hover{
 <div class="form-section">
 <h2>Create Post-Bail Application</h2>
 
+<label>عدالت کا نام</label><input id="court_name">
 <label>ملزم کا نام</label><input id="accused_name">
 <label>والد کا نام</label><input id="father_name">
 <label>قوم</label><input id="caste">
@@ -378,7 +379,9 @@ nav ul li a:hover{
 </div>
 <div class="container">
 <div class="header">
-<p>بعدالت جناب علاقہ جوڈیشل مجسٹریٹ صاحبہ تھانہ
+<p>بعدالت جناب
+<span id="output_court_name" class="placeholder-line"></span>
+تھانہ
 <span id="output_police_station_header" class="placeholder-line"></span></p>
 </div>
 <br>
@@ -455,6 +458,7 @@ function setVal(id,val){
 }
 
 function updateDocument(){
+ setVal('output_court_name', court_name.value);
  setVal('output_police_station_header',police_station.value);
  setVal('output_accused_name',accused_name.value);
  setVal('output_father_name',father_name.value);
