@@ -8,25 +8,17 @@
     *{
     box-sizing: border-box;
     }
-  
     img{
     max-width:100%;
     height:auto;
     }
-
     body{
-    overflow-x:hidden;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       color: #0d2a3a;
       background: #fff;
+      overflow-x: hidden;
     }
-
     /* --- Navbar --- */
     nav {
       display: flex;
@@ -466,21 +458,7 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-6px); }
     }
-    @media (max-width: 768px){
-    nav{
-      padding: 12px 20px;
-      flex-wrap: wrap;
-    }
-    nav ul{
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin: 10px 0;
-    }  
-    nav button{
-      margin-top: 10px;
-    }
-    }
+    
     /* --- Footer --- */
     footer {
       background: #0b2331;
@@ -488,65 +466,80 @@
       text-align: center;
       padding: 15px;
     }
-   @media (max-width: 768px){
+  @media (max-width: 768px){
 
-      .hero{
-        padding: 40px 20px;
-        height: auto;
-        text-align: center;
-      }
-    
-      .hero-content{
-        flex-direction: column;
-      }
-    
-      .hero-text{
-        padding-right: 0;
-        margin-bottom: 30px;
-      }
-    
-      .hero h1{
-        font-size: 28px;
-      }
-    
-      .hero p{
-        font-size: 15px;
-      }
-    
-    }
-      @media (max-width: 768px){
-      
-        .categories{
-          padding: 40px 20px;
-        }
-      
-        .categories h2{
-          font-size: 26px;
-        }
-      
-      }
-      @media (max-width: 768px){
+  /* NAVBAR */
+  nav{
+    padding: 12px 20px;
+    flex-wrap: wrap;
+  }
 
-      .contact{
-        padding: 50px 20px;
-      }
-    
-      .contact h2{
-        font-size: 26px;
-      }
-    
-      .contact p{
-        font-size: 15px;
-      }
-    
-    }
-    @media (max-width: 768px){
-      #backToTop{
-        right: 15px;
-        bottom: 15px;
-        padding: 10px 14px;
-      }
-    }
+  nav ul{
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 10px 0;
+  }
+
+  nav button{
+    margin-top: 10px;
+  }
+
+  /* HERO */
+  .hero{
+    padding: 40px 20px;
+    height: auto;
+    text-align: center;
+  }
+
+  .hero-content{
+    flex-direction: column;
+  }
+
+  .hero-text{
+    padding-right: 0;
+    margin-bottom: 30px;
+  }
+
+  .hero h1{
+    font-size: 28px;
+  }
+
+  .hero p{
+    font-size: 15px;
+  }
+
+  /* CATEGORIES */
+  .categories{
+    padding: 40px 20px;
+  }
+
+  .categories h2{
+    font-size: 26px;
+  }
+
+  /* CONTACT */
+  .contact{
+    padding: 50px 20px;
+  }
+
+  .contact h2{
+    font-size: 26px;
+  }
+
+  .contact p{
+    font-size: 15px;
+  }
+
+  /* BACK TO TOP */
+  #backToTop{
+    right: 15px;
+    bottom: 15px;
+    padding: 10px 14px;
+  }
+
+}
+
 
   </style>
 </head>
@@ -936,16 +929,6 @@
       alert('Starting ' + caseType + '...\nThis would open a form generator in actual implementation.');
       // In actual implementation, this would redirect to form generator
       // window.location.href = 'form-generator.html?type=' + caseType;
-    }
-
-    function startBailApplication(bailType) {
-      if (bailType === 'pre-arrest') {
-        alert('Starting Pre-Arrest Bail Application...\nThis form is for anticipatory bail under Section 498 CrPC.\nRequired information:\n• Personal details\n• Case details\n• Reasons for anticipatory bail\n• Supporting documents');
-        // window.location.href = 'pre-arrest-bail-form.html';
-      } else if (bailType === 'post-arrest') {
-        alert('Starting Post-Arrest Bail Application...\nThis form is for regular bail under Section 497 CrPC.\nRequired information:\n• Arrest details\n• Police station information\n• Grounds for bail\n• Surety details');
-        // window.location.href = 'post-arrest-bail-form.html';
-      }
     }
 
     // Back to Top Button
