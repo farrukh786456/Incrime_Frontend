@@ -466,10 +466,14 @@
       text-align: center;
       padding: 15px;
     }
-    @media (max-width: 768px){
+@media (max-width: 768px){
+
   /* NAV BAR BASE */
   nav{
     padding: 10px 14px;
+    min-height: 56px;
+    border-bottom: none;
+    box-shadow: none;
   }
 
   /* LOGO */
@@ -496,7 +500,7 @@
   /* MOBILE MENU (HIDDEN BY DEFAULT) */
   nav ul{
     position: absolute;
-    top: 60px;
+    top: 56px;           /* 🔥 yahan 60 se 56 */
     left: 0;
     width: 100%;
     background: rgba(13,42,58,0.98);
@@ -527,58 +531,56 @@
   nav button{
     display: none;
   }
+
   /* HERO */
-   .hero-content{
-    flex-direction: row;          /* 🔥 vertical se horizontal */
+  .hero{
+    margin-top: 0;
+    min-height: 85vh;
+    padding: 40px 20px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
+  /* DARK OVERLAY */
+  .hero::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 0;
+  }
+
+  .hero-content{
+    position: relative;
+    z-index: 1;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
   }
 
-  /* TEXT SIDE CHHOTA */
+  /* TEXT SIDE */
   .hero-text{
     flex: 1.2;
     padding-right: 10px;
     margin-bottom: 0;
     text-align: left;
   }
-/* HERO BACKGROUND MOBILE FIX */
-.hero{
-  min-height: 65vh;
-  padding: 30px 20px;
-
-  background-position: center top;
-  background-size: contain;     /* 🔥 poora image show */
-  background-repeat: no-repeat;
-}
-
-/* DARK OVERLAY */
-.hero::after{
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  z-index: 0;
-}
-
-.hero-content{
-  position: relative;
-  z-index: 1;
-}
 
   .hero h1{
-    font-size: 20px;              /* 🔥 chhota */
+    font-size: 20px;
     line-height: 1.2;
     margin-bottom: 8px;
   }
 
   .hero p{
-    font-size: 13px;              /* 🔥 chhota */
+    font-size: 13px;
     line-height: 1.4;
-  } 
-      
+  }
 
-  /* APPLICATION CARD CHHOTI + SIDE MEIN */
+  /* APPLICATION CARD */
   .app-card{
     flex: 0.8;
     padding: 18px;
@@ -630,7 +632,6 @@
 
 }
 
-
   </style>
 </head>
 <body>
@@ -638,13 +639,14 @@
   <!-- Navbar -->
 <nav>
   <div class="logo">⚖️ InCrime</div>
+
   <div class="menu-toggle" onclick="toggleMenu()">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
-<ul id="navLinks">
-  <ul>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <ul id="navLinks">
     <li><a href="#" onclick="showHome()">Home</a></li>
     <li><a href="#categories">Case Categories</a></li>
     <li><a href="how-it-works.html">How It Works</a></li>
@@ -653,8 +655,10 @@
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+
   <button onclick="window.location.href='login.html'">Login</button>
 </nav>
+
 
   <!-- Home Page (Main Content) -->
   <div id="homePage">
