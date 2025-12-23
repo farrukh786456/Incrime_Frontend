@@ -466,42 +466,66 @@
       text-align: center;
       padding: 15px;
     }
-  @media (max-width: 768px){
-
-  /* NAVBAR */
+    @media (max-width: 768px){
+  /* NAV BAR BASE */
   nav{
-    padding: 8px 10px;
-    flex-wrap: nowrap;
+    padding: 10px 14px;
   }
 
+  /* LOGO */
   nav .logo{
-    font-size: 16px;
+    font-size: 18px;
     white-space: nowrap;
   }
 
-  nav ul{
+  /* HAMBURGER ICON */
+  .menu-toggle{
     display: flex;
-    flex-wrap: nowrap;
-    gap: 10px;
-    margin: 0 6px;
-    overflow-x: auto;
-    white-space: nowrap;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
   }
 
-  nav ul::-webkit-scrollbar{
-    display: none;
+  .menu-toggle span{
+    width: 24px;
+    height: 3px;
+    background: #FFD700;
+    border-radius: 2px;
+  }
+
+  /* MOBILE MENU (HIDDEN BY DEFAULT) */
+  nav ul{
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: rgba(13,42,58,0.98);
+
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    padding: 18px 0;
+    margin: 0;
+
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  /* SHOW MENU */
+  nav ul.show{
+    max-height: 420px;
   }
 
   nav ul li a{
-    font-size: 12px;   /* 🔥 text chhota */
+    font-size: 15px;
     font-weight: 500;
-    white-space: nowrap;
   }
 
+  /* LOGIN BUTTON HIDE ON MOBILE */
   nav button{
-    padding: 5px 10px;
-    font-size: 12px;   /* 🔥 button text chhota */
-    white-space: nowrap;
+    display: none;
   }
   /* HERO */
    .hero-content{
@@ -518,6 +542,29 @@
     margin-bottom: 0;
     text-align: left;
   }
+/* HERO BACKGROUND MOBILE FIX */
+.hero{
+  min-height: 65vh;
+  padding: 30px 20px;
+
+  background-position: center top;
+  background-size: contain;     /* 🔥 poora image show */
+  background-repeat: no-repeat;
+}
+
+/* DARK OVERLAY */
+.hero::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 0;
+}
+
+.hero-content{
+  position: relative;
+  z-index: 1;
+}
 
   .hero h1{
     font-size: 20px;              /* 🔥 chhota */
@@ -528,7 +575,8 @@
   .hero p{
     font-size: 13px;              /* 🔥 chhota */
     line-height: 1.4;
-  }
+  } 
+      
 
   /* APPLICATION CARD CHHOTI + SIDE MEIN */
   .app-card{
@@ -590,6 +638,12 @@
   <!-- Navbar -->
 <nav>
   <div class="logo">⚖️ InCrime</div>
+  <div class="menu-toggle" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+<ul id="navLinks">
   <ul>
     <li><a href="#" onclick="showHome()">Home</a></li>
     <li><a href="#categories">Case Categories</a></li>
@@ -1014,7 +1068,9 @@
     window.location.href = 'templates/criminal/bail-post.html';
   }
 }
-
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("show");
+}
   </script>
 
 </body>
