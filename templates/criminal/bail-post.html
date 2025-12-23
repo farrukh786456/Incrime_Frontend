@@ -28,10 +28,10 @@ body{
     margin: 12mm;   /* A4 standard margin */
 }
 .header{text-align:center;margin-bottom:25px;margin-top:-30px;}
-.header p{margin:0;font-size:20px}
+.header p{margin:0;font-size:27px}
 
 .party-info{
-    font-size:14px;
+    font-size:20px;
     line-height:1.2;
     margin-bottom:10px;
     text-align:center;
@@ -39,14 +39,14 @@ body{
 .party-info span{margin:0 1px}
 .accused-label{
     display:block;          /* 🔴 new line */
-    font-size:14px;         /* 🔴 normal size */
+    font-size:18px;         /* 🔴 normal size */
     margin-top:4px;
     text-align:left;      
 }
 .vs-title{
     text-align: center;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.1;
     font-family: 'Noto Nastaliq Urdu', serif;
     position: relative;
@@ -57,6 +57,7 @@ body{
 
 
 .case-details,.section-title p{
+    font-size:20px;
     font-weight:bold;
     text-decoration:underline;
     display:inline;
@@ -65,29 +66,28 @@ body{
     text-align:center;
     margin:15px 0;
 }
-.section-title p{font-size:18px;margin:0}
+.section-title p{font-size:22px;margin:0}
 .greetings-line{
     display:block;
-    font-size:18px;
+    font-size:16px;
     font-weight:bold;
     margin-top:20px;
-}
-.normal-text{
-    font-weight:normal;
-    margin:0;
 }        
 .points-list{
+    font-size:16px;
     list-style:none;
     padding-right:0;
     min-height:100px;
 }
 .plea-paragraph{
+    font-size:16px;
     text-align:center;
     margin:20px auto 0;
     width:45%;
     margin-right:65%;   /* ← tab-jaisa left shift */
 }
 .signature-area{
+    font-size:16px;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -113,11 +113,18 @@ body{
     text-align:left;
 }
 .arz-center{
-    font-weight:bold;
-    font-size:28px;
-    text-align:center;
-    margin-top:15px;
+    font-weight: bold;
+    font-size: 19px;
+    text-align: center;
+
+    line-height: 1;          /* 🔴 sab se important */
+    margin: 0;               /* 🔴 extra gap khatam */
+    padding: 0;              /* 🔴 extra space khatam */
+
+    display: block;
 }
+
+
 .signature-left .lawyer-name.placeholder-line,
 .signature-left .lawyer-address.placeholder-line{
     width:auto;
@@ -130,7 +137,7 @@ body{
 }
 .lawyer-name{
     font-weight:bold;
-    font-size:22px;
+    font-size:18px;
     display:block;
 }
 .lawyer-title{
@@ -139,7 +146,7 @@ body{
     display:block;
 }
 .lawyer-address{
-    font-size:11px;
+    font-size:16px;
     display:block;
 }
 /* ONLY REQUIRED CHANGE */
@@ -205,79 +212,132 @@ body{
 }
 @media print {
 
-  /* ❌ UI / Backend hide */
+  /* ❌ UI / Navigation hide */
   nav,
   .form-section,
-  .download-btn {
+  .download-btn,
+  .floating-back-btn,
+  #scrollTopBtn {
     display: none !important;
     visibility: hidden !important;
   }
-  /* ✅ Page clean */
+
+  /* ✅ Clean document */
   body {
     background: #fff !important;
     padding: 0 !important;
     margin: 0 !important;
   }
-  /* ✅ A4 document only */
+
   .container {
     width: 170mm !important;
     min-height: 257mm !important;
     margin: auto !important;
-    border: 2px solid #000 !important;
     padding: 15mm !important;
     box-sizing: border-box !important;
   }
 }
+
 nav{
-  direction:ltr;               /* 🔴 RTL effect khatam */
+  direction:ltr;
   box-sizing:border-box;
 
   display:flex;
   align-items:center;
   justify-content:space-between;
 
-  padding:15px 60px;
-  background:rgba(13, 42, 58, 0.95);
+  padding:16px 80px;              /* 🔥 desktop spacing */
+  background: rgba(13, 42, 58, 0.95);
   color:#fff;
-  box-shadow:0 3px 10px rgba(0,0,0,0.2);
-
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
   position:fixed;
   top:0;
   left:0;
-  width:100vw;                 /* 🔴 full viewport width */
+  width:100%;
   z-index:9999;
 }
-    nav .logo {
-      font-size: 24px;
+ nav .logo{
+  font-size: 24px;
+  font-weight: bold;
+  cursor:pointer;
+  white-space:nowrap;
+}
+   nav ul{
+  list-style:none;
+  display:flex;
+  gap:30px;              /* 🔥 first code jaisa gap */
+  margin:0;
+  padding:0;
+  align-items:center;
+}
+   nav ul li a{
+  text-decoration:none;
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+}
+nav ul li a:hover{
+  color:#FFD700;        /* 🔥 same yellow as index.html */
+}
+
+   nav button{
+  background:#FFD700;
+  border:none;
+  color:#0d2a3a;
+  padding:8px 18px;
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.floating-back-btn{
+  position: fixed;
+  top: 95px;              /* navbar ke neeche */
+  left: 25px;             /* 🔥 LEFT side */
+
+  background:#0d2a3a;     /* navbar jaisa color */
+  color:#FFD700;
+
+  border:none;
+  padding:8px 14px;
+  border-radius:8px;
+
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+
+  box-shadow:0 3px 10px rgba(0,0,0,0.25);
+  z-index:9998;
+}
+
+.floating-back-btn:hover{
+  background:#FFD700;
+  color:#0d2a3a;
+}
+
+#backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #FFD700;
+      color: #0d2a3a;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 50px;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      margin-right:auto;
-    white-space:nowrap;          /* 🔴 text wrap na ho */
-}
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-      margin: 0;
-      padding: 0;
-      margin-left: auto;
-      margin-right: 20px;
-      flex-wrap:nowrap;
-  white-space:nowrap;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      display: none;
+      animation: floatUpDown 2s infinite ease-in-out;
     }
-    nav ul li a {
-      text-decoration: none;
-      color: #fff;
+
+    #backToTop:hover {
+      background: #f4d03f;
+      transform: scale(1.05);
     }
-    nav button {
-      background: #FFD700;
-      border: none;
-      color: #0d2a3a;
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-    }
+
 </style>
 </head>
 
@@ -292,6 +352,11 @@ nav{
     <li><a href="../../index.html#contact">Contact</a></li>
   </ul>
 </nav>
+
+<div class="back-bar">
+  <button class="floating-back-btn" onclick="window.location.href='application.html'">← Back</button>
+</div>
+
 <div class="form-section">
 <h2>Create Post-Bail Application</h2>
 
@@ -343,8 +408,7 @@ nav{
 <p>درخواست ضمانت بعد از گرفتاری</p>
 </div>
 <div class="greetings-line">
-<p>جناب عالی!</p>
-<p class="normal-text">سائل / ملزم حسب ذیل مرض پرداز ہے۔</p>
+<p>جناب عالی!سائل حسبِ ذیل عرض پرداز ہے۔</p>
 </div>
 <div id="dynamic_points_area" class="points-list"></div>
 <p class="plea-paragraph">
@@ -368,7 +432,11 @@ nav{
 </div>
 <button onclick="downloadPDF()" class="download-btn">
     Download / Print
-</button> 
+</button>
+
+<button id="backToTop" onclick="scrollToTop()">↑ Top</button>
+
+
 </div>
 <script>
 function setVal(id,val){
@@ -416,6 +484,26 @@ document.querySelectorAll('.form-section input,.form-section textarea')
 updateDocument();
 function downloadPDF(){
     window.print();
+}
+ const backToTop = document.getElementById("backToTop");
+
+    window.onscroll = function() {
+      if (document.documentElement.scrollTop > 200) {
+        backToTop.style.display = "block";
+      } else {
+        backToTop.style.display = "none";
+      }
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+function scrollToTop(){
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 }
 
 </script>
