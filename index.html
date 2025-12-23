@@ -486,11 +486,12 @@
   }
 
   .menu-toggle span{
-    width: 24px;
-    height: 3px;
-    background: #FFD700;
-    border-radius: 2px;
-  }
+  width: 24px;
+  height: 3px;
+  background: #FFD700;
+  border-radius: 2px;
+}
+
 
   /* LOGO CENTER */
   nav .logo{
@@ -512,30 +513,30 @@
 
   /* 🔥 MENU FULLY HIDDEN */
   #navLinks{
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: rgba(13,42,58,0.98);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: rgba(13,42,58,0.98);
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 
-    padding: 0;
-    margin: 0;
+  padding: 0;              /* 🔥 IMPORTANT */
+  margin: 0;
 
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.3s ease;
-  }
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+}
 
-  /* 🔥 SHOW ONLY ON CLICK */
-  #navLinks.show{
-    max-height: 500px;
-    padding: 18px 0;
-  }
+#navLinks.show{
+  max-height: 420px;
+  padding: 18px 0;
+}
+
 
   #navLinks li{
     list-style: none;
