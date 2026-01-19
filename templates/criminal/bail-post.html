@@ -338,13 +338,84 @@ nav ul li a:hover{
       transform: scale(1.05);
     }
 
+    /* ================= MOBILE NAVBAR ================= */
+.menu-toggle{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+  color:#FFD700;
+}
+
+/* 🔴 MOBILE VIEW ONLY */
+@media (max-width: 768px){
+
+  body{
+    padding-top:75px;   /* navbar height mobile */
+  }
+
+  nav{
+    padding:14px 16px;     /* mobile spacing */
+    justify-content:center;
+  }
+
+  /* ☰ LEFT */
+  .menu-toggle{
+    display:block;
+    position:absolute;
+    left:16px;
+  }
+
+  /* InCrime CENTER */
+  nav .logo{
+    font-size:20px;
+    margin:0 auto;
+    text-align:center;
+  }
+
+  /* MENU HIDE */
+  nav ul{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    background:#0d2a3a;
+    flex-direction:column;
+    gap:0;
+  }
+
+  nav ul li{
+    border-top:1px solid rgba(255,255,255,0.15);
+    text-align:center;
+  }
+
+  nav ul li a{
+    display:block;
+    padding:14px;
+    font-size:16px;
+  }
+
+  /* SHOW MENU */
+  nav ul.active{
+    display:flex;
+  }
+
+  /* floating back button thora neeche */
+  .floating-back-btn{
+    top:80px;
+  }
+}
+    
 </style>
 </head>
 
 <body>
 <nav>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
   <div class="logo" onclick="window.location.href='../../index.html'">⚖️ InCrime</div>
-  <ul>
+
+  <ul class="nav-menu">
     <li><a href="../../index.html">Home</a></li>
     <li><a href="../../how-it-works.html">How It Works</a></li>
     <li><a href="../../chatbot.html">Chatbot Help</a></li>
@@ -507,13 +578,12 @@ function downloadPDF(){
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-function scrollToTop(){
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+function toggleMenu(){
+  const menu = document.querySelector('.nav-menu');
+  menu.classList.toggle('active');
+  document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
 }
-
+    
 </script>
 
 </body>
