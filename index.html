@@ -5,20 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InCrime – Every Case, Every Detail</title>
   <style>
-    *{
-    box-sizing: border-box;
+    html {
+      scroll-behavior: smooth;
     }
-    img{
-    max-width:100%;
-    height:auto;
-    }
-    body{
+
+    body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       color: #0d2a3a;
       background: #fff;
-      overflow-x: hidden;
     }
+
     /* --- Navbar --- */
     nav {
       display: flex;
@@ -458,7 +455,7 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-6px); }
     }
-    
+
     /* --- Footer --- */
     footer {
       background: #0b2331;
@@ -466,185 +463,6 @@
       text-align: center;
       padding: 15px;
     }
-@media (max-width: 768px){
-
-  /* NAV LAYOUT */
-  nav{
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    padding: 10px 14px;
-    position: relative;
-  }
-
-  /* ☰ LEFT */
-  .menu-toggle{
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    cursor: pointer;
-  }
-
-  .menu-toggle span{
-  width: 24px;
-  height: 3px;
-  background: #FFD700;
-  border-radius: 2px;
-}
-
-
-  /* LOGO CENTER */
-  nav .logo{
-    justify-self: center;
-    font-size: 18px;
-    white-space: nowrap;
-  }
-
-  /* LOGIN RIGHT */
-  .login-btn{
-    display: block;
-    background: #FFD700;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 600;
-  }
-
-  /* 🔥 MENU FULLY HIDDEN */
-  #navLinks{
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background: rgba(13,42,58,0.98);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-
-  padding: 0;              /* 🔥 IMPORTANT */
-  margin: 0;
-
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.3s ease;
-}
-
-#navLinks.show{
-  max-height: 420px;
-  padding: 18px 0;
-}
-
-
-  #navLinks li{
-    list-style: none;
-  }
-
-  #navLinks li a{
-    font-size: 15px;
-    font-weight: 500;
-    color: #fff;
-  }
-  /* HERO */
-  .hero{
-    margin-top: 0;
-    min-height: 85vh;
-    padding: 40px 20px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
-  }
-
-  /* DARK OVERLAY */
-  .hero::after{
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.55);
-    z-index: 0;
-  }
-
-  .hero-content{
-    position: relative;
-    z-index: 1;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-  }
-
-  /* TEXT SIDE */
-  .hero-text{
-    flex: 1.2;
-    padding-right: 10px;
-    margin-bottom: 0;
-    text-align: left;
-  }
-
-  .hero h1{
-    font-size: 20px;
-    line-height: 1.2;
-    margin-bottom: 8px;
-  }
-
-  .hero p{
-    font-size: 13px;
-    line-height: 1.4;
-  }
-
-  /* APPLICATION CARD */
-  .app-card{
-    flex: 0.8;
-    padding: 18px;
-    border-radius: 12px;
-  }
-
-  .app-card .icon{
-    font-size: 28px;
-    margin-bottom: 8px;
-  }
-
-  .app-card h3{
-    font-size: 16px;
-    margin-bottom: 6px;
-  }
-
-  .app-card p{
-    font-size: 12px;
-  }
-
-  /* CATEGORIES */
-  .categories{
-    padding: 40px 20px;
-  }
-
-  .categories h2{
-    font-size: 26px;
-  }
-
-  /* CONTACT */
-  .contact{
-    padding: 50px 20px;
-  }
-
-  .contact h2{
-    font-size: 26px;
-  }
-
-  .contact p{
-    font-size: 15px;
-  }
-
-  /* BACK TO TOP */
-  #backToTop{
-    right: 15px;
-    bottom: 15px;
-    padding: 10px 14px;
-  }
-}
 
   </style>
 </head>
@@ -652,26 +470,18 @@
 
   <!-- Navbar -->
 <nav>
-  <div class="menu-toggle" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
   <div class="logo">⚖️ InCrime</div>
-
-  <ul id="navLinks">
-    <li><a href="#" onclick="closeMenu(); showHome()">Home</a></li>
-    <li><a href="#categories" onclick="closeMenu()">Case Categories</a></li>
+  <ul>
+    <li><a href="#" onclick="showHome()">Home</a></li>
+    <li><a href="#categories">Case Categories</a></li>
     <li><a href="how-it-works.html">How It Works</a></li>
     <li><a href="chatbot.html">Chatbot Help</a></li>
     <li><a href="admin.html">Admin</a></li>
-    <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
-   <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
+  <button onclick="window.location.href='login.html'">Login</button>
 </nav>
-
-
 
   <!-- Home Page (Main Content) -->
   <div id="homePage">
@@ -699,10 +509,6 @@
         <div class="card" onclick="showCategory('criminal')">
           <h3>Criminal Cases</h3>
           <p>Cases related to theft, assault, and other criminal offences. Legal guidance and FIR drafting support available.</p>
-        </div>
-        <div class="card" onclick="showCategory('civil')">
-          <h3>Civil Cases</h3>
-          <p>Property, marriage, and contractual disputes. Generate petitions or applications instantly.</p>
         </div>
         <div class="card" onclick="showCategory('family')">
           <h3>Family Cases</h3>
@@ -780,7 +586,7 @@
         <button class="bail-btn">Select</button>
       </div>
       
-       <div class="bail-type-card post-arrest"onclick="startBailApplication('post-arrest')">
+      <div class="bail-type-card post-arrest" onclick="startBailApplication('post-arrest')">
         <h4>Post-Arrest Bail (Regular Bail)</h4>
         <p><strong>Section 497 CrPC</strong> - Applied after arrest has been made, when you or someone is already in police custody.</p>
         
@@ -815,48 +621,7 @@
     <button class="back-btn" onclick="showCriminalPage()">← Back to Criminal Cases</button>
   </div>
 
-  <!-- Civil Cases Page -->
-  <div id="civilPage" class="category-page">
-    <div class="page-header">
-      <h1>Civil Cases</h1>
-      <p>Select a civil case type to generate legal application</p>
-    </div>
-    
-    <div class="subcategories-grid">
-      <div class="subcategory-card" onclick="('Property Dispute')">
-        <h4>Property Dispute</h4>
-        <p>Land, house, or commercial property conflicts</p>
-        <button class="start-btn">Next</button>
-      </div>
-      <div class="subcategory-card" onclick="startApplication('Rent Agreement')">
-        <h4>Rent Agreement</h4>
-        <p>Landlord-tenant rental agreements and disputes</p>
-        <button class="start-btn">Next</button>
-      </div>
-      <div class="subcategory-card" onclick="startApplication('Loan Recovery')">
-        <h4>Loan Recovery</h4>
-        <p>Recovery of personal or business loans</p>
-        <button class="start-btn">Next</button>
-      </div>
-      <div class="subcategory-card" onclick="startApplication('Consumer Complaint')">
-        <h4>Consumer Complaint</h4>
-        <p>Against faulty products or poor services</p>
-        <button class="start-btn">Next</button>
-      </div>
-      <div class="subcategory-card" onclick="startApplication('Breach of Contract')">
-        <h4>Breach of Contract</h4>
-        <p>When contractual agreements are violated</p>
-        <button class="start-btn">Next</button>
-      </div>
-      <div class="subcategory-card" onclick="startApplication('Will & Testament')">
-        <h4>Will & Testament</h4>
-        <p>Legal will drafting and execution</p>
-        <button class="start-btn">Next</button>
-      </div>
-    </div>
-    
-    <button class="back-btn" onclick="showHome()">← Back to Categories</button>
-  </div>
+ 
 
   <!-- Family Cases Page -->
   <div id="familyPage" class="category-page">
@@ -922,182 +687,77 @@
     © 2025 InCrime | Every Case, Every Detail
   </footer>
 
-  <script>
-    // Show/Hide Pages with Browser History Support
-    function showHome() {
-      document.getElementById('homePage').style.display = 'block';
-      document.getElementById('criminalPage').classList.remove('active');
-      document.getElementById('civilPage').classList.remove('active');
-      document.getElementById('familyPage').classList.remove('active');
-      document.getElementById('bailTypesPage').classList.remove('active');
-      
-      // Browser history update
-      history.pushState({ page: 'home' }, '', window.location.pathname);
-      
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function showCategory(category) {
-      document.getElementById('homePage').style.display = 'none';
-      document.getElementById('criminalPage').classList.remove('active');
-      document.getElementById('civilPage').classList.remove('active');
-      document.getElementById('familyPage').classList.remove('active');
-      document.getElementById('bailTypesPage').classList.remove('active');
-      
-      if (category === 'criminal') {
-        document.getElementById('criminalPage').classList.add('active');
-      } else if (category === 'civil') {
-        document.getElementById('civilPage').classList.add('active');
-      } else if (category === 'family') {
-        document.getElementById('familyPage').classList.add('active');
-      }
-      
-      // Browser history update with hash
-      history.pushState({ page: category }, '', '#' + category);
-      
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function showBailTypes() {
-      document.getElementById('homePage').style.display = 'none';
-      document.getElementById('criminalPage').classList.remove('active');
-      document.getElementById('civilPage').classList.remove('active');
-      document.getElementById('familyPage').classList.remove('active');
-      document.getElementById('bailTypesPage').classList.add('active');
-      
-      // Browser history update
-      history.pushState({ page: 'bail-types' }, '', '#bail-types');
-      
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function showCriminalPage() {
-      document.getElementById('homePage').style.display = 'none';
-      document.getElementById('criminalPage').classList.add('active');
-      document.getElementById('civilPage').classList.remove('active');
-      document.getElementById('familyPage').classList.remove('active');
-      document.getElementById('bailTypesPage').classList.remove('active');
-      
-      // Browser history update
-      history.pushState({ page: 'criminal' }, '', '#criminal');
-      
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Handle browser back/forward buttons
-    window.addEventListener('popstate', function(event) {
-      const hash = window.location.hash;
-      
-      if (hash === '#criminal') {
-        showCategory('criminal');
-      } else if (hash === '#civil') {
-        showCategory('civil');
-      } else if (hash === '#family') {
-        showCategory('family');
-      } else if (hash === '#bail-types') {
-        showBailTypes();
-      } else {
-        showHome();
-      }
-    });
-
-    // On page load, check URL and show correct page
-    window.addEventListener('load', function() {
-      const hash = window.location.hash;
-      
-      if (hash === '#criminal') {
-        showCategory('criminal');
-      } else if (hash === '#civil') {
-        showCategory('civil');
-      } else if (hash === '#family') {
-        showCategory('family');
-      } else if (hash === '#bail-types') {
-        showBailTypes();
-      } else {
-        showHome();
-      }
-      
-      // Also handle initial state
-      history.replaceState({ page: 'home' }, '', window.location.pathname);
-    });
-
-    // Also handle when user directly enters URL with hash
-    window.addEventListener('hashchange', function() {
-      const hash = window.location.hash;
-      
-      if (hash === '#criminal') {
-        showCategory('criminal');
-      } else if (hash === '#civil') {
-        showCategory('civil');
-      } else if (hash === '#family') {
-        showCategory('family');
-      } else if (hash === '#bail-types') {
-        showBailTypes();
-      } else {
-        showHome();
-      }
-    });
-
-    function startApplication(caseType) {
-      alert('Starting ' + caseType + '...\nThis would open a form generator in actual implementation.');
-      // In actual implementation, this would redirect to form generator
-      // window.location.href = 'form-generator.html?type=' + caseType;
-    }
-
-    // Back to Top Button
-    const backToTop = document.getElementById("backToTop");
-
-    window.onscroll = function() {
-      if (document.documentElement.scrollTop > 200) {
-        backToTop.style.display = "block";
-      } else {
-        backToTop.style.display = "none";
-      }
-    };
-
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Initialize - this will run on page load
-    document.addEventListener('DOMContentLoaded', function() {
-      // Initial check for hash
-      const hash = window.location.hash;
-      
-      if (hash === '#criminal') {
-        showCategory('criminal');
-      } else if (hash === '#civil') {
-        showCategory('civil');
-      } else if (hash === '#family') {
-        showCategory('family');
-      } else if (hash === '#bail-types') {
-        showBailTypes();
-      } else {
-        showHome();
-      }
-    });
-
-    function startBailApplication(bailType) {
-  if (bailType === 'pre-arrest') {
-    window.location.href = 'templates/criminal/bail-pre.html';
-  } 
-  else if (bailType === 'post-arrest') {
-    window.location.href = 'templates/criminal/bail-post.html';
+<script>
+  function hideAllPages() {
+    document.getElementById('homePage').style.display = 'none';
+    document.getElementById('criminalPage').classList.remove('active');
+    document.getElementById('familyPage').classList.remove('active');
+    document.getElementById('bailTypesPage').classList.remove('active');
   }
-}
-function toggleMenu(){
-  document.getElementById("navLinks").classList.toggle("show");
-}
 
-function closeMenu(){
-  document.getElementById("navLinks").classList.remove("show");
-}
+  function showHome(push = true) {
+    hideAllPages();
+    document.getElementById('homePage').style.display = 'block';
+    if (push) history.pushState({}, '', window.location.pathname);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-  </script>
+  function showCategory(category, push = true) {
+    hideAllPages();
+    document.getElementById(category + 'Page').classList.add('active');
+    if (push) history.pushState({}, '', '#' + category);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-</body>
-</html>
-  </script>
+  function showBailTypes(push = true) {
+    hideAllPages();
+    document.getElementById('bailTypesPage').classList.add('active');
+    if (push) history.pushState({}, '', '#bail-types');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-</body>
-</html>
+  function showCriminalPage(push = true) {
+    showCategory('criminal', push);
+  }
+
+  function handleRouting() {
+    const hash = window.location.hash;
+
+    if (hash === '#criminal') {
+      showCategory('criminal', false);
+    } else if (hash === '#family') {
+      showCategory('family', false);
+    } else if (hash === '#bail-types') {
+      showBailTypes(false);
+    } else {
+      showHome(false);
+    }
+  }
+
+  window.addEventListener('popstate', handleRouting);
+  window.addEventListener('load', handleRouting);
+
+  function startApplication(caseType) {
+    alert('Starting ' + caseType + '...');
+  }
+
+  function startBailApplication(bailType) {
+    if (bailType === 'pre-arrest') {
+      alert('Pre-Arrest Bail (Section 498 CrPC)');
+    } else {
+      alert('Post-Arrest Bail (Section 497 CrPC)');
+    }
+  }
+
+  const backToTop = document.getElementById("backToTop");
+
+  window.addEventListener('scroll', function () {
+    if (!backToTop) return;
+    backToTop.style.display =
+      document.documentElement.scrollTop > 200 ? "block" : "none";
+  });
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
