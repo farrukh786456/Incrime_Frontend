@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theift-Application.Incrime</title>
+
+<style>
+@font-face {
+    font-family: 'Jameel Noori Nastaleeq';
+    src: local('Jameel Noori Nastaleeq'),
+         url('fonts.gstatic.com') format('truetype');
+}
+body{
+    font-family:'Jameel Noori Nastaleeq','Arial',sans-serif;
+    line-height:1.6;
+    background:#ffffff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    padding-top:90px;   /* 🔴 navbar height ka space */
+    padding-left:20px;
+    padding-right:20px;
+}
+@page{
+    size: A4;
+    margin: 12mm;   /* A4 standard margin */
+}
+.header{text-align:center;margin-bottom:25px;margin-top:-30px;}
+.header p{margin:0;font-size:27px}
+
+.party-info{
+    font-size:20px;
+    line-height:1.2;
+    margin-bottom:10px;
+    text-align:center;
+}
+.signature-line{
+    font-size: 18px;
+    width:100%;
+    text-align:center;     /* 🔥 bilkul center se start */
+    direction:rtl;
+    margin-top:10px;
+}
+@media print{
+  .signature-line{
+    text-align:center !important;
+  }
+}
+.dalail-output{
+  line-height:1.9;
+  margin-top:15px;
+  white-space: pre-wrap;   /* 🔥 upar se neeche likhne ka main rule */
+  text-align: justify;
+}
+
+.party-info span{margin:0 1px}
+.accused-label{
+    display:block;          /* 🔴 new line */
+    font-size:18px;         /* 🔴 normal size */
+    margin-top:4px;
+    text-align:left;      
+}
+.vs-title{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 1.1;
+    font-family: 'Noto Nastaliq Urdu', serif;
+    position: relative;
+    display: table;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+.case-details,.section-title p{
+    font-size:20px;
+    font-weight:bold;
+    text-decoration:underline;
+    display:inline;
+}
+.case-details-container,.section-title{
+    text-align:center;
+    margin:15px 0;
+}
+.section-title p{
+    font-size:23px;
+    font-weight:bold;
+    margin:0;
+    display:inline-block;
+    padding-bottom:0px;
+    border-bottom:2px solid #000;
+    text-decoration:none;        /* 👈 yeh line add karo */
+}
+.fir-line{
+  min-width:120px;     /* 🔥 blank space ki length */
+  margin-right:6px;
+}
+.greetings-line{
+    display:block;
+    font-size:16px;
+    font-weight:bold;
+    margin-top:20px;
+}  
+.arz-center-style {
+    text-align: center;      /* Center the text horizontally */
+    font-size: 26px;         /* Specific font size */
+    font-weight: bold;       /* Make the text bold */
+    margin: 20px 0;          /* Add some space above and below */
+    display: block;          /* Ensure it takes up its own line */
+}   
+.points-list{
+    font-size:16px;
+    list-style:none;
+    padding-right:0;
+    min-height:100px;
+}
+.plea-paragraph{
+    font-size:16px;
+    text-align:center;
+    margin:20px auto 0;
+    width:45%;
+    margin-right:65%;   /* ← tab-jaisa left shift */
+}
+.placeholder-line{
+    display:inline-block;
+    min-width:40px;
+    border-bottom:2px solid #000;
+}
+.placeholder-line.filled{
+    border-bottom:none;
+}
+.form-section{
+    width:800px;
+    background:#ffffff;                 
+    padding:25px;
+    border:2px solid #0d2a3a;         
+    border-radius:12px;              
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+    margin-bottom:30px;
+    direction:ltr;
+}
+.form-section h2{
+    background:#0d2a3a;      /* 🔴 navbar color */
+    color:#ffffff;
+    padding:12px 15px;
+    margin:-25px -25px 20px; /* 🔴 full width heading */
+    border-radius:10px 10px 0 0;
+    font-size:20px;
+}
+.form-section label{
+    display:block;
+    margin-top:2px;        /* 🔽 gap کم */
+    margin-bottom:2px;
+    direction:rtl;
+    text-align:right;
+
+    font-weight:800;       /* 🔴 bold */
+    font-size:16px;        /* 🔴 thora bara */
+    color:#0d2a3a;         /* 🔵 navbar color */
+}
+.form-section input,
+.form-section textarea{
+    width:97%;
+    padding:9px 12px;
+    margin:4px 0 10px;     /* 🔽 vertical gap کم */
+    border:2px solid #bbb;
+    border-radius:8px;
+    font-family:inherit;
+    direction:ltr;
+    font-size:14px;
+}
+.form-section input:focus,
+.form-section textarea:focus{
+    outline:none;
+    border-color:#0d2a3a;
+    box-shadow:0 0 0 2px rgba(13,42,58,0.15);
+}
+.download-btn{
+    margin:20px;
+    padding:10px 25px;
+    font-size:16px;
+    cursor:pointer;
+}
+@media print {
+
+  /* ❌ UI / Navigation hide */
+  nav,
+  .form-section,
+  .download-btn,
+  .floating-back-btn,
+  #scrollTopBtn {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* ✅ Clean document */
+  body {
+    background: #fff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .container {
+    width: 170mm !important;
+    min-height: 257mm !important;
+    margin: auto !important;
+    padding: 15mm !important;
+    box-sizing: border-box !important;
+  }
+}
+
+nav{
+  direction:ltr;
+  box-sizing:border-box;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:16px 80px;              /* 🔥 desktop spacing */
+  background: rgba(13, 42, 58, 0.95);
+  color:#fff;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:9999;
+}
+ nav .logo{
+  font-size: 24px;
+  font-weight: bold;
+  cursor:pointer;
+  white-space:nowrap;
+}
+   nav ul{
+  list-style:none;
+  display:flex;
+  gap:30px;              /* 🔥 first code jaisa gap */
+  margin:0;
+  padding:0;
+  align-items:center;
+}
+   nav ul li a{
+  text-decoration:none;
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+}
+nav ul li a:hover{
+  color:#FFD700;        /* 🔥 same yellow as index.html */
+}
+
+   nav button{
+  background:#FFD700;
+  border:none;
+  color:#0d2a3a;
+  padding:8px 18px;
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.floating-back-btn{
+  position: fixed;
+  top: 95px;              /* navbar ke neeche */
+  left: 25px;             /* 🔥 LEFT side */
+
+  background:#0d2a3a;     /* navbar jaisa color */
+  color:#FFD700;
+
+  border:none;
+  padding:8px 14px;
+  border-radius:8px;
+
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+
+  box-shadow:0 3px 10px rgba(0,0,0,0.25);
+  z-index:9998;
+}
+
+.floating-back-btn:hover{
+  background:#FFD700;
+  color:#0d2a3a;
+}
+
+#backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #FFD700;
+      color: #0d2a3a;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      display: none;
+      animation: floatUpDown 2s infinite ease-in-out;
+    }
+
+    #backToTop:hover {
+      background: #f4d03f;
+      transform: scale(1.05);
+    }
+
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="logo" onclick="window.location.href='../../index.html'">⚖️ InCrime</div>
+  <ul>
+    <li><a href="../../index.html">Home</a></li>
+    <li><a href="../../how-it-works.html">How It Works</a></li>
+    <li><a href="../../chatbot.html">Chatbot Help</a></li>
+    <li><a href="../../index.html#about">About</a></li>
+    <li><a href="../../index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="back-bar">
+<button class="floating-back-btn"
+        onclick="window.location.href='../../application.html'">
+  ← Back
+</button>
+
+</div>
+
+<div class="form-section">
+<h2>Create Theift Application</h2>
+
+<label>عہدہ </label><input id="court_name">
+<label>شہر کا نام</label><input id="police_station">
+<label>چوری شدہ چیز</label><input id="fir_type">
+<label>دلائل</label><textarea id="note_points" rows="10"></textarea>
+<label>نام</label><input id="accused_name">
+<label>والد کا نام</label><input id="father_name">
+<label>پتہ</label><input id="address">
+<label>شناختی کارڈ نمبر</label>
+<input id="cnic_number_input" oninput="formatCNIC(this)" maxlength="15" placeholder="e.g; 36303-1234567-8">
+<label>موبائل نمبر</label>
+<input id="mobile_number_input" oninput="formatMobile(this)" placeholder="e.g; 0300-1234567"> 
+
+</div>
+<div class="container">
+<div class="header">
+<p>بخدمت جناب
+<span id="output_court_name" class="placeholder-line"></span>
+صاحب
+<span id="output_police_station_header" class="placeholder-line"></span></p>
+</div>
+<div class="vs-title">
+</div>
+<div class="case-details-container">
+</div>
+<div class="section-title">
+  <p>
+    درخواست بابت کیے جانے FIR
+    <span id="output_fir_type" class="placeholder-line fir-line"></span>
+  </p>
+</div>
+
+<div class="greetings-line">
+<p>جناب عالی!</p>
+</div>
+<div id="output_note_points" class="dalail-output"></div>
+<div class="arz-center-style">
+    عــــــــــــــــــرضـــــــــــــــــے
+</div>
+<div class="party-info">
+  <span id="output_accused_name" class="placeholder-line"></span>
+  ولد
+  <span id="output_father_name" class="placeholder-line"></span> <!-- Add this line -->
+  سکنه
+  <span id="output_address" class="placeholder-line"></span>
+</div>
+
+<!-- CNIC display line as a placeholder (matching the image style) -->
+<div class="signature-line">
+    <span>شناختی کارڈ نمبر</span>
+    <span id="output_cnic_number" class="placeholder-line" style="min-width: 150px;"></span>
+</div>
+<!-- Mobile number display line as a placeholder (matching the image style) -->
+<div class="signature-line">
+    <span>موبائل نمبر</span>
+    <span id="output_mobile_number" class="placeholder-line" style="min-width: 150px;"></span>
+</div>
+
+
+<button onclick="downloadPDF()" class="download-btn">
+    Download / Print
+</button>
+
+<button id="backToTop" onclick="scrollToTop()">↑ Top</button>
+
+
+</div>
+<script>
+function setVal(id, val) {
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  if (val.trim() === '') {
+    el.textContent = '';
+    el.classList.remove('filled');
+  } else {
+    el.textContent = val;
+    el.classList.add('filled');
+  }
+}
+
+function updateDocument() {
+  setVal('output_court_name', court_name.value);
+  setVal('output_police_station_header', police_station.value);
+  setVal('output_accused_name', accused_name.value);
+  setVal('output_father_name', father_name.value);
+  setVal('output_address', address.value);
+  setVal('output_cnic_number', cnic_number_input.value);
+  setVal('output_mobile_number', mobile_number_input.value);
+  setVal('output_note_points', note_points.value);
+  setVal('output_fir_type', fir_type.value);
+
+
+}
+
+document
+  .querySelectorAll('.form-section input, .form-section textarea')
+  .forEach(el => el.addEventListener('input', updateDocument));
+
+updateDocument();
+
+function downloadPDF() {
+  window.print();
+}
+
+/* 🔢 CNIC Formatter */
+function formatCNIC(input) {
+  let v = input.value.replace(/\D/g, '');
+  if (v.length > 5) v = v.slice(0,5)+'-'+v.slice(5);
+  if (v.length > 13) v = v.slice(0,13)+'-'+v.slice(13,14);
+  input.value = v;
+}
+
+/* 📱 Mobile Formatter */
+function formatMobile(input) {
+  let v = input.value.replace(/\D/g, '');
+  if (v.length > 4) v = v.slice(0,4)+'-'+v.slice(4,11);
+  input.value = v;
+}
+
+/* ⬆ Back to top */
+const backToTop = document.getElementById("backToTop");
+window.addEventListener("scroll", () => {
+  backToTop.style.display =
+    document.documentElement.scrollTop > 200 ? "block" : "none";
+});
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
