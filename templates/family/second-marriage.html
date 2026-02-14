@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Second-Marriage-Application.Incrime</title>
+
+<style>
+@font-face {
+    font-family: 'Jameel Noori Nastaleeq';
+    src: local('Jameel Noori Nastaleeq'),
+         url('fonts.gstatic.com') format('truetype');
+}
+body{
+    font-family:'Jameel Noori Nastaleeq','Arial',sans-serif;
+    line-height:1.6;
+    background:#ffffff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    padding-top:90px;   /* 🔴 navbar height ka space */
+    padding-left:20px;
+    padding-right:20px;
+}
+@page{
+    size: A4;
+    margin: 12mm;   /* A4 standard margin */
+}
+.header{text-align:center;margin-bottom:25px;margin-top:-30px;}
+.header p{margin:0;font-weight:bold;font-size:25px}
+
+.party-info{
+    font-size:20px;
+    font-weight: bold;
+    line-height:1.2;
+    margin-bottom:10px;
+    text-align:center;
+}
+.signature-line{
+    font-size: 18px;
+    width:100%;
+    text-align:center;     /* 🔥 bilkul center se start */
+    direction:rtl;
+    margin-top:10px;
+}
+@media print{
+  .signature-line{
+    text-align:center !important;
+  }
+}
+.dalail-output{
+  line-height:1.9;
+  margin-top:15px;
+  white-space: pre-wrap;   /* 🔥 upar se neeche likhne ka main rule */
+  text-align: justify;
+}
+
+.party-info span{margin:0 1px}
+.accused-label{
+    display:block;          /* 🔴 new line */
+    font-size:18px;         /* 🔴 normal size */
+    margin-top:4px;
+    text-align:left;      
+}
+.vs-title{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 1.1;
+    font-family: 'Noto Nastaliq Urdu', serif;
+    position: relative;
+    display: table;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+.case-details,.section-title p{
+    font-size:20px;
+    font-weight:bold;
+    text-decoration:underline;
+    display:inline;
+}
+.case-details-container,.section-title{
+    text-align:center;
+    margin:15px 0;
+}
+.section-title p{
+    font-size:22px;
+    font-weight:bold;
+    margin:0;
+    display:inline-block;
+    padding-bottom:0px;
+    border-bottom:2px solid #000;
+    text-decoration:none;        /* 👈 yeh line add karo */
+}
+.fir-line{
+  min-width:120px;     /* 🔥 blank space ki length */
+  margin-right:6px;
+}
+.greetings-line{
+    display:block;
+    font-size:20px;
+    font-weight:bold;
+    margin-top:20px;
+}  
+.court-paragraph{
+    text-align:justify;
+    line-height:2;
+    font-size:19px;
+    margin-top:20px;
+}
+
+.reason-block{
+  display:block;
+  margin-top:8px;
+  line-height:2;
+  text-align:justify;
+  font-size:19px;
+
+  white-space:pre-wrap;        /* line breaks safe */
+  word-wrap:break-word;       /* old browsers */
+  overflow-wrap:anywhere;     /* 🔥 long word ko bhi tor dega */
+}
+.arz-center-style {
+    text-align: center;      /* Center the text horizontally */
+    font-size: 26px;         /* Specific font size */
+    font-weight: bold;       /* Make the text bold */
+    margin: 20px 0;          /* Add some space above and below */
+    display: block;          /* Ensure it takes up its own line */
+}   
+.points-list{
+    font-size:16px;
+    list-style:none;
+    padding-right:0;
+    min-height:100px;
+}
+.plea-paragraph{
+    font-size:16px;
+    text-align:center;
+    margin:20px auto 0;
+    width:45%;
+    margin-right:65%;   /* ← tab-jaisa left shift */
+}
+.signature-area {
+    width: 100%;
+    display: flex;
+    flex-direction: column;   /* Stack content vertically if needed */
+    align-items: center;      /* Center everything horizontally */
+    margin-top: 10px;
+    font-size: 20px;          /* Font size for all text inside */
+    box-sizing: border-box;
+}
+
+.signature-right {
+    text-align: center;       /* Center text inside this div */
+    /* Remove margin-right:75%; it breaks centering */
+}
+.placeholder-line{
+    display:inline-block;
+    min-width:40px;
+    border-bottom:2px solid #000;
+}
+.placeholder-line.filled{
+    border-bottom:none;
+}
+.form-section{
+    width:800px;
+    background:#ffffff;                 
+    padding:25px;
+    border:2px solid #0d2a3a;         
+    border-radius:12px;              
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+    margin-bottom:30px;
+    direction:ltr;
+}
+.form-section h2{
+    background:#0d2a3a;      /* 🔴 navbar color */
+    color:#ffffff;
+    padding:12px 15px;
+    margin:-25px -25px 20px; /* 🔴 full width heading */
+    border-radius:10px 10px 0 0;
+    font-size:20px;
+}
+.form-section label{
+    display:block;
+    margin-top:2px;        /* 🔽 gap کم */
+    margin-bottom:2px;
+    direction:rtl;
+    text-align:right;
+
+    font-weight:800;       /* 🔴 bold */
+    font-size:16px;        /* 🔴 thora bara */
+    color:#0d2a3a;         /* 🔵 navbar color */
+}
+.form-section input,
+.form-section textarea{
+    width:97%;
+    padding:9px 12px;
+    margin:4px 0 10px;     /* 🔽 vertical gap کم */
+    border:2px solid #bbb;
+    border-radius:8px;
+    font-family:inherit;
+    direction:ltr;
+    font-size:14px;
+}
+.form-section input:focus,
+.form-section textarea:focus{
+    outline:none;
+    border-color:#0d2a3a;
+    box-shadow:0 0 0 2px rgba(13,42,58,0.15);
+}
+.download-btn{
+    margin:20px;
+    padding:10px 25px;
+    font-size:16px;
+    cursor:pointer;
+}
+@media print {
+
+  /* ❌ UI / Navigation hide */
+  nav,
+  .form-section,
+  .download-btn,
+  .floating-back-btn,
+  #scrollTopBtn {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* ✅ Clean document */
+  body {
+    background: #fff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .container {
+    width: 170mm !important;
+    min-height: 257mm !important;
+    margin: auto !important;
+    padding: 15mm !important;
+    box-sizing: border-box !important;
+  }
+}
+
+nav{
+  direction:ltr;
+  box-sizing:border-box;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:16px 80px;              /* 🔥 desktop spacing */
+  background: rgba(13, 42, 58, 0.95);
+  color:#fff;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:9999;
+}
+ nav .logo{
+  font-size: 24px;
+  font-weight: bold;
+  cursor:pointer;
+  white-space:nowrap;
+}
+   nav ul{
+  list-style:none;
+  display:flex;
+  gap:30px;              /* 🔥 first code jaisa gap */
+  margin:0;
+  padding:0;
+  align-items:center;
+}
+   nav ul li a{
+  text-decoration:none;
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+}
+nav ul li a:hover{
+  color:#FFD700;        /* 🔥 same yellow as index.html */
+}
+
+   nav button{
+  background:#FFD700;
+  border:none;
+  color:#0d2a3a;
+  padding:8px 18px;
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.floating-back-btn{
+  position: fixed;
+  top: 95px;              /* navbar ke neeche */
+  left: 25px;             /* 🔥 LEFT side */
+
+  background:#0d2a3a;     /* navbar jaisa color */
+  color:#FFD700;
+
+  border:none;
+  padding:8px 14px;
+  border-radius:8px;
+
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+
+  box-shadow:0 3px 10px rgba(0,0,0,0.25);
+  z-index:9998;
+}
+
+.floating-back-btn:hover{
+  background:#FFD700;
+  color:#0d2a3a;
+}
+
+#backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #FFD700;
+      color: #0d2a3a;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      display: none;
+      animation: floatUpDown 2s infinite ease-in-out;
+    }
+
+    #backToTop:hover {
+      background: #f4d03f;
+      transform: scale(1.05);
+    }
+
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="logo" onclick="window.location.href='../../index.html'">⚖️ InCrime</div>
+  <ul>
+    <li><a href="../../index.html">Home</a></li>
+    <li><a href="../../how-it-works.html">How It Works</a></li>
+    <li><a href="../../chatbot.html">Chatbot Help</a></li>
+    <li><a href="../../index.html#about">About</a></li>
+    <li><a href="../../index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="back-bar">
+<button class="floating-back-btn"
+        onclick="window.location.href='../../application.html'">
+  ← Back
+</button>
+
+</div>
+
+<div class="form-section">
+<h2>Create Second Marriage Application</h2>
+
+<label>عہدہ </label><input id="court_name">
+<label>علاقہ</label><input id="area">
+<label>تحصیل</label><input id="tehsil">
+<label>ضلع</label><input id="district">
+<label>مورخہ</label><input type="date" id="case_date">
+<label>نام</label><input id="accused_name">
+<label>والد کا نام</label><input id="father_name">
+<label>قوم</label><input id="qoum">
+<label>پتہ</label><input id="address">
+<label>بیوی کا نام</label><input id="wife_name">
+<label>بیوی کے والد کا نام</label><input id="wife_father">
+<label>بیوی کی قوم</label><input id="wife_qoum">
+<label>بیوی کا پتہ</label><input id="wife_address">
+<label>دوسری شادی کی وجہ</label><textarea id="reason" rows="8"></textarea>
+</div>
+<div class="container">
+<div class="header">
+<p>بخدمت جناب
+<span id="output_court_name" class="placeholder-line"></span>
+<span id="output_area" class="placeholder-line"></span>
+تحصیل
+<span id="output_tehsil" class="placeholder-line"></span>
+ضلع
+<span id="output_district" class="placeholder-line"></span>
+</div>
+<br>
+<br>
+<br>
+<div class="vs-title">
+</div>
+<div class="case-details-container">
+</div>
+<div class="section-title">
+  <p>
+    درخواست بمراد اجازت دیئے جانے دوسری شادی
+  </p>
+</div>
+<br>
+<div class="greetings-line">
+<p>جناب عالی!</p>
+</div>
+<p class="court-paragraph">
+
+گزارش ہے کہ سائل
+<span id="output_accused_name" class="placeholder-line"></span>
+ولد
+<span id="output_father_name" class="placeholder-line"></span>
+قوم
+<span id="output_qoum" class="placeholder-line"></span>
+سکنہ
+<span id="output_address" class="placeholder-line"></span>
+کا مستقل رہائشی و سکونتی ہوں۔
+سائل کا دوسری شادی کا طالب ہے۔ جو اسکا شرعی حق ہے۔
+سائل پہلے سے شادی شدہ ہے۔ سائل کی پہلی بیوی کا نام
+<span id="output_wife_name" class="placeholder-line"></span>
+ولدیت
+<span id="output_wife_father" class="placeholder-line"></span>
+قوم
+<span id="output_wife_qoum" class="placeholder-line"></span>
+سکنہ
+<span id="output_wife_address" class="placeholder-line"></span>
+کی رہائشی ہے۔
+<span id="output_reason" class="reason-block"></span>
+لہذا سائل کو دوسری شادی کی اجازت فرمائی جاوے۔
+تا کہ سائل اپنا شرعی حق استعمال کر سکے۔
+</p>
+<div class="signature-area">
+  <div class="signature-right">
+   مورخہ: <span id="output_case_date_display" class="placeholder-line"></span>
+  </div>
+</div>
+<div class="arz-center-style">
+    عــــــــــــــــــرضـــــــــــــــــے
+</div>
+<div class="party-info">
+    سائل:
+  <span id="output_accused_name_footer" class="placeholder-line"></span>
+  ولد
+  <span id="output_father_name_footer" class="placeholder-line"></span>
+   قوم
+  <span id="output_qoum_footer" class="placeholder-line"></span>
+  <br>
+  سکنه
+  <span id="output_address_footer" class="placeholder-line"></span>
+</div>
+
+
+
+<button onclick="downloadPDF()" class="download-btn">
+    Download / Print
+</button>
+
+<button id="backToTop" onclick="scrollToTop()">↑ Top</button>
+
+
+</div>
+<script>
+function formatDate(dateStr) {
+  if (!dateStr) return ''; // agar date empty ho to blank show ho
+  const d = new Date(dateStr);
+  const day = d.getDate().toString().padStart(2,'0');
+  const month = (d.getMonth() + 1).toString().padStart(2,'0'); // month 0 se start hota hai
+  const year = d.getFullYear();
+  return `${day}/${month}/${year}`; // DD/MM/YYYY format
+}
+
+const court_name = document.getElementById("court_name");
+const area = document.getElementById("area");
+const tehsil = document.getElementById("tehsil");
+const district = document.getElementById("district");
+const accused_name = document.getElementById("accused_name");
+const father_name = document.getElementById("father_name");
+const qoum = document.getElementById("qoum");
+const address = document.getElementById("address");
+const wife_name = document.getElementById("wife_name");
+const wife_father = document.getElementById("wife_father");
+const wife_qoum = document.getElementById("wife_qoum");
+const wife_address = document.getElementById("wife_address");
+const reason = document.getElementById("reason");
+const case_date = document.getElementById("case_date");
+case_date.addEventListener("change", updateDocument);
+
+
+function setVal(id, val) {
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  if (val.trim() === '') {
+    el.textContent = '';
+    el.classList.remove('filled');
+  } else {
+    el.textContent = val;
+    el.classList.add('filled');
+  }
+}
+function updateDocument() {
+  setVal('output_court_name', court_name.value);
+  setVal('output_area', area.value);
+  setVal('output_tehsil', tehsil.value);
+  setVal('output_district', district.value);
+
+  // Main paragraph
+  setVal('output_accused_name', accused_name.value);
+  setVal('output_father_name', father_name.value);
+  setVal('output_qoum', qoum.value);
+  setVal('output_address', address.value);
+  setVal('output_wife_name', wife_name.value);
+  setVal('output_wife_father', wife_father.value);  
+  setVal('output_wife_qoum', wife_qoum.value);
+  setVal('output_wife_address', wife_address.value);
+  setVal('output_reason', reason.value);
+
+  // Footer (party-info)
+  setVal('output_accused_name_footer', accused_name.value);
+  setVal('output_father_name_footer', father_name.value);
+  setVal('output_qoum_footer', qoum.value);
+  setVal('output_address_footer', address.value);
+
+  // Date display
+  setVal('output_case_date_display', formatDate(case_date.value));
+}
+
+
+document
+  .querySelectorAll('.form-section input, .form-section textarea')
+  .forEach(el => el.addEventListener('input', updateDocument));
+
+updateDocument();
+
+function downloadPDF() {
+  window.print();
+}
+
+/* ⬆ Back to top */
+const backToTop = document.getElementById("backToTop");
+window.addEventListener("scroll", () => {
+  backToTop.style.display =
+    document.documentElement.scrollTop > 200 ? "block" : "none";
+});
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
