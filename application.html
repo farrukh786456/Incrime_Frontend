@@ -1,108 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Your Application – InCrime</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Your Application – InCrime</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+              url('https://images.unsplash.com/photo-1678228941467-cc170dd97e01?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0') center/cover no-repeat;
+  background-attachment: fixed;
+  color: #0d2a3a;
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background:
-        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-        url('https://images.unsplash.com/photo-1678228941467-cc170dd97e01?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0')
-        center/cover no-repeat;
-      background-attachment: fixed;
-      color: #0d2a3a;
-    }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full screen */
+}
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 60px;
-      background: rgba(13, 42, 58, 0.95);
-      color: #fff;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(8px);
-    }
 
-    nav .logo {
-      font-size: 24px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+  /* Navigation */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px;
+    background: rgba(13,42,58,0.95);
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(8px);
+  }
+  nav .logo { font-size: 24px; font-weight: bold; cursor: pointer; }
+  nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; margin-left: auto; margin-right: 20px; }
+  nav ul li a { text-decoration: none; color: #fff; font-weight: 500; transition: 0.3s; }
+  nav ul li a:hover { color: #FFD700; }
+  nav button { background: #FFD700; border: none; color: #0d2a3a; padding: 10px 18px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+  nav button:hover { background: #FFC300; }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-      margin: 0;
-      padding: 0;
-      margin-left: auto;
-      margin-right: 20px;
-    }
+  /* Container */
+/* Container update */
 
-    nav ul li a {
-      text-decoration: none;
-      color: #fff;
-    }
+/* Container */
+.container {
+  flex: 1; /* occupy available space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically center content */
+  max-width: 900px;
+  width: 90%;
+  margin: 20px auto; /* top + bottom breathing space */
+  padding: 50px 40px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 25px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
+}
 
-    nav button {
-      background: #FFD700;
-      border: none;
-      color: #0d2a3a;
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-    }
+/* Footer */
+footer {
+  background: #0d2a3a;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px; /* gap between container and footer */
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
 
-    .container {
-      max-width: 900px;
-      margin: 80px auto;
-      background: rgba(255,255,255,0.9);
-      padding: 40px;
-      border-radius: 15px;
-    }
+  h1 { text-align: center; margin-bottom: 40px; font-size: 32px; color: #0d2a3a; }
 
-    h1 { text-align: center; }
+  label { font-weight: 600; font-size: 18px; display:block; margin-bottom: 10px; }
+  select {
+    padding: 18px 15px;
+    border: 2px solid #0d2a3a;
+    border-radius: 12px;
+    width: 100%;
+    margin-bottom: 25px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background-color: #f7f9fb;
+  }
+  select:hover {
+    border-color: #FFD700;
+    box-shadow: 0 0 12px rgba(255,215,0,0.5);
+  }
+  select:focus {
+    outline: none;
+    border-color: #FFB800;
+    box-shadow: 0 0 20px rgba(255,184,0,0.6);
+    transform: scale(1.02);
+  }
 
-    label { font-weight: 600; }
+  button.continue {
+    width: 100%;
+    padding: 18px;
+    background: #0d2a3a;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  button.continue:hover {
+    background: #1a3f5c;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
 
-    select {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      width: 100%;
-      margin-bottom: 15px;
-    }
 
-    button.continue {
-      width: 100%;
-      padding: 12px;
-      background: #0d2a3a;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    footer {
-      background: #0d2a3a;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
-    }
-  </style>
+  /* Animate subType dropdown fade-in */
+  #subType {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.4s ease;
+  }
+  #subType.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
 </head>
-
 <body>
 
 <nav>
@@ -121,26 +144,15 @@
   <h1>Create Your Legal Application</h1>
 
   <label>Case Type</label>
-  <select id="caseType">
+  <select id="caseType" onchange="handleCaseType()">
     <option value="">Select Case Type</option>
     <option value="criminal">Criminal</option>
     <option value="family">Family</option>
-    <option value="civil">Civil</option>
   </select>
 
-  <label>Sub Type</label>
-  <select id="subType" onchange="handleSubType()">
-    <option value="">Select Sub Type</option>
-    <option value="fir">FIR</option>
-    <option value="bail">Bail</option>
-    <option value="petition">Petition</option>
-  </select>
-
-  <label id="bailTypeLabel" style="display:none;">Bail Type</label>
-  <select id="bailType" style="display:none;">
-    <option value="">Select Bail Type</option>
-    <option value="pre">Pre Bail</option>
-    <option value="post">Post Bail</option>
+  <label>Case Category</label>
+  <select id="subType" style="display:block;" class="">
+    <option value="">Select Case Category</option>
   </select>
 
   <button class="continue" onclick="openTemplate()">Continue</button>
@@ -149,43 +161,60 @@
 <footer>© 2025 InCrime | Every Case, Every Detail</footer>
 
 <script>
-function handleSubType() {
-  if (subType.value === 'bail') {
-    bailType.style.display = 'block';
-    bailTypeLabel.style.display = 'block';
+const caseOptions = {
+  criminal: [
+    { name: 'Pre-Bail ', value: 'pre', path: 'templates/criminal/bail-pre.html' },
+    { name: 'Post-Bail ', value: 'post', path: 'templates/criminal/bail-post.html' },
+    { name: 'Theft Complaint', value: 'theft', path: 'templates/criminal/theift-application.html' },
+    { name: 'Attendance Excused', value: 'attendance', path: 'templates/criminal/attendance-excused.html' },
+    { name: 'Harassment', value: 'harassment', path: 'templates/criminal/harrasement.html' },
+    { name: 'Consent', value: 'consent', path: 'templates/criminal/consent-application.html' },
+    { name: 'Challan', value: 'challan', path: 'templates/criminal/challan-application.html' }
+  ],
+  family: [
+    { name: 'Nikah Form', value: 'nikah', path: 'templates/family/nikah-nama-form.html' },
+    { name: 'Child Custody', value: 'custody', path: 'templates/family/child-custody.html' },
+    { name: 'Annulment of Marriage', value: 'annulment', path: 'templates/family/tansik-nikah.html' },
+    { name: 'Second Marriage', value: 'second-marriage', path: 'templates/family/second-marriage.html' },
+    { name: 'Release from Dar-ul-Aman', value: 'release-darul-aman', path: 'templates/family/azad-darul-aman.html' },
+    { name: 'Request for Meeting at Dar-ul-Aman', value: 'meeting-darul-aman', path: 'templates/family/meeting-darul-aman.html' },
+    { name: 'Request for Sending to Dar-ul-Aman', value: 'sending-darul-aman', path: 'templates/family/sending-darul-aman.html' }
+  ]
+};
+
+function handleCaseType() {
+  const caseType = document.getElementById('caseType').value;
+  const subType = document.getElementById('subType');
+  subType.innerHTML = '<option value="">Select Case Category</option>';
+
+  if(caseType && caseOptions[caseType]) {
+    caseOptions[caseType].forEach(item => {
+      const opt = document.createElement('option');
+      opt.value = item.value;
+      opt.textContent = item.name;
+      subType.appendChild(opt);
+    });
+    subType.classList.add('show');
   } else {
-    bailType.style.display = 'none';
-    bailTypeLabel.style.display = 'none';
+    subType.classList.remove('show');
   }
 }
 
 function openTemplate() {
-  const ct = caseType.value;
-  const st = subType.value;
-  const bt = bailType.value;
+  const caseType = document.getElementById('caseType').value;
+  const subTypeValue = document.getElementById('subType').value;
 
-  let path = '';
-
-  if (ct === 'criminal' && st === 'fir') {
-    path = 'templates/criminal/fir.html';
-  }
-  else if (ct === 'criminal' && st === 'bail') {
-    if (bt === 'pre') path = 'templates/criminal/bail-pre.html';
-    if (bt === 'post') path = 'templates/criminal/bail-post.html';
-  }
-  else if (ct === 'family' && st === 'petition') {
-    path = 'templates/family/petition.html';
-  }
-  else if (ct === 'civil' && st === 'petition') {
-    path = 'templates/civil/suit.html';
-  }
-
-  if (!path) {
+  if(!caseType || !subTypeValue) {
     alert('Please complete selection');
     return;
   }
 
-  window.location.href = path;
+  const selected = caseOptions[caseType].find(c => c.value === subTypeValue);
+  if(selected && selected.path) {
+    window.location.href = selected.path;
+  } else {
+    alert('Template not found');
+  }
 }
 </script>
 
