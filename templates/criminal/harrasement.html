@@ -471,17 +471,17 @@ function updateDocument(){
     setVal('output_lawyer_name', lawyer_name.value);
     setVal('output_lawyer_address', lawyer_address.value);
     setVal('signature_accused_name', accused_name.value );
-
-
+}
+const dynamic_points_area = document.getElementById("output_note_points");
 dynamic_points_area.innerHTML = '';
+
 note_points.value.split('\n').forEach(t => {
     if(t.trim()){
         const li = document.createElement('li');
         li.textContent = t;
         dynamic_points_area.appendChild(li);
    }
- });
-}
+});
 
 document.querySelectorAll('.form-section input,.form-section textarea')
 .forEach(i=>i.addEventListener('input',updateDocument));
@@ -505,12 +505,6 @@ function downloadPDF(){
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-function scrollToTop(){
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-}
 
 </script>
 
